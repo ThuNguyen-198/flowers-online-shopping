@@ -1,4 +1,4 @@
-<mat-card>
+
   <mat-accordion multi="true" *ngIf="flowers.length > 0">
     <mat-expansion-panel *ngFor="let flower of flowers">
         <mat-expansion-panel-header>
@@ -10,4 +10,3 @@
     </mat-expansion-panel>
   </mat-accordion>
   <p class="info-text mat-body-1" *ngIf="flowers.length <= 0">No flowers added yet!</p>
-</mat-card>

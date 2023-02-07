@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
-const Flower = require('./models/flowerSchema');
+const Flower = require('../../backend/models/flowerSchema');
 
 mongoose.set('strictQuery', true);
 

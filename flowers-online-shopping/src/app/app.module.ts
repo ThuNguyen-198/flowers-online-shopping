@@ -15,13 +15,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlowerListComponent } from './flower-list/flower-list.component';
 import { FlowerCreateComponent } from './flower-create/flower-create.component';
+import { HeaderBarComponent } from './header-bar/header-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FlowerListComponent,
-    FlowerCreateComponent
+    FlowerCreateComponent,
+    HeaderBarComponent
   ],
   imports: [
     BrowserModule,
