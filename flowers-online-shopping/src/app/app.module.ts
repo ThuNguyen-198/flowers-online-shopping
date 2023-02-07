@@ -2,20 +2,26 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card'
+import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlowerListComponent } from './flower-list/flower-list.component';
+import { FlowerCreateComponent } from './flower-create/flower-create.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FlowerListComponent
+    FlowerListComponent,
+    FlowerCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +30,11 @@ import { FlowerListComponent } from './flower-list/flower-list.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatCardModule,
+    MatInputModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,6 +8,6 @@ export interface Flower {
     id: string,
     name: string,
     color: string,
-    kind: string[],
+    kind: string,
     occasion: string
 }

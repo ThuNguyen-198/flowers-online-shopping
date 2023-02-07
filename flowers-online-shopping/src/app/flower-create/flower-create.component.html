@@ -1,0 +1,64 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Flower Power</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    Add Flower
+  </button>
+</mat-toolbar>
+
+<mat-card>
+    <form (submit)="onAddFlower(flowerInfo)" #flowerInfo="ngForm">
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          name="name"
+          ngModel
+          required
+          minlength="3"
+          placeholder="Flower Name"
+          #name="ngModel">
+        <mat-error *ngIf="name.invalid">Please enter a post title.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          rows="4"
+          name="color"
+          ngModel
+          required
+          placeholder="Flower Color"
+          #color="ngModel"></textarea>
+        <mat-error *ngIf="color.invalid">Please enter a post title.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          rows="4"
+          name="kind"
+          ngModel
+          required
+          placeholder="Flower Kind"
+          #kind="ngModel"></textarea>
+        <mat-error *ngIf="kind.invalid">Please enter a post title.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea
+          matInput
+          rows="4"
+          name="occasion"
+          ngModel
+          required
+          placeholder="Occasion"
+          #occasion="ngModel"></textarea>
+        <mat-error *ngIf="occasion.invalid">Please enter a post title.</mat-error>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit">Save Post</button>
+    </form>
+  </mat-card>
