@@ -1,4 +1,8 @@
-//EXPRESS MIDDLEWARE
+/*EXPRESS MIDDLEWARE
+
+This JS file is run on server as a "middleman" between backend and frontend.
+Mongoose is utilized in this file to interact with MongoDB.
+*/
 
 const express = require('express');
 const bodyParser = require("body-parser");
@@ -8,6 +12,7 @@ const Flower = require('../../backend/models/flowerSchema');
 
 mongoose.set('strictQuery', true);
 
+//Connect with MongoDB using username and password of users added on MongoDB Console.
 mongoose
   .connect(
     "mongodb+srv://group11:VRPivVXSEZ29MgY@cluster0.z4y7jpi.mongodb.net/?retryWrites=true&w=majority"
@@ -33,10 +38,11 @@ app.use((req, res, next) => {
     next();
   });
 
+//BodyParser is an NPM package where it process data sent in an HTTP request body.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
   
-
+//POST request: update/add information on MongoDB.
 app.post("/api/flowers", (request, response, next) => {
   const flower = new Flower({
     name: request.body.name,
@@ -61,4 +67,5 @@ app.get("/api/flowers", (request, response, next) => {
   });
 });
 
+//Export this express application so we can use it in the server
 module.exports = app;

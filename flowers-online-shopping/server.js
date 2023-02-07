@@ -1,6 +1,6 @@
-//SERVER
+/* NODE JS SERVER */
 
-//Importing network capability
+//Importing network capability - HTTP
 const http = require('http');
 const app = require('./backend/middleware/app');
 const port = process.env.PORT || 3000;
