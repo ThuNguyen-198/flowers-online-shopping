@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Flower } from '../flower.model';
+import { Flower } from '../data-models/flower.model';
 import { FlowersService } from '../services/flowers.service';
 import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, NgForm, Validator, Validators } from '@angular/forms';
