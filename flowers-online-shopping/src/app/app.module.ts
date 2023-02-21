@@ -16,8 +16,15 @@ import { AppComponent } from './app.component';
 import { FlowerListComponent } from './flower-list/flower-list.component';
 import { FlowerCreateComponent } from './flower-create/flower-create.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SignUpComponent } from './auth/signup/signup.component';
+
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
+import { ReportPageComponent } from './report-page/report-page.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
+import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
+
 
 @NgModule({
   declarations: [
@@ -25,8 +32,15 @@ import { SignUpComponent } from './auth/signup/signup.component';
     FlowerListComponent,
     FlowerCreateComponent,
     HeaderBarComponent,
-    LoginComponent,
-    SignUpComponent
+
+    LoginPageComponent,
+    RegisterPageComponent,
+    UserAccountPageComponent,
+    ReportPageComponent,
+    CheckoutPageComponent,
+    ProductsDisplayPageComponent,
+    ProductDetailsComponent
+
   ],
   imports: [
     BrowserModule,
