@@ -16,6 +16,13 @@ import { AppComponent } from './app.component';
 import { FlowerListComponent } from './flower-list/flower-list.component';
 import { FlowerCreateComponent } from './flower-create/flower-create.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
+import { ReportPageComponent } from './report-page/report-page.component';
+import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
+import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
 
 
 @NgModule({
@@ -23,7 +30,14 @@ import { HeaderBarComponent } from './header-bar/header-bar.component';
     AppComponent,
     FlowerListComponent,
     FlowerCreateComponent,
-    HeaderBarComponent
+    HeaderBarComponent,
+    LoginPageComponent,
+    RegisterPageComponent,
+    UserAccountPageComponent,
+    ReportPageComponent,
+    CheckoutPageComponent,
+    ProductsDisplayPageComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
