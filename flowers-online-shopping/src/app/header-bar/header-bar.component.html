@@ -1,10 +1,20 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>Flower Power</span>
-    <span class="example-spacer"></span>
-    <button mat-raised-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      Add Flower
-    </button>
+    <span class="spacer">Flower Power</span>
+    <ul>
+      <li>
+        <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+      </li>
+      <li>
+        <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+      </li>
+      <li>
+        <a mat-button routerLink="/flower-list" routerLinkActive="mat-accent">Flowers</a>
+      </li>
+      <li>
+        <a mat-button routerLink="/flower-create" routerLinkActive="mat-accent">Add Flowers</a>
+      </li>
+    </ul>
 </mat-toolbar>

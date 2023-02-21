@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
-import { MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input'; 
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { FlowerListComponent } from './flower-list/flower-list.component';
 import { FlowerCreateComponent } from './flower-create/flower-create.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
+
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
@@ -31,6 +32,7 @@ import { ProductDetailsComponent } from './products-display-page/product-details
     FlowerListComponent,
     FlowerCreateComponent,
     HeaderBarComponent,
+
     LoginPageComponent,
     RegisterPageComponent,
     UserAccountPageComponent,
@@ -38,6 +40,7 @@ import { ProductDetailsComponent } from './products-display-page/product-details
     CheckoutPageComponent,
     ProductsDisplayPageComponent,
     ProductDetailsComponent
+
   ],
   imports: [
     BrowserModule,
