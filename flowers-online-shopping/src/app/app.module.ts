@@ -4,18 +4,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-import { MatToolbarModule } from '@angular/material/toolbar'; 
-import { MatIconModule } from '@angular/material/icon'; 
-import { MatButtonModule } from '@angular/material/button'
-import { MatCardModule } from '@angular/material/card'
-import { MatInputModule } from '@angular/material/input'; 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FlowerListComponent } from './flower-list/flower-list.component';
-import { FlowerCreateComponent } from './flower-create/flower-create.component';
-import { HeaderBarComponent } from './header-bar/header-bar.component';
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
@@ -25,13 +22,9 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
 import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    FlowerListComponent,
-    FlowerCreateComponent,
-    HeaderBarComponent,
 
     LoginPageComponent,
     RegisterPageComponent,
@@ -39,8 +32,7 @@ import { ProductDetailsComponent } from './products-display-page/product-details
     ReportPageComponent,
     CheckoutPageComponent,
     ProductsDisplayPageComponent,
-    ProductDetailsComponent
-
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,9 +45,9 @@ import { ProductDetailsComponent } from './products-display-page/product-details
     FormsModule,
     MatCardModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
