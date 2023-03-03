@@ -8,7 +8,17 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
-const Flower = require('../../backend/models/flowerSchema');
+
+const Bouquet = require('../../backend/models/Bouquet');
+const Color = require('../../backend/models/Color');
+const Customer = require('../../backend/models/Customer');
+const Employee = require('../../backend/models/Employee');
+const Flower = require('../../backend/models/Flower');
+const FlowerType = require('../../backend/models/FlowerType');
+const Image = require('../../backend/models/Image');
+const Order = require('../../backend/models/Order');
+const Other = require('../../backend/models/Other');
+const Wrapping = require('../../backend/models/Wrapping');
 
 mongoose.set('strictQuery', true);
 
