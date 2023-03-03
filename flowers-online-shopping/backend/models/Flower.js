@@ -6,5 +6,8 @@ const flowerSchema = mongoose.Schema({
     kind_ID: { type: String, required: true }
 });
 
+// color and kind id are unique together
+flowerSchema.index({ color_ID: 1, kind_ID: 1}, { unique: true });
+
 //Export this as an object so we can use it somewhere else.
 module.exports = mongoose.model('Flower', flowerSchema);
