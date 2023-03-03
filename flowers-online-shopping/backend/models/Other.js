@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const otherSchema = mongoose.Schema({
     prod_ID: { type: String, required: true },
     desc: { type: String, required: true }, //allows search
-    price: { type: String, required: true }
+    price: {type: mongoose.Types.Decimal128, required: true }
     //can add images here
 });
 

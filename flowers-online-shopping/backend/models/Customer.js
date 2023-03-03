@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+// store hashed value with argon2
+
 const customerSchema = mongoose.Schema({
     cuID: { type: String, required: true },
     user: { type: String, required: true },
