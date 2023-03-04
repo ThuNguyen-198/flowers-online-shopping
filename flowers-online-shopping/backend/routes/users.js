@@ -10,6 +10,7 @@ const Employee = require('../../backend/models/Employee');
 router.post("/signup/employee", (req,res,next) => {
     console.log(req.body.pwd);
     const employee = Employee({
+        eID: req.body.eID,
         login_ID: req.body.login_ID,
         pwd: req.body.pwd,
         perms: req.body.perms
@@ -20,10 +21,7 @@ router.post("/signup/employee", (req,res,next) => {
     employee.save().then((result) => {
         res.status(201).json({
             message: "Employee account created!",
-            employee: {
-                ...result,
-                eID: result._id,
-            }
+            result: result
         })
     })
     .catch((err) => {

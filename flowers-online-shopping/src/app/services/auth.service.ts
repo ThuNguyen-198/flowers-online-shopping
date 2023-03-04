@@ -6,8 +6,9 @@ import { EmployeeData } from "../data-models/employee.model";
 export class AuthService {
     constructor(private http: HttpClient) {}
 
-    createEmployee(regLoginID: string, regPwd: string, regPerms: number){
-        const employeeAuthData: EmployeeData  = {eID: '', login_ID: regLoginID, pwd: regPwd, perms: regPerms}
+    createEmployee(regeID: string, regLoginID: string, regPwd: string, regPerms: number){
+        const employeeAuthData: EmployeeData  = {eID: regeID, login_ID: regLoginID, pwd: regPwd, perms: regPerms}
+        console.log(employeeAuthData)
         this.http.post("http://localhost:3000/api/user/signup/employee", employeeAuthData)
             .subscribe((response) => {
                 console.log(response);

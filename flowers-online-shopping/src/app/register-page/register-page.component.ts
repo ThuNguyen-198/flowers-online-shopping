@@ -9,7 +9,6 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterPageComponent implements OnInit {
 
-  form: FormControl = new FormControl([]);
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
@@ -20,7 +19,7 @@ export class RegisterPageComponent implements OnInit {
       return;
     }
 
-    this.authService.createEmployee(this.form.value.loginID, this.form.value.password, this.form.value.permission);
+    this.authService.createEmployee(form.value.eID, form.value.loginID, form.value.password, form.value.permission);
   }
 
 }
