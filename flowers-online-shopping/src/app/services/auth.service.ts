@@ -1,12 +1,17 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { EmployeeData } from "../data-models/employee.model";
 
 @Injectable({providedIn: "root"})
 export class AuthService {
     constructor(private http: HttpClient) {}
 
-    createUser(email: string, password: string){
-        
+    createEmployee(regLoginID: string, regPwd: string, regPerms: number){
+        const employeeAuthData: EmployeeData  = {eID: '', login_ID: regLoginID, pwd: regPwd, perms: regPerms}
+        this.http.post("http://localhost:3000/api/user/signup/employee", employeeAuthData)
+            .subscribe((response) => {
+                console.log(response);
+            })
     }
 
     login(email: string, password: string){
