@@ -21,6 +21,7 @@ import { ReportPageComponent } from './report-page/report-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
 import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ProductDetailsComponent } from './products-display-page/product-details
     CheckoutPageComponent,
     ProductsDisplayPageComponent,
     ProductDetailsComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
