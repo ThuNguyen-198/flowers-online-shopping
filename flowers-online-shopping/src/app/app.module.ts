@@ -25,6 +25,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { IonicModule } from '@ionic/angular';
 import { NewArrivalComponent } from './home-page/new-arrival/new-arrival.component';
 import { PickStyleComponent } from './home-page/pick-style/pick-style.component';
+import { TestimonialsComponent } from './home-page/testimonials/testimonials.component';
+import { CtaComponent } from './home-page/cta/cta.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { PickStyleComponent } from './home-page/pick-style/pick-style.component'
     HomePageComponent,
     NewArrivalComponent,
     PickStyleComponent,
+    TestimonialsComponent,
+    CtaComponent,
   ],
   imports: [
     BrowserModule,

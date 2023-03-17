@@ -1,0 +1,50 @@
+.section-testimonials {
+  padding: 3rem;
+  background-color: #c9c5dc;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+}
+
+.testimonials-title {
+  font-size: 3rem;
+  font-family: julee, sans-serif;
+  color: #534d6e;
+}
+.testimonials-quote {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.testimonials-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.testimonials-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2.6rem;
+  row-gap: 2rem;
+}
+.testimonial-item img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+.customer-review {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.customer-name {
+  font-size: 1rem;
+}
+.testimonials-imgs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 0.8rem;
+  row-gap: 0.8rem;
+}
+.testimonials-imgs img {
+  width: 10rem;
+}

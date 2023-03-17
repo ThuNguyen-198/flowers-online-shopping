@@ -1,0 +1,20 @@
+<section class="section-testimonials">
+  <div class="testimonials-text">
+    <p class="testimonials-title">Testimonials</p>
+    <p class="testimonials-quote">Once you try it, you can't go back</p>
+    <div class="testimonials-content">
+      <div class="testimonial-item" *ngFor="let customer of customers">
+        <img src="{{ customer.img }}" />
+        <p class="customer-review">{{ customer.review }}</p>
+        <p class="customer-name">
+          {{ "&#8212; " + customer.name + " &#8212;" }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="testimonials-imgs">
+    <div *ngFor="let flower of flowers">
+      <img src="{{ flower.src }}" />
+    </div>
+  </div>
+</section>

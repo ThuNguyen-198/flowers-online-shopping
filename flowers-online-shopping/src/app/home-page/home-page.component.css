@@ -1,32 +1,46 @@
+/* ********************************* */
+/* Common Features*/
+/* ********************************* */
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: julee, sans-serif;
+}
 .container-home {
   position: relative;
+  overflow: auto;
 }
 .container-hero {
   background: url(../../assets/background/bg-home.jpg);
   background-size: cover;
   width: 100%;
-  height: 30rem;
   position: absolute;
-  top: -15rem;
+  height: 35rem;
+  top: -20rem;
 }
 .app-name {
   font-size: 4.5rem;
   color: #333;
   text-align: center;
-  padding-top: 22rem;
-
   font-family: julee, sans-serif;
+  margin-top: 28rem;
 }
 .container-body {
-  /* background: url(../../assets/background/bg-wood.jpg); */
-  /* background-size: contain;
-  height: 50rem; */
+  /* background: url(../../assets/background/bg-wood.jpg);
+  background-size: contain; */
+  height: 55rem;
 }
+/* ********************************* */
+/* Section Navigation*/
+/* ********************************* */
 .main-nav {
   display: grid;
   grid-template-columns: 4fr 1fr;
   padding-top: 15rem;
   align-items: center;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
 }
 .nav-list {
   display: flex;
@@ -34,13 +48,17 @@
   align-items: center;
   list-style: none;
 }
-.nav-item {
-}
 .nav-item a {
   text-decoration: none;
   font-size: 1.8rem;
-  color: #333;
+  color: #555;
 }
+.nav-item a:hover,
+.nav-item a:active {
+  color: #534d6e;
+  text-decoration: none;
+}
+
 .container-search {
   display: flex;
   align-items: center;
@@ -60,6 +78,55 @@
   font-size: 1.6rem;
   cursor: pointer;
 }
-.section {
-  margin-top: 3rem;
+/* ********************************* */
+/* Section New Arrival*/
+/* ********************************* */
+.section-new-arrival {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 10rem;
+}
+.carousel-block {
+  width: 80%;
+}
+/* ********************************* */
+/* Section Pick Your Style */
+/* ********************************* */
+.section-pick-style {
+}
+.container-styles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 10rem;
+}
+.style-card {
+  height: 20rem;
+  border: 1px solid #888;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.0075);
+  border-radius: 11px;
+  overflow: hidden;
+}
+.img-style {
+  width: 18rem;
+}
+.img-style img {
+  width: 100%;
+  height: 10rem;
+}
+.style-name {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+}
+/* ********************************* */
+/* Section */
+/* ********************************* */
+.testimonials-block {
+  width: 80%;
+  margin: 0 auto;
 }

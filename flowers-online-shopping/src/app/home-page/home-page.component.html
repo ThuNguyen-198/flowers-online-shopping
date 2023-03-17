@@ -1,8 +1,15 @@
 <div class="container-home">
+  <!-- ********************************* -->
+  <!-- Section Hero -->
+  <!-- ********************************* -->
   <div class="container-hero">
     <p class="app-name">Flower Power</p>
   </div>
+
   <div class="container-body">
+    <!-- ********************************* -->
+    <!-- Section Navigation -->
+    <!-- ********************************* -->
     <nav class="main-nav">
       <ul class="nav-list">
         <li class="nav-item">
@@ -31,7 +38,55 @@
         <ion-icon class="icon-search" name="search-outline"></ion-icon>
       </div>
     </nav>
-    <app-new-arrival></app-new-arrival>
-    <app-pick-style></app-pick-style>
+    <!-- ********************************* -->
+    <!-- Section New Arrival -->
+    <!-- ********************************* -->
+    <section class="section-new-arrival">
+      <p class="section-title">New Arrivals</p>
+      <div class="carousel-block">
+        <app-new-arrival></app-new-arrival>
+      </div>
+    </section>
+    <!-- ********************************* -->
+    <!-- Section Pick Your Style -->
+    <!-- ********************************* -->
+    <section class="section-pick-style">
+      <p class="section section-title">Pick Your Style</p>
+      <div class="container-styles">
+        <div class="style-card">
+          <div class="img-style">
+            <img
+              src="../../../assets/flowers/flower-individuals.png"
+              alt="flower-individuals"
+            />
+            <p class="style-name">Individuals</p>
+          </div>
+        </div>
+        <div class="style-card">
+          <div class="img-style">
+            <img
+              src="../../../assets/flowers/flower-bouquet.jpeg"
+              alt="flower-individuals"
+            />
+            <p class="style-name">Bouquet</p>
+          </div>
+        </div>
+        <div class="style-card">
+          <div class="img-style">
+            <img
+              src="../../../assets/flowers/flower-individuals.png"
+              alt="flower-individuals"
+            />
+            <p class="style-name">Custom</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ********************************* -->
+    <!-- Section Testimonials -->
+    <!-- ********************************* -->
+    <div class="testimonials-block">
+      <app-testimonials></app-testimonials>
+    </div>
   </div>
 </div>
