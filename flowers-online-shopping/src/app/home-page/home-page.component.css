@@ -1,20 +1,32 @@
+.container-home {
+  position: relative;
+}
 .container-hero {
   background: url(../../assets/background/bg-home.jpg);
   background-size: cover;
   width: 100%;
-  height: 22rem;
+  height: 30rem;
+  position: absolute;
+  top: -15rem;
 }
 .app-name {
   font-size: 4.5rem;
   color: #333;
   text-align: center;
-  padding-top: 12rem;
+  padding-top: 22rem;
 
   font-family: julee, sans-serif;
+}
+.container-body {
+  /* background: url(../../assets/background/bg-wood.jpg); */
+  /* background-size: contain;
+  height: 50rem; */
 }
 .main-nav {
   display: grid;
   grid-template-columns: 4fr 1fr;
+  padding-top: 15rem;
+  align-items: center;
 }
 .nav-list {
   display: flex;
@@ -28,4 +40,26 @@
   text-decoration: none;
   font-size: 1.8rem;
   color: #333;
+}
+.container-search {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.search-bar {
+  width: 15rem;
+  height: 1.6rem;
+  border: 1px solid #888;
+  border-radius: 15px;
+  font-size: 1.4rem;
+  color: #333;
+}
+.search-bar:focus {
+}
+.icon-search {
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.section {
+  margin-top: 3rem;
 }

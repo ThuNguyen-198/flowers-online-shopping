@@ -2,27 +2,36 @@
   <div class="container-hero">
     <p class="app-name">Flower Power</p>
   </div>
-  <nav class="main-nav">
-    <ul class="nav-list">
-      <li class="nav-item">
-        <a href="#">All</a>
-      </li>
-      <li class="nav-item">
-        <a href="#">Birthday</a>
-      </li>
-      <li class="nav-item">
-        <a href="#">Sympathy</a>
-      </li>
-      <li class="nav-item">
-        <a href="#">Wedding</a>
-      </li>
-      <li class="nav-item">
-        <a href="#">Custom</a>
-      </li>
-      <li class="nav-item">
-        <a href="#">Sale</a>
-      </li>
-    </ul>
-    <div class="search-bar"></div>
-  </nav>
+  <div class="container-body">
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#">All</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">Birthday</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">Sympathy</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">Wedding</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">Custom</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">Sale</a>
+        </li>
+      </ul>
+      <div class="container-search">
+        <textarea class="search-bar" rows="1" [(ngModel)]="searchKey">
+        </textarea>
+        <!-- To use ionicons, run this cmd: ng add @ionic/angular -->
+        <ion-icon class="icon-search" name="search-outline"></ion-icon>
+      </div>
+    </nav>
+    <app-new-arrival></app-new-arrival>
+    <app-pick-style></app-pick-style>
+  </div>
 </div>

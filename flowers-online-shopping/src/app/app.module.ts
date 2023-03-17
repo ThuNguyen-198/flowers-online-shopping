@@ -22,6 +22,9 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
 import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { IonicModule } from '@ionic/angular';
+import { NewArrivalComponent } from './home-page/new-arrival/new-arrival.component';
+import { PickStyleComponent } from './home-page/pick-style/pick-style.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     ProductsDisplayPageComponent,
     ProductDetailsComponent,
     HomePageComponent,
+    NewArrivalComponent,
+    PickStyleComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     MatCardModule,
     MatInputModule,
     MatExpansionModule,
+    IonicModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
