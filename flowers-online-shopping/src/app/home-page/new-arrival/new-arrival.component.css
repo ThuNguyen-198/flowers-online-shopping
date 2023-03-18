@@ -1,3 +1,8 @@
+.new-arrival-container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
 .carousel-container {
   display: flex;
   overflow-x: scroll;
@@ -5,7 +10,17 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-
+.icon-back,
+.icon-next {
+  font-size: 8rem;
+  color: #777;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.icon-back:active,
+.icon-next:active {
+  transform: scale(0.95);
+}
 .carousel-item {
   flex: 0 0 auto;
   width: 16rem;
