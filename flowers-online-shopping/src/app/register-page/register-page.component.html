@@ -1,1 +1,21 @@
-<p>register-page works!</p>
+<mat-card>
+    <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
+      <mat-form-field>
+        <input matInput name="eID" ngModel type="text" placeholder="eID" #eIDInput="ngModel" required>
+        <mat-error *ngIf="eIDInput.invalid">Please enter a valid login ID.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput name="loginID" ngModel type="text" placeholder="loginID" #loginIDInput="ngModel" required>
+        <mat-error *ngIf="loginIDInput.invalid">Please enter a valid login ID.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+        <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" name="permission" ngModel matInput placeholder="Permissions" #permsInput="ngModel" required>
+        <mat-error *ngIf="permsInput.invalid">Please enter a valid permission number.</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="accent" type="submit">Signup</button>
+    </form>
+</mat-card>
