@@ -11,25 +11,25 @@ export class TestimonialsComponent implements OnInit {
   ngOnInit(): void {}
   customers = [
     {
-      img: 'https://via.placeholder.com/300x200',
+      img: '../../../assets/testimonials/customer-1.webp',
       review:
         'This floral arrangement far exceeded my expectations, and made my friend smile with excitement during her time of grief. Great job!!! Thank you so much!',
       name: 'Dyson',
     },
     {
-      img: 'https://via.placeholder.com/300x200',
+      img: '../../../assets/testimonials/customer-2.webp',
       review:
         'This floral arrangement far exceeded my expectations, and made my friend smile with excitement during her time of grief. Great job!!! Thank you so much!',
       name: 'Julia',
     },
     {
-      img: 'https://via.placeholder.com/300x200',
+      img: '../../../assets/testimonials/customer-3.jpeg',
       review:
         'This floral arrangement far exceeded my expectations, and made my friend smile with excitement during her time of grief. Great job!!! Thank you so much!',
       name: 'Rebecca',
     },
     {
-      img: 'https://via.placeholder.com/300x200',
+      img: '../../../assets/testimonials/customer-4.jpeg',
       review:
         'This floral arrangement far exceeded my expectations, and made my friend smile with excitement during her time of grief. Great job!!! Thank you so much!',
       name: 'Sam',

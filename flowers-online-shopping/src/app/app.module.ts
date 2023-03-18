@@ -27,6 +27,7 @@ import { NewArrivalComponent } from './home-page/new-arrival/new-arrival.compone
 import { PickStyleComponent } from './home-page/pick-style/pick-style.component';
 import { TestimonialsComponent } from './home-page/testimonials/testimonials.component';
 import { CtaComponent } from './home-page/cta/cta.component';
+import { FooterComponent } from './home-page/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { CtaComponent } from './home-page/cta/cta.component';
     PickStyleComponent,
     TestimonialsComponent,
     CtaComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

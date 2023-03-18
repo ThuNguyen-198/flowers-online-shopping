@@ -65,12 +65,14 @@
   gap: 0.6rem;
 }
 .search-bar {
-  width: 15rem;
-  height: 1.6rem;
+  width: 20rem;
+  height: 3rem;
   border: 1px solid #888;
-  border-radius: 15px;
+  border-radius: 13px;
   font-size: 1.4rem;
   color: #333;
+  padding: 0.6rem 1.2rem;
+  align-items: center;
 }
 .search-bar:focus {
 }
@@ -124,9 +126,17 @@
   margin-top: 1rem;
 }
 /* ********************************* */
-/* Section */
+/* Section Testimonials*/
 /* ********************************* */
 .testimonials-block {
   width: 80%;
+  margin: 0 auto;
+  margin-bottom: 10rem;
+}
+/* ********************************* */
+/* Section CTA */
+/* ********************************* */
+.cta-block {
+  width: 60%;
   margin: 0 auto;
 }
