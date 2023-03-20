@@ -11,14 +11,15 @@ const app = express();
 
 const Bouquet = require('../../backend/models/Bouquet');
 const Color = require('../../backend/models/Color');
-const Customer = require('../../backend/models/Customer');
-const Employee = require('../../backend/models/Employee');
 const Flower = require('../../backend/models/Flower');
 const FlowerType = require('../../backend/models/FlowerType');
 const Image = require('../../backend/models/Image');
 const Order = require('../../backend/models/Order');
 const Other = require('../../backend/models/Other');
 const Wrapping = require('../../backend/models/Wrapping');
+
+//Initialize routes
+const userRoute = require('../../backend/routes/users')
 
 mongoose.set('strictQuery', true);
 
@@ -77,5 +78,6 @@ app.get("/api/flowers", (request, response, next) => {
   });
 });
 
+app.use("/api/user", userRoute);
 //Export this express application so we can use it in the server
 module.exports = app;
