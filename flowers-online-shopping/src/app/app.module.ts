@@ -22,6 +22,8 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
 import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
 
+import { MatTabsModule } from '@angular/material/tabs';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +48,7 @@ import { ProductDetailsComponent } from './products-display-page/product-details
     MatCardModule,
     MatInputModule,
     MatExpansionModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
