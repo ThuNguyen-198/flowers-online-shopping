@@ -10,6 +10,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +28,6 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
 import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
 
-import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -44,11 +49,16 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatStepperModule,
     FormsModule,
     MatCardModule,
     MatInputModule,
     MatExpansionModule,
     MatTabsModule,
+    MatTableModule,
+    MatDividerModule,
+    MatListModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
