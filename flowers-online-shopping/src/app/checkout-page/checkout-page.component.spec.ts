@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CheckoutPageComponent } from './checkout-page.component';
 
 describe('CheckoutPageComponent', () => {
