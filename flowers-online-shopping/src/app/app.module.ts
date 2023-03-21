@@ -10,6 +10,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatTableModule } from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +27,14 @@ import { ReportPageComponent } from './report-page/report-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
 import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { IonicModule } from '@ionic/angular';
+import { NewArrivalComponent } from './home-page/new-arrival/new-arrival.component';
+import { PickStyleComponent } from './home-page/pick-style/pick-style.component';
+import { TestimonialsComponent } from './home-page/testimonials/testimonials.component';
+import { CtaComponent } from './home-page/cta/cta.component';
+import { FooterComponent } from './home-page/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +47,12 @@ import { ProductDetailsComponent } from './products-display-page/product-details
     CheckoutPageComponent,
     ProductsDisplayPageComponent,
     ProductDetailsComponent,
+    HomePageComponent,
+    NewArrivalComponent,
+    PickStyleComponent,
+    TestimonialsComponent,
+    CtaComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,10 +62,17 @@ import { ProductDetailsComponent } from './products-display-page/product-details
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatStepperModule,
     FormsModule,
     MatCardModule,
     MatInputModule,
     MatExpansionModule,
+    IonicModule.forRoot(),
+    MatTabsModule,
+    MatTableModule,
+    MatDividerModule,
+    MatListModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,45 @@
+.footer-container {
+  width: 100%;
+  border-top: 0.8px solid #554d76;
+  display: grid;
+  grid-template-columns: 1.5fr 3fr;
+  padding: 3rem;
+  justify-content: left;
+  gap: 3rem;
+}
+.footer-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+.footer-app-name {
+  font-size: 3rem;
+  font-family: julee, sans-serif;
+}
+.footer-logos {
+  display: flex;
+  gap: 1.6rem;
+  cursor: pointer;
+}
+.logo {
+  font-size: 2.4rem;
+}
+.footer-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.footer-category {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.category-title {
+  font-size: 2rem;
+  font-family: julee, sans-serif;
+  margin-bottom: 0.8rem;
+}
+.category-item {
+  font-size: 1rem;
+}

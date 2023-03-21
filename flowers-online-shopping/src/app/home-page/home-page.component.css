@@ -1,0 +1,123 @@
+/* ********************************* */
+/* Common Features*/
+/* ********************************* */
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-family: julee, sans-serif;
+}
+.container-home {
+  position: relative;
+  overflow: auto;
+}
+.container-hero {
+  background: url(../../assets/background/bg-home.jpg);
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  height: 35rem;
+  top: -20rem;
+}
+.app-name {
+  font-size: 4.5rem;
+  color: #333;
+  text-align: center;
+  font-family: julee, sans-serif;
+  margin-top: 28rem;
+}
+.container-body {
+  /* background: url(../../assets/background/bg-wood.jpg);
+  background-size: contain; */
+  height: 55rem;
+}
+/* ********************************* */
+/* Section Navigation*/
+/* ********************************* */
+.main-nav {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  padding-top: 15rem;
+  align-items: center;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+}
+.nav-list {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  list-style: none;
+}
+.nav-item a {
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #555;
+}
+.nav-item a:hover,
+.nav-item a:active {
+  color: #534d6e;
+  text-decoration: none;
+}
+
+.container-search {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.search-bar {
+  width: 20rem;
+  height: 3rem;
+  border: 1px solid #888;
+  border-radius: 13px;
+  font-size: 1.4rem;
+  color: #333;
+  padding: 0.6rem 1.2rem;
+  align-items: center;
+}
+.search-bar:focus {
+}
+.icon-search {
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+/* ********************************* */
+/* Section New Arrival*/
+/* ********************************* */
+.section-new-arrival {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 10rem;
+}
+.carousel-block {
+  width: 90%;
+}
+/* ********************************* */
+/* Section Pick Your Style */
+/* ********************************* */
+
+/* ********************************* */
+/* Section Testimonials*/
+/* ********************************* */
+.testimonials-block {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 10rem;
+}
+/* ********************************* */
+/* Section CTA */
+/* ********************************* */
+.cta-block {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+}
+/* ********************************* */
+/* Section Footer */
+/* ********************************* */
+.footer-block {
+  width: 100%;
+  margin: 0 auto;
+}
