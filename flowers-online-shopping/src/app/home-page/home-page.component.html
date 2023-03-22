@@ -1,0 +1,75 @@
+<div class="container-home">
+  <!-- ********************************* -->
+  <!-- Section Hero -->
+  <!-- ********************************* -->
+  <div class="container-hero">
+    <p class="app-name">Flower Power</p>
+  </div>
+
+  <div class="container-body">
+    <!-- ********************************* -->
+    <!-- Section Navigation -->
+    <!-- ********************************* -->
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#">All</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">Birthday</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">Sympathy</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">Wedding</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">Custom</a>
+        </li>
+        <li class="nav-item">
+          <a href="#">Sale</a>
+        </li>
+      </ul>
+      <div class="container-search">
+        <textarea class="search-bar" rows="1" [(ngModel)]="searchKey">
+        </textarea>
+        <!-- To use ionicons, run this cmd: ng add @ionic/angular -->
+        <ion-icon class="icon-search" name="search-outline"></ion-icon>
+      </div>
+    </nav>
+    <!-- ********************************* -->
+    <!-- Section New Arrival -->
+    <!-- ********************************* -->
+    <section class="section-new-arrival">
+      <p class="section-title">New Arrivals</p>
+      <div class="carousel-block">
+        <app-new-arrival></app-new-arrival>
+      </div>
+    </section>
+    <!-- ********************************* -->
+    <!-- Section Pick Your Style -->
+    <!-- ********************************* -->
+    <div class="new-arrival-block">
+      <app-pick-style></app-pick-style>
+    </div>
+    <!-- ********************************* -->
+    <!-- Section Testimonials -->
+    <!-- ********************************* -->
+    <div class="testimonials-block">
+      <app-testimonials></app-testimonials>
+    </div>
+    <!-- ********************************* -->
+    <!-- Section CTA -->
+    <!-- ********************************* -->
+    <div class="cta-block">
+      <app-cta></app-cta>
+    </div>
+    <!-- ********************************* -->
+    <!-- Section Footer -->
+    <!-- ********************************* -->
+    <div class="footer-block">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

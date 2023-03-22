@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CheckoutPageComponent } from './checkout-page.component';
 
-describe('CheckoutPageComponent', () => {
-  let component: CheckoutPageComponent;
-  let fixture: ComponentFixture<CheckoutPageComponent>;
+import { PickStyleComponent } from './pick-style.component';
+
+describe('PickStyleComponent', () => {
+  let component: PickStyleComponent;
+  let fixture: ComponentFixture<PickStyleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckoutPageComponent ]
+      declarations: [ PickStyleComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CheckoutPageComponent);
+    fixture = TestBed.createComponent(PickStyleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

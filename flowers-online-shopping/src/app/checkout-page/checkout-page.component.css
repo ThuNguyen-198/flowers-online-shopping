@@ -1,106 +1,86 @@
+::ng-deep .mat-horizontal-stepper-header-container {
+  padding-bottom: 10px;
+}
+
+.table {
+  width: 100%;
+  border-left: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  margin-bottom: 24px;
+}
+
+.mat-header-cell {
+  font-size: 20px;
+  color: #58537b;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  text-align: center;
+}
+
+.mat-cell {
+  border-bottom-style: none;
+  font-size: 18px;
+  color: #58537b;
+  font-weight: 500;
+  border-right: 1px solid currentColor;
+  text-align: center;
+}
+
+.mat-column-quantity {
+  width: 10%;
+}
+
+.mat-column-imageLocation {
+  height: 120px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+td.mat-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+  padding: 0%;
+}
+
 form {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    max-width: 400px; /* Limit the width of the form */
-    grid-column-gap: 20px;
-    grid-row-gap: 10px;
-  }
-
-  input[id="fname"],
-  input[id="lname"],
-  input[id="address"],
-  input[id="city"],
-  input[id="state"],
-  input[id="zipCode"] {
-    border-radius: 20px;
-    font-size: 16px;
-    padding: 3px;
-    color: #58537b;
-  }
-
-  label[for="fname"],
-  label[for="lname"],
-  label[for="address"],
-  label[for="city"],
-  label[for="state"],
-  label[for="zipCode"] {
-    font-size: 16px;
-    color: #58537b;
-  }
-  
-  label[for="fname"]{
-    grid-column: 1;
-    grid-row: 1;
-  }
-  
-  label[for="lname"]{
-    grid-column: 2;
-    grid-row: 1;
-  }
-  
-  input[id="fname"]{
-    grid-column: 1;
-    grid-row: 2;
-  }
-  
-  input[id="lname"]{
-    grid-column: 2;
-    grid-row: 2;
-  }
-  
-  label[for="address"]{
-    grid-column: 1 / span 2;
-    grid-row: 3;
-  }
-  
-  input[id="address"]{
-    grid-column: 1 / span 2;
-    grid-row: 4;
-  }
-  
-  label[for="city"]{
-    grid-column: 1;
-    grid-row: 5;
-  }
-  
-  label[for="state"]{
-    grid-column: 2;
-    grid-row: 5;
-  }
-  
-  input[id="city"]{
-    grid-column: 1;
-    grid-row: 6;
-  }
-  
-  input[id="state"]{
-    grid-column: 2;
-    grid-row: 6;
-  }
-  
-  label[for="zipCode"]{
-    grid-column: 1;
-    grid-row: 8;
-  }
-  
-  input[id="zipCode"]{
-    grid-column: 1;
-    grid-row: 9;
-  }
-  
-  
-.tab{
-    display: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-column-gap: 20px;
+  grid-row-gap: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.header{
-    display: none;
+.rightButton {
+  margin-left: 10px;
 }
 
-#payment{
-    display: none;
+.mat-card {
+  justify-content: left;
+  width: 200px;
+  margin-bottom: 20px;
+  outline: 1px;
 }
 
-.button{
-    display: none;
+.mat-list-item {
+  color: #58537b;
+}
+
+.outline {
+  border-style: solid;
+  border-width: 1px;
+}
+
+.mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
+}
+
+.header {
+  text-align: center;
+  color: #58537b;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 30px;
 }
