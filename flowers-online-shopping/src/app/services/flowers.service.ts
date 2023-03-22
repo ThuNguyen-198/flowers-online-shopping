@@ -18,7 +18,6 @@ export class FlowersService {
       .get<Flower[]>('http://localhost:3000/api/products')
       .pipe(
         map((productData) => {
-          console.log(productData);
           return {
             flowers: productData.map((flower: any) => {
               return {

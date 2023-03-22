@@ -22,7 +22,6 @@ export class ProductsDisplayPageComponent implements OnInit {
       .getFlowerUpdateListener()
       .subscribe((flowerData: Flower[]) => {
         this.flowers = flowerData;
-        console.log(flowerData);
       });
   }
 }
