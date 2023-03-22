@@ -1,41 +1,45 @@
-import { Flower } from "../data-models/flower.model";
-import { HttpClient } from "@angular/common/http";
-import { Subject } from "rxjs";
-import { Injectable } from "@angular/core";
+import { Flower } from '../data-models/flower.model';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
-@Injectable ({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class FlowersService {
-    private arrayOfFlowers: Flower[] = [];
-    private flowersUpdated = new Subject<Flower[]>();
+  private arrayOfFlowers: Flower[] = [];
+  private flowersUpdated = new Subject<Flower[]>();
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-    //GET
-    getFlowers(){
-        this.http.get<{message: string, flowers: any}>(
-            "http://localhost:3000/api/flowers"
-        )
-        .subscribe( (flowerData) => {
-            this.arrayOfFlowers = flowerData.flowers;
-            this.flowersUpdated.next([...this.arrayOfFlowers]);
+  //GET
+  getFlowers() {
+    this.http
+      .get<Flower[]>('http://localhost:3000/api/products')
+      .pipe(
+        map((productData) => {
+          console.log(productData);
+          return {
+            flowers: productData.map((flower: any) => {
+              return {
+                code: flower.CODE,
+                name: flower.NAME,
+                large: flower.LARGE,
+                description: flower.DESCRIPTION,
+                price: flower.PRICE,
+              };
+            }),
+          };
         })
-    }
-
-    //Actively listen to changes from servers
-    getFlowerUpdateListener() {
-        return this.flowersUpdated.asObservable();
-    }
-
-    //POST
-    addFlowers(nameToAdd: string, colorToAdd: string, kindToAdd: string, occasionToAdd: string){
-        const flowerToAdd: Flower = {id: '', name: nameToAdd, color: colorToAdd, kind: kindToAdd, occasion: occasionToAdd};
-        this.http.post<{ message: string, flowerId: string }>("http://localhost:3000/api/flowers", flowerToAdd)
-      .subscribe(responseData => {
-        const id = responseData.flowerId;
-        flowerToAdd.id = id;
-        this.arrayOfFlowers.push(flowerToAdd);
+      )
+      .subscribe((transformedProductData) => {
+        this.arrayOfFlowers = transformedProductData.flowers;
         this.flowersUpdated.next([...this.arrayOfFlowers]);
       });
-    }
+  }
 
+  //Actively listen to changes from servers
+  getFlowerUpdateListener() {
+    return this.flowersUpdated.asObservable();
+  }
 }

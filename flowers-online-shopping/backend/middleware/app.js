@@ -8,7 +8,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const app = express();
-const axios = require("axios");
 
 const Bouquet = require("../../backend/models/Bouquet");
 const Color = require("../../backend/models/Color");
@@ -22,6 +21,7 @@ const Wrapping = require("../../backend/models/Wrapping");
 dotenv.config();
 //Initialize routes
 const userRoute = require("../../backend/routes/users");
+const productRoute = require("../../backend/routes/products");
 
 mongoose.set("strictQuery", true);
 
@@ -71,16 +71,8 @@ app.post("/api/flowers", (request, response, next) => {
   });
 });
 
-app.get("/api/flowers", async (request, response, next) => {
-  response = await axios.get(process.env.GETPRODUCT_URL, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Basic " + process.env.API_BASE64,
-    },
-  });
-  console.log(response.data.PRODUCTS);
-});
-
 app.use("/api/user", userRoute);
+app.use("/api/products", productRoute);
+
 //Export this express application so we can use it in the server
 module.exports = app;

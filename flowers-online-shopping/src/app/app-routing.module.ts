@@ -3,17 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
+import { Router } from 'express';
 
 const routes: Routes = [
-  {path: '', component: RegisterPageComponent},
-  {path: 'checkout', component: CheckoutPageComponent}
-//   {path: 'signup', component: SignUpComponent},
-//   {path: 'flower-list', component: FlowerListComponent},
-//   {path: 'flower-create', component: FlowerCreateComponent}
- ];
+  { path: 'signup/employee', component: RegisterPageComponent },
+  { path: 'checkout', component: CheckoutPageComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: '', component: ProductsDisplayPageComponent },
+];
 
 @NgModule({
-  // imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
