@@ -13,7 +13,7 @@ export class FlowersService {
   constructor(private http: HttpClient, private router: Router) {}
 
   //GET
-  getFlowers() {
+  getFlowers(category: string) {
     this.http
       .get<Flower[]>('http://localhost:3000/api/products')
       .pipe(
@@ -23,7 +23,7 @@ export class FlowersService {
               return {
                 code: flower.CODE,
                 name: flower.NAME,
-                large: flower.LARGE,
+                large: flower.SMALL,
                 description: flower.DESCRIPTION,
                 price: flower.PRICE,
               };

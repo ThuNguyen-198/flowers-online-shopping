@@ -17,7 +17,7 @@ export class ProductsDisplayPageComponent implements OnInit {
   constructor(public flowerService: FlowersService) {}
 
   ngOnInit(): void {
-    this.flowerService.getFlowers();
+    this.flowerService.getFlowers('');
     this.flowerSub = this.flowerService
       .getFlowerUpdateListener()
       .subscribe((flowerData: Flower[]) => {

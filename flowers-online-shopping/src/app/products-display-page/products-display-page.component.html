@@ -1,6 +1,8 @@
-<h1>Product Display</h1>
-<div class="product-list" *ngFor="let flower of flowers">
-  <img src="{{ flower.large }}" alt="" />
-  <h3>{{ flower.name }}</h3>
-  <p>{{ flower.description }}</p>
+<div class="product-list">
+  <h1>Product Display</h1>
+  <div *ngFor="let flower of flowers">
+    <img src="{{ flower.large }}" alt="" />
+    <h3>{{ flower.name }}</h3>
+    <p>{{ flower.description }}</p>
+  </div>
 </div>
