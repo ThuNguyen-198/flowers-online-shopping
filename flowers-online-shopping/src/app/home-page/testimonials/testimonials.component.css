@@ -1,5 +1,5 @@
 .section-testimonials {
-  padding: 3rem;
+  padding: 2rem;
   background-color: #c9c5dc;
   width: 100%;
   display: grid;
@@ -36,7 +36,7 @@
   margin-bottom: 1rem;
 }
 .customer-review {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 .customer-name {
@@ -46,8 +46,15 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 0.8rem;
-  row-gap: 0.8rem;
+  row-gap: 0.55rem;
 }
 .testimonials-imgs img {
   width: 9rem;
+  transition: all 0.3s;
+  opacity: 0.9;
+  background-color: rgba(0, 0, 0, 0.669);
+}
+.testimonials-imgs img:hover {
+  transform: scale(1.03);
+  opacity: 1;
 }
