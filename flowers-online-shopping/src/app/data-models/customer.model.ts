@@ -1,8 +1,9 @@
 export interface CustomerData {
-    cuID: string,
-    user: string,
-    pwd: string,
-    phone: number,
-    firstName: string,
-    lastName: string
+  cuID: string;
+  user: string;
+  email: string;
+  pwd: string;
+  phone: string;
+  firstName: string;
+  lastName: string;
 }

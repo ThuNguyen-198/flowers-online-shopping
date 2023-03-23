@@ -10,7 +10,7 @@ import { ProductBirthdayComponent } from './products-display-page/product-birthd
 import { Router } from 'express';
 
 const routes: Routes = [
-  { path: 'signup/employee', component: RegisterPageComponent },
+  { path: 'signup', component: RegisterPageComponent },
   { path: 'checkout', component: CheckoutPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: '', component: HomePageComponent },

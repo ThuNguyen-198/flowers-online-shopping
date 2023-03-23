@@ -7,8 +7,8 @@ dotenv.config();
 
 router.get("/:category", async (request, response, next) => {
   const categoryURL =
-    process.env.GETPRODUCT_URL + `?category=${request.params.category}`;
-  console.log(categoryURL);
+    process.env.GETPRODUCT_URL +
+    `?category=${request.params.category}&count=12`;
   const products = await axios
     .get(categoryURL, {
       headers: {
