@@ -13,9 +13,9 @@ export class FlowersService {
   constructor(private http: HttpClient, private router: Router) {}
 
   //GET
-  getFlowers(category: string) {
+  getFlowersByCategory(category: string) {
     this.http
-      .get<Flower[]>('http://localhost:3000/api/products')
+      .get<Flower[]>('http://localhost:3000/api/products/' + category)
       .pipe(
         map((productData) => {
           return {
@@ -23,7 +23,7 @@ export class FlowersService {
               return {
                 code: flower.CODE,
                 name: flower.NAME,
-                large: flower.SMALL,
+                image_small: flower.SMALL,
                 description: flower.DESCRIPTION,
                 price: flower.PRICE,
               };

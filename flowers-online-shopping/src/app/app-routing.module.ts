@@ -6,6 +6,7 @@ import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ProductBirthdayComponent } from './products-display-page/product-birthday/product-birthday.component';
 import { Router } from 'express';
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: '', component: HomePageComponent },
-  { path: 'all-products', component: ProductsDisplayPageComponent },
+  { path: 'all', component: ProductsDisplayPageComponent },
+  { path: 'bd', component: ProductBirthdayComponent },
 ];
 
 @NgModule({

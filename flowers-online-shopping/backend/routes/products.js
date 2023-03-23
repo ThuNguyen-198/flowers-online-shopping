@@ -5,9 +5,12 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-router.get("", async (request, response, next) => {
+router.get("/:category", async (request, response, next) => {
+  const categoryURL =
+    process.env.GETPRODUCT_URL + `?category=${request.params.category}`;
+  console.log(categoryURL);
   const products = await axios
-    .get(process.env.GETPRODUCT_URL, {
+    .get(categoryURL, {
       headers: {
         "Content-Type": "application/json",
         Authorization: "Basic " + process.env.API_BASE64,
