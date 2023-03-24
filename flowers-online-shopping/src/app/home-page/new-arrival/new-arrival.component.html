@@ -2,9 +2,9 @@
   <ion-icon class="icon-back" name="chevron-back-outline"></ion-icon>
   <div class="carousel-container">
     <div class="carousel-item" *ngFor="let item of items">
-      <img src="{{ item.image }}" />
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.description }}</p>
+      <img src="{{ item.image }}" class="item-img" />
+      <h3 class="item-title">{{ item.title }}</h3>
+      <p class="item-desciption">{{ item.description }}</p>
     </div>
   </div>
   <ion-icon class="icon-next" name="chevron-forward-outline"></ion-icon>

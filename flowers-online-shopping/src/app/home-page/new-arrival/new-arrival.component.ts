@@ -25,32 +25,27 @@ export class NewArrivalComponent implements OnInit {
     {
       image: '../../../assets/testimonials/flowers-3.jpeg',
       title: 'Item 3',
-      description:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
       image: '../../../assets/testimonials/flowers-4.jpeg',
       title: 'Item 3',
-      description:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
       image: '../../../assets/testimonials/flowers-5.jpeg',
       title: 'Item 3',
-      description:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
       image: '../../../assets/testimonials/flowers-6.jpeg',
       title: 'Item 3',
-      description:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
     {
       image: '../../../assets/testimonials/flowers-7.jpeg',
       title: 'Item 3',
-      description:
-        'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   ];
 }

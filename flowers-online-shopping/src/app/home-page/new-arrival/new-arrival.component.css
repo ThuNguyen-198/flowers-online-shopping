@@ -13,21 +13,22 @@
 .icon-back,
 .icon-next {
   font-size: 8rem;
-  color: #aaa;
+  color: #bcb7d4;
   cursor: pointer;
   transition: all 0.3s;
 }
 .icon-back:active,
 .icon-next:active {
   transform: scale(0.95);
+  color: #f2f1f6;
 }
 .carousel-item {
   flex: 0 0 auto;
-  width: 16rem;
+  width: 13rem;
   margin-right: 2rem;
   scroll-snap-align: start;
   background-color: #f0f0f0;
-  padding: 1rem;
+  padding: 0.6rem;
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -35,8 +36,12 @@
   animation: slide-in 0.5s ease-in-out forwards;
   cursor: pointer;
   overflow: hidden;
+  background-color: #c9c5dc;
+  transition: all 0.3s;
 }
-
+.carousel-item:hover {
+  background-color: #bcb7d4;
+}
 @keyframes slide-in {
   from {
     transform: translateX(-50%);
@@ -46,4 +51,10 @@
     transform: translateX(0);
     opacity: 1;
   }
+}
+.item-img {
+  margin-bottom: 0.4rem;
+}
+.item-title {
+  font-size: 1.2rem;
 }
