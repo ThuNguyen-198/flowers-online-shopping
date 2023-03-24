@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { FlowersService } from '../services/flowers.service';
-import { Flower } from '../data-models/flower.model';
+import { FlowersService } from 'src/app/services/flowers.service';
+import { Flower } from 'src/app/data-models/flower.model';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-products-display-page',
-  templateUrl: './products-display-page.component.html',
-  styleUrls: ['./products-display-page.component.css'],
+  selector: 'app-product-birthday',
+  styleUrls: ['./product-birthday.component.css'],
+  templateUrl: 'product-birthday.component.html',
 })
-export class ProductsDisplayPageComponent implements OnInit {
+export class ProductBirthdayComponent implements OnInit {
   flowers: Flower[] = [];
   currentPage = 1;
 
   private flowerSub: Subscription = new Subscription();
 
   constructor(public flowerService: FlowersService) {}
-
   ngOnInit(): void {
-    this.flowerService.getFlowersByCategory('all');
+    this.flowerService.getFlowersByCategory('bd');
     this.flowerSub = this.flowerService
       .getFlowerUpdateListener()
       .subscribe((flowerData: Flower[]) => {

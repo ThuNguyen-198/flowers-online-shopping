@@ -13,18 +13,17 @@ export class FlowersService {
   constructor(private http: HttpClient, private router: Router) {}
 
   //GET
-  getFlowers() {
+  getFlowersByCategory(category: string) {
     this.http
-      .get<Flower[]>('http://localhost:3000/api/products')
+      .get<Flower[]>('http://localhost:3000/api/products/' + category)
       .pipe(
         map((productData) => {
-          console.log(productData);
           return {
             flowers: productData.map((flower: any) => {
               return {
                 code: flower.CODE,
                 name: flower.NAME,
-                large: flower.LARGE,
+                image_small: flower.SMALL,
                 description: flower.DESCRIPTION,
                 price: flower.PRICE,
               };

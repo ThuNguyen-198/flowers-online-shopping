@@ -1,7 +1,3 @@
-.mat-card {
-  margin: auto;
-  width: 50%;
-}
 html {
   font-size: 62.5%;
 }
@@ -9,4 +5,14 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.router {
+  height: 100%;
 }

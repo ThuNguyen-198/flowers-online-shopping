@@ -15,7 +15,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,7 +34,7 @@ import { PickStyleComponent } from './home-page/pick-style/pick-style.component'
 import { TestimonialsComponent } from './home-page/testimonials/testimonials.component';
 import { CtaComponent } from './home-page/cta/cta.component';
 import { FooterComponent } from './home-page/footer/footer.component';
-
+import { ProductBirthdayComponent } from './products-display-page/product-birthday/product-birthday.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +53,7 @@ import { FooterComponent } from './home-page/footer/footer.component';
     TestimonialsComponent,
     CtaComponent,
     FooterComponent,
+    ProductBirthdayComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +73,7 @@ import { FooterComponent } from './home-page/footer/footer.component';
     MatTableModule,
     MatDividerModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
