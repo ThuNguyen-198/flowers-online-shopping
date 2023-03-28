@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Flower } from 'src/app/data-models/flower.model';
+import { FlowersService } from 'src/app/services/flowers.service';
 
 @Component({
   selector: 'app-testimonials',
@@ -6,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./testimonials.component.css'],
 })
 export class TestimonialsComponent implements OnInit {
-  constructor() {}
+  testimFlower: Flower[] = [];
+  private flowerSub: Subscription = new Subscription();
 
-  ngOnInit(): void {}
+  constructor(public flowerService: FlowersService) {}
+
+  ngOnInit(): void {
+    this.flowerService.getFlowersByCategory('ao');
+    this.flowerSub = this.flowerService
+      .getFlowerUpdateListener()
+      .subscribe((flowerData: Flower[]) => {
+        this.testimFlower = flowerData;
+      });
+  }
   customers = [
     {
       img: '../../../assets/testimonials/customer-1.webp',
@@ -33,56 +46,6 @@ export class TestimonialsComponent implements OnInit {
       review:
         'This floral arrangement far exceeded my expectations, and made my friend smile with excitement during her time of grief. Great job!!! Thank you so much!',
       name: 'Sam',
-    },
-  ];
-  flowers = [
-    {
-      src: '../../../assets/testimonials/flowers-1.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-2.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-3.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-4.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-5.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-6.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-7.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-8.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-9.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-10.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-11.jpeg',
-      alt: 'testimonial flower',
-    },
-    {
-      src: '../../../assets/testimonials/flowers-12.jpeg',
-      alt: 'testimonial flower',
     },
   ];
 }
