@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FlowersService } from 'src/app/services/flowers.service';
+import { Subscription } from 'rxjs';
+import { Flower } from 'src/app/data-models/flower.model';
 
 @Component({
   selector: 'app-new-arrival',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-arrival.component.css'],
 })
 export class NewArrivalComponent implements OnInit {
-  constructor() {}
+  newArrivalFlowers: Flower[] = [];
+  private flowerSub: Subscription = new Subscription();
 
-  ngOnInit(): void {}
+  constructor(public flowerService: FlowersService) {}
 
+  ngOnInit(): void {
+    this.flowerService.getFlowersByCategory('ao');
+    this.flowerSub = this.flowerService
+      .getFlowerUpdateListener()
+      .subscribe((flowerData: Flower[]) => {
+        this.newArrivalFlowers = flowerData;
+      });
+  }
+
+  /*
   items = [
     {
       image: '../../../assets/testimonials/flowers-1.jpeg',
@@ -47,5 +61,5 @@ export class NewArrivalComponent implements OnInit {
       title: 'Item 3',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
-  ];
+  ];*/
 }

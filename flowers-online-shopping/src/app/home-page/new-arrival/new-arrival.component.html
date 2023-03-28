@@ -1,10 +1,9 @@
 <div class="new-arrival-container">
   <ion-icon class="icon-back" name="chevron-back-outline"></ion-icon>
   <div class="carousel-container">
-    <div class="carousel-item" *ngFor="let item of items">
-      <img src="{{ item.image }}" class="item-img" />
-      <h3 class="item-title">{{ item.title }}</h3>
-      <p class="item-desciption">{{ item.description }}</p>
+    <div class="carousel-item" *ngFor="let newFlower of newArrivalFlowers">
+      <img src="{{ newFlower.image_small }}" class="item-img" />
+      <h3 class="item-title">{{ newFlower.name }}</h3>
     </div>
   </div>
   <ion-icon class="icon-next" name="chevron-forward-outline"></ion-icon>
