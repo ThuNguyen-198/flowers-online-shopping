@@ -84,3 +84,10 @@ form {
   margin-top: 10px;
   font-size: 30px;
 }
+
+.quantityDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
