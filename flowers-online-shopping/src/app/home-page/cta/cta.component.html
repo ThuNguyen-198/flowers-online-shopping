@@ -12,6 +12,7 @@
           type="text"
           class="input-name"
           name="name"
+          placeholder="Your name"
           required
           [(ngModel)]="name"
         />
@@ -22,6 +23,7 @@
           type="email"
           class="input-email"
           name="email"
+          placeholder="Your email address"
           required
           [(ngModel)]="email"
         />
@@ -29,16 +31,15 @@
       <button type="submit" class="btn-cta-submit">Submit</button>
     </div>
     <div class="cta-message">
-      <div class="message-block">
-        <label for="message">Message</label>
-        <textarea
-          class="input-msg"
-          name="message"
-          rows="5"
-          required
-          [(ngModel)]="message"
-        ></textarea>
-      </div>
+      <label for="message">Message</label>
+      <textarea
+        class="input-msg"
+        name="message"
+        rows="5"
+        placeholder="Your messages"
+        required
+        [(ngModel)]="message"
+      ></textarea>
     </div>
   </form>
 </div>
