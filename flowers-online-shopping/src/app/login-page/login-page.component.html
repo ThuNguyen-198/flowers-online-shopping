@@ -1,1 +1,36 @@
-<p>login-page works!</p>
+<h1>Login</h1>
+
+<mat-card>
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+    <div class="login-container">
+      <mat-form-field>
+        <input
+          matInput
+          name="email"
+          ngModel
+          type="email"
+          placeholder="Email"
+          #emailInput="ngModel"
+          required
+        />
+        <mat-error *ngIf="emailInput.invalid"
+          >Please enter a valid email.</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          name="pwd"
+          ngModel
+          type="password"
+          placeholder="Password"
+          #pwdInput="ngModel"
+          required
+        />
+        <mat-error *ngIf="pwdInput.invalid"
+          >Please enter a valid passowrd.</mat-error
+        >
+      </mat-form-field>
+    </div>
+  </form>
+</mat-card>

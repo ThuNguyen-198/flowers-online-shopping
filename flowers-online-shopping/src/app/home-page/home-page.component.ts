@@ -9,7 +9,7 @@ import { Flower } from '../data-models/flower.model';
   styleUrls: ['./home-page.component.css'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(public flowerService: FlowersService) {}
+  constructor() {}
   searchKey = '';
   getSearchKey() {}
   ngOnInit(): void {}
