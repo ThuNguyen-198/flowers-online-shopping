@@ -1,6 +1,7 @@
 //For encrypting password
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const checkAuth = require("../../src/app/check-auth");
 
 const express = require("express");
 const router = express.Router();
