@@ -1,3 +1,35 @@
+<div class = "container-home">
+  <div class="bg-flipped"></div>
+  <div class="container-hero">
+    <div class="auth-container">
+      <div class="app-logo"></div>
+      <div class="auth">
+        <ion-icon
+          name="cart-outline"
+          class="btn-cart"
+          onClick="location.href='/checkout'"
+        ></ion-icon>
+        <button
+          class="btn-login"
+          id="login-button"
+          type="button"
+          onClick="location.href='/login'"
+        >
+          Login
+        </button>
+        <button
+          class="btn-signup"
+          id="signup-button"
+          type="button"
+          onClick="location.href='/signup'"
+        >
+          Signup
+        </button>
+      </div>
+    </div>
+    <p class="app-name">Flower Power</p>
+  </div>
+  
 <div class="birthday-container">
   <h1>Birthday</h1>
   <div *ngFor="let flower of flowers">
