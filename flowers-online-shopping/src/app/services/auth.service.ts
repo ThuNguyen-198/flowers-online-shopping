@@ -4,9 +4,14 @@ import { EmployeeData } from '../data-models/employee.model';
 import { CustomerData } from '../data-models/customer.model';
 import { AuthData } from '../data-models/auth.model';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  private token: string = '';
+  private authStatusListener = new Subject<boolean>();
+  private isAuthenticated: boolean = false;
+
   constructor(private http: HttpClient, private router: Router) {}
 
   createEmployee(
@@ -48,18 +53,41 @@ export class AuthService {
     };
     this.http
       .post('http://localhost:3000/api/user/signup/customer', customerAuthData)
-      .subscribe((response) => {
-        console.log(response);
-      });
+      .subscribe((response) => {});
+  }
+
+  getToken() {
+    return this.token;
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
+
+  getIsAuth() {
+    return this.isAuthenticated;
   }
 
   login(loginEmail: string, loginPassword: string) {
     const authData: AuthData = { email: loginEmail, pwd: loginPassword };
     this.http
-      .post('http://localhost:3000/api/user/login', authData)
+      .post<{ token: string }>('http://localhost:3000/api/user/login', authData)
       .subscribe((response) => {
         //Direct users to homepage if login successful
-        this.router.navigate(['/']);
+        const token = response.token;
+        this.token = token;
+
+        if (token) {
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
+          this.router.navigate(['/']);
+        }
       });
+  }
+
+  logout() {
+    this.token = '';
+    this.isAuthenticated = false;
+    this.authStatusListener.next(false);
   }
 }
