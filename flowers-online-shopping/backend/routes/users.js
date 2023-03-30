@@ -1,6 +1,7 @@
 //For encrypting password
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const checkAuth = require("../../src/app/check-auth");
 
 const express = require("express");
 const router = express.Router();
@@ -66,7 +67,8 @@ router.post("/signup/customer", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   let fetchedUser;
-  Customer.find({ email: req.body.email })
+  //console.log(Customer.find({ email: req.body.email }));
+  Customer.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
         return res.status(401).json({ message: "Auth failed!" });

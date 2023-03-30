@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormControl } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -7,7 +8,7 @@ import { NgForm, FormControl } from '@angular/forms';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
-  constructor() {}
+  constructor(public authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -15,5 +16,7 @@ export class LoginPageComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+
+    this.authService.login(form.value.email, form.value.pwd);
   }
 }
