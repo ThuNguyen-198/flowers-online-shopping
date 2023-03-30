@@ -1,5 +1,7 @@
 //For encrypting password
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const checkAuth = require("../../src/app/check-auth");
 
 const express = require("express");
 const router = express.Router();
@@ -56,13 +58,48 @@ router.post("/signup/customer", (req, res, next) => {
         });
       })
       .catch((err) => {
-        res.status(500).json({
-          error: err,
+        return res.status(500).json({
+          message: err,
         });
       });
   });
+});
 
-  //Save in the DB
+router.post("/login", (req, res, next) => {
+  let fetchedUser;
+  //console.log(Customer.find({ email: req.body.email }));
+  Customer.findOne({ email: req.body.email })
+    .then((user) => {
+      if (!user) {
+        return res.status(401).json({ message: "Auth failed!" });
+      }
+      fetchedUser = user;
+      return bcrypt.compare(req.body.pwd, user.pwd);
+    })
+    .then((result) => {
+      if (!result) {
+        return res.status(401).json({
+          message: "Auth failed!",
+        });
+      }
+
+      const token = jwt.sign(
+        {
+          email: fetchedUser.email,
+          userId: fetchedUser._id,
+        },
+        "secret_token_needed_to_be_authorized",
+        { expiresIn: "1h" }
+      );
+      res.status(200).json({
+        token: token,
+      });
+    })
+    .catch((err) => {
+      return res.status(401).json({
+        message: "Auth failed!",
+      });
+    });
 });
 
 module.exports = router;
