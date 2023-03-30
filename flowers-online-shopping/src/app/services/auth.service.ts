@@ -3,10 +3,11 @@ import { Injectable } from '@angular/core';
 import { EmployeeData } from '../data-models/employee.model';
 import { CustomerData } from '../data-models/customer.model';
 import { AuthData } from '../data-models/auth.model';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   createEmployee(
     regeID: string,
@@ -53,11 +54,12 @@ export class AuthService {
   }
 
   login(loginEmail: string, loginPassword: string) {
-    const authData: AuthData = { email: loginEmail, password: loginPassword };
+    const authData: AuthData = { email: loginEmail, pwd: loginPassword };
     this.http
       .post('http://localhost:3000/api/user/login', authData)
       .subscribe((response) => {
-        console.log(response);
+        //Direct users to homepage if login successful
+        this.router.navigate(['/']);
       });
   }
 }
