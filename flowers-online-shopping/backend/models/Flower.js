@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 
 const flowerSchema = mongoose.Schema({
-    fID: { type: String, required: true },
+    // primary keys should be unique
+    fID: { type: String, required: true, unique: true },
+    // this should be a foreign key!
     color_ID: { type: String, required: true },
+    // this should be a foreign key!
     kind_ID: { type: String, required: true }
 });
 

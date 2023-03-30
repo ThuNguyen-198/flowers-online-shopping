@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
 // store hashed value with argon2
+// JJK: specifically, argon2id
 
 const employeeSchema = mongoose.Schema({
-    eID: { type: String, required: true },
+    // primary keys should be unique
+    eID: { type: String, required: true, unique: true },
     login_ID: { type: String, required: true },
     pwd: { type: String, required: true },
     perms: { type: Number, required: true } // value of 0 is lowest permissions

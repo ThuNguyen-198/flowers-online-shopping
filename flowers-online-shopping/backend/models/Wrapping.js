@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const wrappingSchema = mongoose.Schema({
-    wID: { type: String, required: true },
+    // primary keys should be unique
+    wID: { type: String, required: true, unique: true },
     name: { type: String, required: true },
     price: { type: mongoose.Types.Decimal128, required: true }
 });

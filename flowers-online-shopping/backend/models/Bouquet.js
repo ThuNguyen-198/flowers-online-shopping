@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 
 const bouquetSchema = mongoose.Schema({
-    bID: { type: String, required: true },
+    // primary keys should be unique
+    bID: { type: String, required: true, unique: true },
+    // this should be a foreign key!
     customer_ID: { type: String, required: false },
+    // this should be a foreign key!
     wrap_ID: { type: String, required: true },
     name: { type: String, required: true },
+    // this should be a list of foreign keys!
     flowers: { type: Number, required: true }
 });
 

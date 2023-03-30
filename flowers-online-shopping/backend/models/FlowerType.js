@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 
 const flowerTypeSchema = mongoose.Schema({
-    ftID: { type: String, required: true },
+    // primary keys should be unique
+    ftID: { type: String, required: true, unique: true },
     kind: { type: String, required: true, unique: true}
 });
 
