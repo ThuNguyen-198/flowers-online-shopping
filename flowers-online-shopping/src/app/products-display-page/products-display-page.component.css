@@ -172,7 +172,12 @@
 
 /*PRODUCT CARDS*/
 .product-list {
-  display: flex; /*flex*/
+  overflow:auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  height: 100vh;
+
   float: none;
   vertical-align: top;
   margin-left: 2.5%;
