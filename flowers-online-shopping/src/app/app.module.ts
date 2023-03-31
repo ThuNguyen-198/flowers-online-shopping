@@ -36,6 +36,7 @@ import { CtaComponent } from './home-page/cta/cta.component';
 import { FooterComponent } from './home-page/footer/footer.component';
 import { ProductBirthdayComponent } from './products-display-page/product-birthday/product-birthday.component';
 import { AuthInterceptor } from './auth-interceptor';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { AuthInterceptor } from './auth-interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthGuard,
   ],
   bootstrap: [AppComponent],
 })
