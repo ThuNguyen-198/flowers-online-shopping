@@ -4,7 +4,7 @@ import {
   CanActivate,
   RouterStateSnapshot,
 } from '@angular/router';
-import { Observable } from 'rxjs-compat';
+import { Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 
