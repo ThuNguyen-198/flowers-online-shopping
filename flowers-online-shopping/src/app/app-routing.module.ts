@@ -7,11 +7,15 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProductBirthdayComponent } from './products-display-page/product-birthday/product-birthday.component';
-import { Router } from 'express';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'signup', component: RegisterPageComponent },
-  { path: 'checkout', component: CheckoutPageComponent },
+  {
+    path: 'checkout',
+    component: CheckoutPageComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'login', component: LoginPageComponent },
   { path: '', component: HomePageComponent },
   { path: 'all', component: ProductsDisplayPageComponent },

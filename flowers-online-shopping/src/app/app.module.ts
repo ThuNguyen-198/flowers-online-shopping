@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -35,6 +35,8 @@ import { TestimonialsComponent } from './home-page/testimonials/testimonials.com
 import { CtaComponent } from './home-page/cta/cta.component';
 import { FooterComponent } from './home-page/footer/footer.component';
 import { ProductBirthdayComponent } from './products-display-page/product-birthday/product-birthday.component';
+import { AuthInterceptor } from './auth-interceptor';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,10 @@ import { ProductBirthdayComponent } from './products-display-page/product-birthd
     MatListModule,
     MatGridListModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthGuard,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
