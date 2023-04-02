@@ -37,6 +37,7 @@ import { FooterComponent } from './home-page/footer/footer.component';
 import { ProductBirthdayComponent } from './products-display-page/product-birthday/product-birthday.component';
 import { AuthInterceptor } from './auth-interceptor';
 import { AuthGuard } from './auth.guard';
+import { MainNavigationComponent } from './home-page/main-navigation/main-navigation.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { AuthGuard } from './auth.guard';
     CtaComponent,
     FooterComponent,
     ProductBirthdayComponent,
+    MainNavigationComponent,
   ],
   imports: [
     BrowserModule,
