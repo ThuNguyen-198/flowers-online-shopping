@@ -1,7 +1,6 @@
 //For encrypting password
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const checkAuth = require("../../src/app/check-auth");
 
 const express = require("express");
 const router = express.Router();
@@ -58,8 +57,8 @@ router.post("/signup/customer", (req, res, next) => {
         });
       })
       .catch((err) => {
-        return res.status(500).json({
-          message: err,
+        res.status(500).json({
+          error: err,
         });
       });
   });
@@ -67,8 +66,7 @@ router.post("/signup/customer", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   let fetchedUser;
-  //console.log(Customer.find({ email: req.body.email }));
-  Customer.findOne({ email: req.body.email })
+  Customer.find({ email: req.body.email })
     .then((user) => {
       if (!user) {
         return res.status(401).json({ message: "Auth failed!" });
@@ -93,7 +91,6 @@ router.post("/login", (req, res, next) => {
       );
       res.status(200).json({
         token: token,
-        expiresIn: 3600,
       });
     })
     .catch((err) => {

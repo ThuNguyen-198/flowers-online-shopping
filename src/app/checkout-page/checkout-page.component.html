@@ -1,173 +1,179 @@
-<div class="header">Checkout</div>
+<body class="">
+  <div class="header">Checkout Page</div>
 
-<!--Add Step control to form groups-->
-<mat-stepper orientation="horizontal" linear>
-  <mat-step>
-    <mat-grid-list cols="3">
-      <mat-grid-tile [colspan]="2">
-        <ng-template matStepLabel>Confirm Purchase</ng-template>
-        <table mat-table [dataSource]="products" class="table mat-elevation-z1">
-          <!--Image Column-->
-          <ng-container matColumnDef="imageLocation">
-            <th mat-header-cell *matHeaderCellDef>Product</th>
-            <td mat-cell *matCellDef="let product">
-              <img [src]="product.imageLocation" />
-            </td>
-          </ng-container>
+  <!--Add Step control to form groups-->
+  <mat-stepper orientation="horizontal" linear>
+    <mat-step>
+      <mat-grid-list cols="3">
+        <mat-grid-tile [colspan]="2">
+          <ng-template matStepLabel>Confirm Purchase</ng-template>
+          <table
+            mat-table
+            [dataSource]="products"
+            class="table mat-elevation-z1"
+          >
+            <!--Image Column-->
+            <ng-container matColumnDef="imageLocation">
+              <th mat-header-cell *matHeaderCellDef>Product</th>
+              <td mat-cell *matCellDef="let product">
+                <img [src]="product.imageLocation" />
+              </td>
+            </ng-container>
 
-          <!--Product Name Column-->
-          <ng-container matColumnDef="productName">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell *matCellDef="let product">
-              {{ product.productName }}
-            </td>
-          </ng-container>
+            <!--Product Name Column-->
+            <ng-container matColumnDef="productName">
+              <th mat-header-cell *matHeaderCellDef>Name</th>
+              <td mat-cell *matCellDef="let product">
+                {{ product.productName }}
+              </td>
+            </ng-container>
 
-          <!--Product Quantity Column-->
-          <ng-container matColumnDef="quantity">
-            <th mat-header-cell *matHeaderCellDef>Quantity</th>
-            <td mat-cell *matCellDef="let product">
-              <div class="quantityDiv">
-                <ion-icon name="remove-circle-outline"></ion-icon>
-                {{ product.quantity }}
-                <ion-icon name="add-circle-outline"></ion-icon>
-              </div>
-            </td>
-          </ng-container>
+            <!--Product Quantity Column-->
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef>Quantity</th>
+              <td mat-cell *matCellDef="let product">
+                <div class="quantityDiv">
+                  <ion-icon name="remove-circle-outline"></ion-icon>
+                  {{ product.quantity }}
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </div>
+              </td>
+            </ng-container>
 
-          <!--Product Quantity Column-->
-          <ng-container matColumnDef="totalPrice">
-            <th mat-header-cell *matHeaderCellDef>Total</th>
-            <td mat-cell *matCellDef="let product">
-              {{ product.totalPrice | currency }}
-            </td>
-          </ng-container>
+            <!--Product Quantity Column-->
+            <ng-container matColumnDef="totalPrice">
+              <th mat-header-cell *matHeaderCellDef>Total</th>
+              <td mat-cell *matCellDef="let product">
+                {{ product.totalPrice | currency }}
+              </td>
+            </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-          <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
-        </table>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="1">
-        <mat-card class="mat-elevation-z2 outline">
-          <mat-card-content>
-            <mat-list>
-              <mat-list-item
-                >Total: {{ prices.total | currency }}</mat-list-item
-              >
-              <mat-list-item
-                >Shipping: {{ prices.shipping | currency }}</mat-list-item
-              >
-              <mat-list-item>Tax: {{ prices.tax | currency }}</mat-list-item>
-              <mat-list-item
-                >Subtotal: {{ prices.subtotal | currency }}</mat-list-item
-              >
-            </mat-list>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+          </table>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">
+          <mat-card class="mat-elevation-z2 outline">
+            <mat-card-content>
+              <mat-list>
+                <mat-list-item
+                  >Total: {{ prices.total | currency }}</mat-list-item
+                >
+                <mat-list-item
+                  >Shipping: {{ prices.shipping | currency }}</mat-list-item
+                >
+                <mat-list-item>Tax: {{ prices.tax | currency }}</mat-list-item>
+                <mat-list-item
+                  >Subtotal: {{ prices.subtotal | currency }}</mat-list-item
+                >
+              </mat-list>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
 
-    <button
-      mat-stroked-button
-      [style.color]="'#58537b'"
-      matStepperNext
-      class="rightButton"
-    >
-      Next
-    </button>
-  </mat-step>
+      <button
+        mat-stroked-button
+        [style.color]="'#58537b'"
+        matStepperNext
+        class="rightButton"
+      >
+        Next
+      </button>
+    </mat-step>
 
-  <mat-step>
-    <ng-template matStepLabel>Shipping Information</ng-template>
-    <form>
-      <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
-        <input matInput placeholder="John" />
-      </mat-form-field>
+    <mat-step>
+      <ng-template matStepLabel>Shipping Information</ng-template>
+      <form>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="John" />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Doe" />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Doe" />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput placeholder="1234 Bobcat Lane" />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="1234 Bobcat Lane" />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>City</mat-label>
-        <input matInput placeholder="Las Vegas" />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="Las Vegas" />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>State</mat-label>
-        <input matInput placeholder="Nevada" />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>State</mat-label>
+          <input matInput placeholder="Nevada" />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Zip Code</mat-label>
-        <input matInput placeholder="12345" />
-      </mat-form-field>
-    </form>
+        <mat-form-field appearance="fill">
+          <mat-label>Zip Code</mat-label>
+          <input matInput placeholder="12345" />
+        </mat-form-field>
+      </form>
 
-    <button mat-stroked-button [style.color]="'#58537b'" matStepperPrevious>
-      Back
-    </button>
-    <button
-      mat-stroked-button
-      [style.color]="'#58537b'"
-      matStepperNext
-      class="rightButton"
-    >
-      Next
-    </button>
-  </mat-step>
+      <button mat-stroked-button [style.color]="'#58537b'" matStepperPrevious>
+        Back
+      </button>
+      <button
+        mat-stroked-button
+        [style.color]="'#58537b'"
+        matStepperNext
+        class="rightButton"
+      >
+        Next
+      </button>
+    </mat-step>
 
-  <mat-step>
-    <ng-template matStepLabel>Billing Information</ng-template>
-    <form>
-      <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
-        <input matInput placeholder="John" />
-      </mat-form-field>
+    <mat-step>
+      <ng-template matStepLabel>Billing Information</ng-template>
+      <form>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="John" />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Doe" />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Doe" />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Card Number</mat-label>
-        <input matInput />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Card Number</mat-label>
+          <input matInput />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Expiration Date</mat-label>
-        <input matInput />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Expiration Date</mat-label>
+          <input matInput />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Security Code</mat-label>
-        <input matInput />
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Security Code</mat-label>
+          <input matInput />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Zip Code</mat-label>
-        <input matInput />
-      </mat-form-field>
-    </form>
+        <mat-form-field appearance="fill">
+          <mat-label>Zip Code</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </form>
 
-    <button mat-stroked-button [style.color]="'#58537b'" matStepperPrevious>
-      Back
-    </button>
-    <button
-      mat-stroked-button
-      [style.color]="'#58537b'"
-      matStepperNext
-      class="rightButton"
-    >
-      Confrim Purchase
-    </button>
-  </mat-step>
-</mat-stepper>
+      <button mat-stroked-button [style.color]="'#58537b'" matStepperPrevious>
+        Back
+      </button>
+      <button
+        mat-stroked-button
+        [style.color]="'#58537b'"
+        matStepperNext
+        class="rightButton"
+      >
+        Confrim Purchase
+      </button>
+    </mat-step>
+  </mat-stepper>
+</body>

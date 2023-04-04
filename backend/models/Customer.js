@@ -2,16 +2,13 @@ const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
 // store hashed value with argon2
-// JJK: specifically, argon2id
 
 const customerSchema = mongoose.Schema({
-  // primary keys should be unique
-  cuID: { type: mongoose.Types.ObjectId, unique: true, immutable: true },
-  // these two should be merged and immutable!!! (Unless we want username independent of email, but still: user, at least, immutable)
+  cuID: { type: String },
   user: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   pwd: { type: String, required: true },
-  phone: { type: String, required: true, unique: true }, // do we REALLY want this unique???
+  phone: { type: String, required: true, unique: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
 });

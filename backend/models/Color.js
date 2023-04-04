@@ -2,10 +2,8 @@ const mongoose = require('mongoose');
 
 
 const colorSchema = mongoose.Schema({
-    // primary keys should be unique
-    coID: { type: mongoose.Types.ObjectId, required: true, unique: true, immutable: true },
-    // this field should NOT be enum; it should be unique
-    color: { type: String, required: true, unique: true, immutable: true }
+    coID: { type: String, required: true },
+    color: { type: String, required: true, enum: ['RED', 'BLUE', 'GREEN', 'ORANGE', 'YELLOW', 'PINK'] }
 });
 
 //Export this as an object so we can use it somewhere else.

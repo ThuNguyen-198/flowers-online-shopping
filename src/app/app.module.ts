@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -35,9 +35,6 @@ import { TestimonialsComponent } from './home-page/testimonials/testimonials.com
 import { CtaComponent } from './home-page/cta/cta.component';
 import { FooterComponent } from './home-page/footer/footer.component';
 import { ProductBirthdayComponent } from './products-display-page/product-birthday/product-birthday.component';
-import { AuthInterceptor } from './auth-interceptor';
-import { AuthGuard } from './auth.guard';
-import { MainNavigationComponent } from './home-page/main-navigation/main-navigation.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +54,6 @@ import { MainNavigationComponent } from './home-page/main-navigation/main-naviga
     CtaComponent,
     FooterComponent,
     ProductBirthdayComponent,
-    MainNavigationComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,10 +75,7 @@ import { MainNavigationComponent } from './home-page/main-navigation/main-naviga
     MatListModule,
     MatGridListModule,
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    AuthGuard,
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

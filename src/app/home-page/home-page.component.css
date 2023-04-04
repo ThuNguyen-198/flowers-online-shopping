@@ -7,9 +7,6 @@
   text-align: center;
   font-family: julee, sans-serif;
 }
-.container-home {
-  position: relative;
-}
 /* ********************************* */
 /* Section Hero*/
 /* ********************************* */
@@ -31,9 +28,62 @@
   height: 12rem;
 }
 
-.container-body {
-  height: 35rem;
+.auth-container {
+  height: 5rem;
+  width: 100%;
+  transform: scaleZ(1);
+  text-align: right;
+  padding-right: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
 }
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.btn-login,
+.btn-signup {
+  font-size: 1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 11px;
+  border: 1px solid #534d6e;
+  width: 5rem;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.btn-login {
+  background-color: #534d6e;
+  color: #fff;
+}
+.btn-signup {
+  background-color: #fff;
+  color: #534d6e;
+}
+.btn-login:hover,
+.btn-signup:hover {
+  background-color: #3d3754;
+  border: 1px solid #3d3754;
+  color: #fff;
+}
+.btn-login:active,
+.btn-signup:active,
+.btn-cart:active {
+  transform: scale(0.95);
+}
+
+.btn-cart {
+  color: #534d6e;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.container-home {
+  position: relative;
+  overflow: auto;
+}
+
 .app-name {
   font-size: 4rem;
   color: #333;
@@ -43,10 +93,13 @@
   transform: scaleZ(1);
   letter-spacing: 0.1rem;
 }
+.container-body {
+  height: 35rem;
+}
 /* ********************************* */
 /* Section Navigation*/
 /* ********************************* */
-.categories-nav {
+.main-nav {
   display: grid;
   grid-template-columns: 4fr 1fr;
   align-items: center;

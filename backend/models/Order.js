@@ -1,19 +1,13 @@
 const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
-    // primary keys should be unique
-    oID: { type: mongoose.Types.ObjectId, required: true, unique: true, immutable: true },
+    oID: { type: String, required: true },
     status: { type: String, required: true, enum: ["PLACED", "CANCLED", "CANCELED_BY_STORE", "READY", "SENT", "RECEIVED"] }, 
-    // this should be a foreign key!
-    cust_ID: { type: mongoose.Types.ObjectId, required: true, immutable: true },
-    // Make these immutable?
-    // this should be a list of foreign keys!
-    flowers: { type: [mongoose.Types.ObjectId], required: true },
-    // this should be a list of foreign keys!
-    bouquets: { type: [mongoose.Types.ObjectId], required: true },
-    // this should be a list of foreign keys!
-    other_items: { type: [mongoose.Types.ObjectId], required: true },
-    total: { type: mongoose.Types.Decimal128, required: true }
+    cust_ID: { type: String, required: true },
+    flowers: { type: String, required: true },
+    bouquets: { type: String, required: true },
+    other_items: { type: String, required: true },
+    total: { type: String, required: true }
     //can add more
 });
 
