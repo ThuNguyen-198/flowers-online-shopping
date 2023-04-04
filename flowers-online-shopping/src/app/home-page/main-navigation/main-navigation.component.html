@@ -1,6 +1,17 @@
 <div class="auth-container">
   <div class="app-logo"><a href="/">Flower Power</a></div>
   <div class="auth">
+
+    <button
+      class="btn-account"
+      id="account-button"
+      type="button"
+      onClick="location.href='/account'"
+      *ngIf="!userIsAuthenticated" 
+    >
+      Account
+    </button>
+
     <ion-icon
       name="cart-outline"
       class="btn-cart"
