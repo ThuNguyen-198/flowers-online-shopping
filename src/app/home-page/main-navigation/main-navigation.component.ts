@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FlowersService } from '../services/flowers.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
-import { Flower } from '../data-models/flower.model';
-import { AuthService } from '../services/auth.service';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css'],
+  selector: 'app-main-navigation',
+  templateUrl: './main-navigation.component.html',
+  styleUrls: ['./main-navigation.component.css'],
 })
-export class HomePageComponent implements OnInit {
+export class MainNavigationComponent implements OnInit {
   public userIsAuthenticated: boolean = false;
   private authListenerSub: Subscription = new Subscription();
 
