@@ -1,3 +1,21 @@
+<div class="header">
+  <div class="bg-flipped"></div>
+    <div class="container-hero">
+      <div class="auth-container">
+        <div class="app-logo"></div>
+        <div class="auth">
+          <button
+          class="btn-home"
+          id="home-button"
+          type="button"
+          onClick="location.href='/'"
+        >
+          Homepage
+        </button>
+        </div>
+      </div>
+      <p class="app-name">My Account</p>
+</div>
 <div class="user-account">
     <h2>Account Information</h2>
     <div class="user-info">
@@ -5,7 +23,7 @@
       <p>Email: {{user.email}}</p>
       <p>Address: {{user.address}}</p>
     </div>
-    
+    <!--Orders-->
     <h2>Order History</h2>
     <table class="order-history">
       <thead>
