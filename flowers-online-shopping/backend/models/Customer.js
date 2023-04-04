@@ -6,8 +6,8 @@ const uniqueValidator = require("mongoose-unique-validator");
 
 const customerSchema = mongoose.Schema({
   // primary keys should be unique
-  cuID: { type: String, unique: true, immutable: true },
-  // these two should be merged and immutable!!!
+  cuID: { type: mongoose.Types.ObjectId, unique: true, immutable: true },
+  // these two should be merged and immutable!!! (Unless we want username independent of email, but still: user, at least, immutable)
   user: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   pwd: { type: String, required: true },

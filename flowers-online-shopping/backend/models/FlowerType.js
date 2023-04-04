@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const flowerTypeSchema = mongoose.Schema({
     // primary keys should be unique
-    ftID: { type: String, required: true, unique: true, immutable: true },
+    ftID: { type: mongoose.Types.ObjectId, required: true, unique: true, immutable: true },
     kind: { type: String, required: true, unique: true, immutable: true }
 });
 
