@@ -52,12 +52,13 @@
   cursor: pointer;
   transition: all 0.5s;
 }
-.app-logo {
+.app-logo a {
   font-size: 1.8rem;
   color: #333;
   font-family: julee, sans-serif;
   cursor: pointer;
+  text-decoration: none;
 }
-.app-logo:active {
+.app-logo a:active {
   transform: scale(0.95);
 }
