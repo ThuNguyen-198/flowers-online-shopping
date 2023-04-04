@@ -5,6 +5,7 @@ import { CustomerData } from '../data-models/customer.model';
 import { AuthData } from '../data-models/auth.model';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -98,6 +99,12 @@ export class AuthService {
     this.token = '';
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
+  }
+
+  getCurrentUser(): Observable<CustomerData> {
+    return this.http.get<CustomerData>(
+      'http://localhost:3000/api/user/current-user'
+    );
   }
 
   private setAuthTimer(duration: number) {
