@@ -101,6 +101,12 @@ export class AuthService {
     this.authStatusListener.next(false);
   }
 
+  getCurrentUser(): Observable<CustomerData> {
+    return this.http.get<CustomerData>(
+      'http://localhost:3000/api/user/current-user'
+    );
+  }
+
   private setAuthTimer(duration: number) {
     //Logout when token is not valid anymore
     this.tokenTimer = setTimeout(() => {
@@ -111,11 +117,5 @@ export class AuthService {
   private saveAuthData(token: string, expirationDate: Date) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
-  }
-
-  getCurrentUser(): Observable<CustomerData> {
-    return this.http.get<CustomerData>(
-      'http://localhost:3000/api/user/current-user'
-    );
   }
 }
