@@ -1,0 +1,33 @@
+<div class="user-account">
+    <h2>Account Information</h2>
+    <div class="user-info">
+      <p>Name: {{user.name}}</p>
+      <p>Email: {{user.email}}</p>
+      <p>Address: {{user.address}}</p>
+    </div>
+    
+    <h2>Order History</h2>
+    <table class="order-history">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Items</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of user.orders">
+          <td>{{order.id}}</td>
+          <td>{{order.date}}</td>
+          <td>
+            <ul>
+              <li *ngFor="let item of order.items">{{item.name}}</li>
+            </ul>
+          </td>
+          <td>{{order.total}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
