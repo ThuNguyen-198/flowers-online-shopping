@@ -13,7 +13,7 @@ const orderSchema = mongoose.Schema({
     bouquets: { type: String, required: true },
     // this should be a list of foreign keys!
     other_items: { type: String, required: true },
-    total: { type: String, required: true }
+    total: { type: mongoose.Types.Decimal128, required: true }
     //can add more
 });
 
