@@ -46,11 +46,12 @@ router.post("/signup/customer", (req, res, next) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
     });
+
     customer
       .save()
       .then((result) => {
         res.status(201).json({
-          message: "Employee account created!",
+          message: "Customer account created!",
           customer: {
             ...result,
             cuID: result._id,
