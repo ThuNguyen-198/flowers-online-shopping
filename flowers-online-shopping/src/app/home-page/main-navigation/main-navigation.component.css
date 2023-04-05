@@ -8,12 +8,11 @@
   align-items: center;
   justify-content: space-between;
   font-size: 2rem;
-  /* background-color: rgba(255, 255, 255, 0); */
 }
 .auth {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1rem;
 }
 .btn-login,
 .btn-signup,
