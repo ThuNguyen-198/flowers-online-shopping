@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmployeeData } from '../data-models/employee.model';
-import { CustomerData } from '../data-models/customer.model';
+import { CreditCard, CustomerData, Order } from '../data-models/customer.model';
 import { AuthData } from '../data-models/auth.model';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -42,7 +42,8 @@ export class AuthService {
     regCuPwd: string,
     regPhone: string,
     regFirstName: string,
-    regLastName: string
+    regLastName: string,
+    regAddress: string
   ) {
     const customerAuthData: CustomerData = {
       cuID: '',
@@ -52,6 +53,7 @@ export class AuthService {
       phone: regPhone,
       firstName: regFirstName,
       lastName: regLastName,
+      address: regAddress
     };
     this.http
       .post('http://localhost:3000/api/user/signup/customer', customerAuthData)
@@ -105,6 +107,16 @@ export class AuthService {
     return this.http.get<CustomerData>(
       'http://localhost:3000/api/user/current-user'
     );
+  }
+
+  getOrders(): Observable<Order[]> {
+    const userId = localStorage.getItem('userId');
+    return this.http.get<Order[]>('http://localhost:3000/api/user/current-user/orders');
+  }
+
+  getCreditCard(): Observable<CreditCard> {
+    const url = `http://localhost:3000/api/user/current-user/credit-card`;
+    return this.http.get<CreditCard>(url);
   }
 
   private setAuthTimer(duration: number) {
