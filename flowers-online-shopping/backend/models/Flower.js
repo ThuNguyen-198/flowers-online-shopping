@@ -7,6 +7,7 @@ const flowerSchema = mongoose.Schema({
     color_ID: { type: mongoose.Types.ObjectId, required: true, immutable: true },
     // this should be a foreign key!
     kind_ID: { type: mongoose.Types.ObjectId, required: true, immutable: true }
+    // add current price?
 });
 
 // color and kind id are unique together

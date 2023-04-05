@@ -11,12 +11,11 @@
 </div>
 
 <div class="auth">
-  <button class="change-account" id="change-button" type="button">
+  <button class="change-account" id="change-button" type="button" (click)="goToEditUserPage()">
     Change Account
   </button>
 
-  <button class="btn-login" id="login-button" type="button" >
+  <button class="btn-login" id="login-button" type="button" (click)="goToUserHistory()" >
     View Orders
   </button>
 </div>
-
