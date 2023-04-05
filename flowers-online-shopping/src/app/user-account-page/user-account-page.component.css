@@ -15,7 +15,6 @@
 
 .bg-flipped {
   background: url(../../assets/background/bg-home.jpg);
-  position: absolute;
   background-size: cover;
   background-position: bottom;
   width: 100%;
@@ -49,6 +48,18 @@
   gap: 1.6rem;
 }
 
+.app-name {
+  font-size: 4rem;
+  color: #333;
+  text-align: center;
+  font-family: julee, sans-serif;
+  text-transform: uppercase;
+  transform: scaleZ(1);
+  letter-spacing: 0.1rem;
+  transform: scaleX(-1);
+}
+
+
 .btn-home {
   font-size: 1rem;
   padding: 0.6rem 0.8rem;
@@ -59,8 +70,10 @@
   transition: all 0.5s;
   background-color: #534d6e;
   color: #fff;
-  position: fixed;
+  transform: scaleX(-1);
+  margin: 3px;
 }
+
 
 .btn-home:hover{
   background-color: #3d3754;
@@ -82,7 +95,8 @@
   transition: all 0.5s;
   background-color: #534d6e;
   color: #fff;
-  position: fixed;
+  transform: scaleX(-1);
+  margin: 3px;
 }
 
 .change-account:hover{
@@ -95,16 +109,28 @@
   transform: scale(0.95);
 }
 
+.edit-button {
+  font-size: 1rem;
+  padding: 5px;
+  border-radius: 11px;
+  border: 1px solid #534d6e;
+  width: fit-content;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: #534d6e;
+  color: #fff;
+  font-family: sans-serif;
+}
 
-.app-name {
-  font-size: 4rem;
-  color: #333;
-  text-align: center;
-  font-family: julee, sans-serif;
-  text-transform: uppercase;
-  transform: scaleZ(1);
-  letter-spacing: 0.1rem;
-  position: fixed;
+
+.edit-button:hover{
+  background-color: #3d3754;
+  border: 1px solid #3d3754;
+  color: #fff;
+}
+
+.edit-button:active {
+  transform: scale(0.95);
 }
 
 .container-body {
@@ -116,49 +142,54 @@
 /* ********************************* */
 
 .user-account h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+  font-size: 2.3rem;
+  margin: 1rem;
   font-family: julee, sans-serif;
   text-align: center;
+}
+
+.user-info{
+  margin: 2px;
+  border: 3px solid #534d6e;
+  border-radius: 11px;
 }
 
 .user-info p {
   font-size: 1.6rem;
-  margin-bottom: 1rem;
-  font-family: julee, sans-serif;
+  margin: 1rem;
+  font-family: sans-serif;
 }
 
 .active-card h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+  font-size: 2.3rem;
+  margin: 1rem;
   font-family: julee, sans-serif;
   text-align: center;
+}
+
+.card-info{
+  margin: 2px;
+  border: 3px solid #534d6e;
+  border-radius: 11px;
 }
 
 .card-info p {
   font-size: 1.6rem;
-  margin-bottom: 1rem;
-  font-family: julee, sans-serif;
+  margin: 1rem;
+  font-family: sans-serif;
 }
 
 .order-history {
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 1rem;
   border-collapse: collapse;
-  font-family: julee, sans-serif;
+  font-family: sans-serif;
   font-size: 1.6rem;
   text-align: center;
 }
 
-.order-history th {
-  background-color: #534d6e;
-  color: #fff;
-  padding: 1rem 2rem;
-}
-
-.order-history td {
-  border: 1px solid #534d6e;
-  padding: 1rem 2rem;
+.order-history {
+  font-size: 2.3rem;
 }
 
 .order-history tr:nth-child(even) {
@@ -171,13 +202,14 @@ background-color: #534d6e;
 color: #fff;
 font-size: 1.6rem;
 font-weight: normal;
-text-align: left;
+text-align: center;
 padding: 1.2rem;
 }
 .order-history td {
 border: 1px solid #ddd;
 padding: 1.2rem;
 font-size: 1.6rem;
+line-height: normal
 }
 .order-history td:first-child {
 font-weight: bold;
