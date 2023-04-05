@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 
 const employeeSchema = mongoose.Schema({
     // primary keys should be unique
-    eID: { type: String, required: true, unique: true },
-    login_ID: { type: String, required: true },
+    eID: { type: mongoose.Types.ObjectId, required: true, unique: true, immutable: true },
+    login_ID: { type: String, required: true, immutable: true },
     pwd: { type: String, required: true },
     perms: { type: Number, required: true } // value of 0 is lowest permissions
 });

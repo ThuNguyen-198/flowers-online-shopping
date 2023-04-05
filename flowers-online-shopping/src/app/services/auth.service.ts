@@ -5,12 +5,14 @@ import { CustomerData } from '../data-models/customer.model';
 import { AuthData } from '../data-models/auth.model';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private token: string = '';
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated: boolean = false;
+  private tokenTimer: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -71,13 +73,21 @@ export class AuthService {
   login(loginEmail: string, loginPassword: string) {
     const authData: AuthData = { email: loginEmail, pwd: loginPassword };
     this.http
-      .post<{ token: string }>('http://localhost:3000/api/user/login', authData)
+      .post<{ token: string; expiresIn: number }>(
+        'http://localhost:3000/api/user/login',
+        authData
+      )
       .subscribe((response) => {
         //Direct users to homepage if login successful
         const token = response.token;
         this.token = token;
 
         if (token) {
+          const expiresInDuration = response.expiresIn;
+          setTimeout(() => {
+            this.logout();
+          }, expiresInDuration * 1000);
+
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
           this.router.navigate(['/']);
@@ -89,5 +99,23 @@ export class AuthService {
     this.token = '';
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
+  }
+
+  getCurrentUser(): Observable<CustomerData> {
+    return this.http.get<CustomerData>(
+      'http://localhost:3000/api/user/current-user'
+    );
+  }
+
+  private setAuthTimer(duration: number) {
+    //Logout when token is not valid anymore
+    this.tokenTimer = setTimeout(() => {
+      this.logout();
+    }, duration * 1000);
+  }
+
+  private saveAuthData(token: string, expirationDate: Date) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('expiration', expirationDate.toISOString());
   }
 }

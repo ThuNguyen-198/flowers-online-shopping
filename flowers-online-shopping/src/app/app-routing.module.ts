@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { EditUserPageComponent } from './edit-user-page/edit-user-page.component';
+import { OrderHistoryPageComponent } from './order-history-page/order-history-page.component';
+
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -12,18 +15,29 @@ import { ProductCustomComponent } from './products-display-page/product-custom/p
 import { ProductIndividualsComponent } from './products-display-page/product-individuals/product-individuals.component';
 
 const routes: Routes = [
+  //es
+  { path: 'account/edit-account', component: EditUserPageComponent },
+  { path: 'account/history', component: OrderHistoryPageComponent },
+  //{ path: 'account/history', component: OrderHistoryPageComponent, canActivate: [AuthGuard] },
+
+  { path: 'account', component: UserAccountPageComponent },
   { path: 'signup', component: RegisterPageComponent },
   {
     path: 'checkout',
     component: CheckoutPageComponent,
-    canActivate: [AuthGuard],
   },
   { path: 'login', component: LoginPageComponent },
   { path: '', component: HomePageComponent },
   { path: 'all', component: ProductsDisplayPageComponent },
   { path: 'bd', component: ProductBirthdayComponent },
+
   { path: 'custom', component: ProductCustomComponent },
   { path: 'individuals', component: ProductIndividualsComponent },
+  {
+    path: ':id',
+    component: UserAccountPageComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
