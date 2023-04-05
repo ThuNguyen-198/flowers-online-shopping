@@ -9,7 +9,8 @@ const bouquetSchema = mongoose.Schema({
     wrap_ID: { type: mongoose.Types.ObjectId, required: true },
     name: { type: String, required: true },
     // this should be a list of foreign keys!
-    flowers: { type: Number, required: true }
+    flowers: { type: [mongoose.Types.ObjectId], required: true }
+    // add current price?
 });
 
 //Export this as an object so we can use it somewhere else.

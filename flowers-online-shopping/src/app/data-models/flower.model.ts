@@ -1,7 +1,7 @@
 /*MODEL
 
 Property: Flower
-Purpose: Create a generic type for the applicaion's properties.
+Purpose: Create a generic type for the application's properties.
 */
 
 export interface Flower {
