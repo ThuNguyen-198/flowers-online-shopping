@@ -20,6 +20,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { EditUserPageComponent } from './edit-user-page/edit-user-page.component';
+import { OrderHistoryPageComponent } from './order-history-page/order-history-page.component';
+
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
