@@ -1,1 +1,76 @@
-<p>product-individuals works!</p>
+<div class="main-nav">
+  <app-main-navigation></app-main-navigation>
+</div>
+<div class="container">
+  <app-filter-side-bar></app-filter-side-bar>
+  <div class="individuals-container">
+    <div class="products-display-container">
+      <div class="sort-and-search">
+        <div class="sort">
+          <select [(ngModel)]="selectedCategory">
+            <option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </option>
+          </select>
+        </div>
+        <div class="container-search">
+          <input
+            *ngIf="showSearchBox"
+            class="search-bar"
+            [(ngModel)]="searchKey"
+            placeholder="Search..."
+          />
+          <!-- To use ionicons, run this cmd: ng add @ionic/angular -->
+          <ion-icon
+            name="search-outline"
+            (click)="showSearchBox = !showSearchBox"
+          ></ion-icon>
+        </div>
+      </div>
+      <div class="products">
+        <div class="flower" *ngFor="let flower of testimFlower">
+          <img src="{{ flower.image_small }}" />
+          <p class="flower-name">{{ flower.name }}</p>
+          <div class="action">
+            <div class="flower-price">${{ flower.price }}</div>
+            <div class="action-btn-block">
+              <ion-icon name="heart-outline"></ion-icon>
+              <ion-icon name="cart-outline" onClick=""></ion-icon>
+            </div>
+          </div>
+          <div class="description">
+            <div class="rating"></div>
+            <div class="interaction">
+              <ion-icon name="heart-outline"></ion-icon>
+              <div class="liked">320</div>
+              <ion-icon name="eye-outline"></ion-icon>
+              <div class="seen">89,728</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="products-selected-container">
+      <div
+        class="selected-flower-container"
+        *ngFor="let flower of testimFlower"
+      >
+        <img class="selected-flower" src="{{ flower.image_small }}" />
+        <div class="amount-container">
+          <div class="quantity-container">
+            <div>Quantity</div>
+            <div class="adjust-quantity">
+              <ion-icon name="remove-circle-outline"></ion-icon>
+              <div class="quantity">10</div>
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </div>
+          </div>
+          <div class="discount-container">
+            <p>Discount</p>
+            <p>10%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

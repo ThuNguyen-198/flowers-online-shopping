@@ -41,6 +41,7 @@ import { MainNavigationComponent } from './home-page/main-navigation/main-naviga
 import { ProductCustomComponent } from './products-display-page/product-custom/product-custom.component';
 import { ProductIndividualsComponent } from './products-display-page/product-individuals/product-individuals.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { FilterSideBarComponent } from './products-display-page/filter-side-bar/filter-side-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +63,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     MainNavigationComponent,
     ProductCustomComponent,
     ProductIndividualsComponent,
+    FilterSideBarComponent,
   ],
   imports: [
     BrowserModule,

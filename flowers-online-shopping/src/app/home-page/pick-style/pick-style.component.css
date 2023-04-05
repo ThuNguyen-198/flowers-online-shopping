@@ -18,7 +18,7 @@
 .style-card {
   height: 25rem;
   /* border: 1px solid #888; */
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.0075);
+  /* box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.0075); */
   border-radius: 11px;
   overflow: hidden;
   cursor: pointer;

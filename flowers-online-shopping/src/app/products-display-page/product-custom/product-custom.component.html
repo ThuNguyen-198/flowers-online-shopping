@@ -2,6 +2,8 @@
   <app-main-navigation></app-main-navigation>
 </div>
 <div class="custom-container">
+  <app-filter-side-bar></app-filter-side-bar>
+
   <form [formGroup]="imageForm" (ngSubmit)="onSubmit()" class="custom-form">
     <label for="name">Name:</label>
     <input

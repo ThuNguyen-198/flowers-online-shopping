@@ -10,11 +10,12 @@
 .custom-container {
   width: 100%;
   margin-top: 3rem;
-  height: 35rem;
-  overflow: auto;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: flex-start;
 }
 .custom-form {
-  width: 40%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
