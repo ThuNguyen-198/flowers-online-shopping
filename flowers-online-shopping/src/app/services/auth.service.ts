@@ -23,6 +23,8 @@ export class AuthService {
     regPerms: number
   ) {
     const employeeAuthData: EmployeeData = {
+      // Hey, uhh... this is for internal references, and shouldn't be provided by humans
+      // and should be struck, anyway
       eID: regeID,
       login_ID: regLoginID,
       pwd: regPwd,
@@ -30,6 +32,7 @@ export class AuthService {
     };
     console.log(employeeAuthData);
     this.http
+    // should these really be ABSOLUTE URLs???
       .post('http://localhost:3000/api/user/signup/employee', employeeAuthData)
       .subscribe((response) => {
         console.log(response);
@@ -45,6 +48,7 @@ export class AuthService {
     regLastName: string
   ) {
     const customerAuthData: CustomerData = {
+      // this should be struck
       cuID: '',
       user: regUser,
       email: regEmail,
