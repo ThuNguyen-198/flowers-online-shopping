@@ -1,4 +1,5 @@
 //For encrypting password
+// HEY!!! We agreed Argon2id! If that's not available for JS, so be it, but there needs to be discussion.
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const checkAuth = require("../../src/app/check-auth");
