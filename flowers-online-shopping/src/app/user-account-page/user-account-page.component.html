@@ -27,7 +27,7 @@
   <!-- ********************************* -->
   <div class="user-account">
       <h2>Account Information
-        <button class="edit-button" id="edit-user-button" type="button" (click)="goToEditUserPage()">
+        <button class="edit-button" id="edit-user-button-acc" type="button" (click)="goToEditUserPage()">
           Edit
         </button>
       </h2>
@@ -41,7 +41,7 @@
 <!-- ********************************* -->
 <div class="active-card">
   <h2>Active Credit Card
-    <button class="edit-button" id="edit-user-button" type="button" (click)="goToEditUserPage()">
+    <button class="edit-button" id="edit-user-button-credit" type="button" (click)="goToEditUserPage()">
       Edit
     </button>
   </h2>
@@ -52,7 +52,7 @@
   </div>
 </div>
 
-  
+
   <!-- ********************************* -->
   <!-- Order History -->
   <!-- ********************************* -->
@@ -76,7 +76,7 @@
               </ul>
             </td>
             <td>{{order.total}}</td>
-          </tr>          
+          </tr>
         </tbody>
       </table>
     </div>
@@ -89,5 +89,5 @@
   <p>Phone: {{ user.phone }}</p>
   <p>First Name: {{ user.firstName }}</p>
   <p>Last Name: {{ user.lastName }}</p>
-  
+
 </div> -->
