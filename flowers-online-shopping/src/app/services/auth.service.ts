@@ -84,7 +84,6 @@ export class AuthService {
         authData
       )
       .subscribe((response) => {
-        //Direct users to homepage if login successful
         const token = response.token;
         this.token = token;
 
@@ -102,6 +101,7 @@ export class AuthService {
 
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
+          //Direct users to homepage if login successful
           this.router.navigate(['/']);
         }
       });

@@ -15,13 +15,25 @@ import { AuthGuard } from './auth.guard';
 import { ProductCustomComponent } from './products-display-page/product-custom/product-custom.component';
 import { ProductIndividualsComponent } from './products-display-page/product-individuals/product-individuals.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
+import { ProductSympathyComponent } from './products-display-page/product-sympathy/product-sympathy.component';
 const routes: Routes = [
   //es
-  { path: 'account/edit-account', component: EditUserPageComponent },
-  { path: 'account/history', component: OrderHistoryPageComponent },
-  //{ path: 'account/history', component: OrderHistoryPageComponent, canActivate: [AuthGuard] },
+  {
+    path: 'account/edit-account',
+    component: EditUserPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'account/history',
+    component: OrderHistoryPageComponent,
+    canActivate: [AuthGuard],
+  },
 
-  { path: 'account', component: UserAccountPageComponent },
+  {
+    path: 'account',
+    component: UserAccountPageComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'signup', component: RegisterPageComponent },
   {
     path: 'checkout',
@@ -34,11 +46,7 @@ const routes: Routes = [
 
   { path: 'custom', component: ProductCustomComponent },
   { path: 'individuals', component: ProductIndividualsComponent },
-  {
-    path: ':id',
-    component: UserAccountPageComponent,
-    canActivate: [AuthGuard],
-  },
+  { path: 'sympathy', component: ProductSympathyComponent },
 ];
 
 @NgModule({

@@ -20,7 +20,7 @@ export class ProductIndividualsComponent implements OnInit {
   constructor(public flowerService: FlowersService) {}
 
   ngOnInit(): void {
-    this.flowerService.getFlowersByCategory('ao');
+    this.flowerService.getFlowersByCategory('c');
     this.flowerSub = this.flowerService
       .getFlowerUpdateListener()
       .subscribe((flowerData: Flower[]) => {
