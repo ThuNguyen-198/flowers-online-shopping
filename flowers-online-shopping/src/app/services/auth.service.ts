@@ -25,7 +25,7 @@ export class AuthService {
     const employeeAuthData: EmployeeData = {
       // Hey, uhh... this is for internal references, and shouldn't be provided by humans
       // and should be struck, anyway
-      eID: regeID,
+      //eID: regeID,
       login_ID: regLoginID,
       pwd: regPwd,
       perms: regPerms,
@@ -49,7 +49,7 @@ export class AuthService {
   ) {
     const customerAuthData: CustomerData = {
       // this should be struck
-      cuID: '',
+      //cuID: '',
       user: regUser,
       email: regEmail,
       pwd: regCuPwd,

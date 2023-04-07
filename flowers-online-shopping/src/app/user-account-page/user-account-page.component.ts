@@ -14,7 +14,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 
 export class UserAccountPageComponent implements OnInit {
-    user: CustomerData = { cuID: 'Ed', user: 'Lname', email: 'jdfj@gmail', pwd: 'dkjf', phone: '972746', firstName: 'ed', lastName: 'spr' };
+  // excuse me? -Jacob
+    user: CustomerData = { /*cuID: 'Ed',*/ user: 'Lname', email: 'jdfj@gmail', pwd: 'dkjf', phone: '972746', firstName: 'ed', lastName: 'spr' };
 
     //change to one of these either work
     //user: CustomerData = { cuID: '', user: '', email: '', pwd: '', phone: '', firstName: '', lastName: '' };

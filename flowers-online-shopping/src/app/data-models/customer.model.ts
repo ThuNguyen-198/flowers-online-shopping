@@ -1,5 +1,5 @@
 export interface CustomerData {
-  cuID: string;
+  //cuID: string;
   user: string;
   email: string;
   pwd: string;

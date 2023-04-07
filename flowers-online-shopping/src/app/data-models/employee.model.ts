@@ -1,5 +1,5 @@
 export interface EmployeeData {
-    eID: string,
+    //eID: string,
     login_ID: string,
     pwd: string,
     perms: number

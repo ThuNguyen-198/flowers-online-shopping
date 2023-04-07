@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const otherSchema = mongoose.Schema({
     // primary keys should be unique
-    prod_ID: { type: mongoose.Types.ObjectId, required: true, unique: true, immutable: true },
+    //prod_ID: { type: mongoose.Types.ObjectId, required: true, unique: true, immutable: true },
     desc: { type: String, required: true }, //allows search
     price: {type: mongoose.Types.Decimal128, required: true }
     //can add images here

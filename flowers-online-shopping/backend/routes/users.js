@@ -14,7 +14,7 @@ router.post("/signup/employee", (req, res, next) => {
   const employee = new Employee();
   bcrypt.hash(req.body.pwd, 10).then((hash) => {
     employee = {
-      eID: req.body.eID,
+      //eID: req.body.eID,
       login_ID: req.body.login_ID,
       pwd: req.body.pwd,
       perms: req.body.perms,
@@ -55,7 +55,7 @@ router.post("/signup/customer", (req, res, next) => {
           message: "Customer account created!",
           customer: {
             ...result,
-            cuID: result._id,
+            //cuID: result._id,
           },
         });
       })
