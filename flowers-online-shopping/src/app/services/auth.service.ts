@@ -23,8 +23,6 @@ export class AuthService {
     regPerms: number
   ) {
     const employeeAuthData: EmployeeData = {
-      // Hey, uhh... this is for internal references, and shouldn't be provided by humans
-      // and should be struck, anyway
       //eID: regeID,
       login_ID: regLoginID,
       pwd: regPwd,
@@ -32,7 +30,7 @@ export class AuthService {
     };
     console.log(employeeAuthData);
     this.http
-    // should these really be ABSOLUTE URLs???
+
       .post('http://localhost:3000/api/user/signup/employee', employeeAuthData)
       .subscribe((response) => {
         console.log(response);
@@ -57,7 +55,7 @@ export class AuthService {
       phone: regPhone,
       firstName: regFirstName,
       lastName: regLastName,
-      address: regAddress
+      address: regAddress,
     };
     this.http
       .post('http://localhost:3000/api/user/signup/customer', customerAuthData)
@@ -126,7 +124,9 @@ export class AuthService {
 
   getOrders(): Observable<Order[]> {
     const userId = localStorage.getItem('userId');
-    return this.http.get<Order[]>('http://localhost:3000/api/user/current-user/orders');
+    return this.http.get<Order[]>(
+      'http://localhost:3000/api/user/current-user/orders'
+    );
   }
 
   getCreditCard(): Observable<CreditCard> {
