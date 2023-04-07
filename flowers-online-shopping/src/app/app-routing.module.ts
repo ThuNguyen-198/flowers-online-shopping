@@ -11,6 +11,9 @@ import { ProductsDisplayPageComponent } from './products-display-page/products-d
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProductBirthdayComponent } from './products-display-page/product-birthday/product-birthday.component';
 
+// eh?
+import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
+
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
