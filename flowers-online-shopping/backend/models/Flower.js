@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const flowerSchema = mongoose.Schema({
     // primary keys should be unique
-    fID: { type: mongoose.Types.ObjectId, required: true, unique: true, immutable: true },
+    //fID: { type: mongoose.Types.ObjectId, required: true, unique: true, immutable: true },
     // this should be a foreign key!
     color_ID: { type: mongoose.Types.ObjectId, required: true, immutable: true },
     // this should be a foreign key!

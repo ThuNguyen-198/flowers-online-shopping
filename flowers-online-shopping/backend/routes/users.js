@@ -1,4 +1,5 @@
 //For encrypting password
+// HEY!!! We agreed Argon2id! If that's not available for JS, so be it, but there needs to be discussion.
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const checkAuth = require("../../src/app/check-auth");
@@ -13,7 +14,7 @@ router.post("/signup/employee", (req, res, next) => {
   const employee = new Employee();
   bcrypt.hash(req.body.pwd, 10).then((hash) => {
     employee = {
-      eID: req.body.eID,
+      //eID: req.body.eID,
       login_ID: req.body.login_ID,
       pwd: req.body.pwd,
       perms: req.body.perms,
@@ -54,7 +55,7 @@ router.post("/signup/customer", (req, res, next) => {
           message: "Customer account created!",
           customer: {
             ...result,
-            cuID: result._id,
+            //cuID: result._id,
           },
         });
       })

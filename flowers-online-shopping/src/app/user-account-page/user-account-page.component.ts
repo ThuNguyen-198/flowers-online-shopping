@@ -14,7 +14,12 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 
 export class UserAccountPageComponent implements OnInit {
+<<<<<<< HEAD
     user: CustomerData = { cuID: 'Ed', user: 'Lname', email: 'jdfj@gmail', pwd: 'dkjf', phone: '972746', firstName: 'ed', lastName: 'spr', address: '1234 address ln \n Lubbock TX, 79409' };
+=======
+  // excuse me? -Jacob
+    user: CustomerData = { /*cuID: 'Ed',*/ user: 'Lname', email: 'jdfj@gmail', pwd: 'dkjf', phone: '972746', firstName: 'ed', lastName: 'spr' };
+>>>>>>> 98080991d47f8f5dbacb35dd3261a713937289f6
 
     //change to one of these either work
     //user: CustomerData = { cuID: '', user: '', email: '', pwd: '', phone: '', firstName: '', lastName: '', address: '' };
