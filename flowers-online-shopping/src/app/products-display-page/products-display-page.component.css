@@ -7,94 +7,13 @@
     rgba(121, 110, 168, 0.3)
   );
 }
-
-/*FILTER*/
-.filter-body {
-  margin-top: 2%;
-  font-size: 1rem;
-  color: #534d6e;
-  text-align: left;
-  font-family: julee, sans-serif;
-  text-transform: uppercase;
-  transform: scaleZ(1);
-  letter-spacing: 0.1rem;
-
-  box-shadow: 0 4px 8px 0 #534d6e;
-  border: 1px solid #534d6e;
-  padding: 5px;
-  overflow: hidden;
-  float: left;
-  padding-left: 20px;
+.container {
+  width: 100%;
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: flex-start;
 }
-.filter {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.filter input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
-.filter:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-.filter input:checked ~ .checkmark {
-  background-color: #534d6e;
-}
-.filter .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-.filter input:checked ~ .checkmark:after {
-  display: block;
-}
-.filter .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-.filter-body button {
-  margin-top: 10%;
-  border: none;
-  outline: 0;
-  padding: 12px;
-  color: white;
-  background-color: #534d6e;
-  letter-spacing: 0.1rem;
-  text-align: center;
-  cursor: pointer;
-  width: 75%;
-  font-size: 20px;
-}
-.filter-body button:hover {
-  opacity: 0.7;
-}
-
 /*PRODUCT CARDS*/
 .product-list {
   overflow: auto;

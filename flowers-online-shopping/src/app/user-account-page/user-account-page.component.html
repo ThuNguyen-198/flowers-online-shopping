@@ -1,4 +1,86 @@
-<h1>User Account Information</h1>
+ <!-- ********************************* -->
+  <!-- Section Hero -->
+  <!-- ********************************* -->
+ <div class="conatiner-UAP">
+  <div class="bg-flipped">
+    <div class="container-hero">
+      <div class="app-logo"></div>
+      <div class="auth">
+        <button
+          class="btn-home"
+          id="home-button"
+          type="button"
+          onClick="location.href='/'">
+          Homepage
+        </button>
+      </div>
+      <div class="auth">
+        <button class="change-account" id="change-button" type="button" (click)="goToEditUserPage()">
+          Change Account
+        </button>
+      </div>
+      <p class="app-name">My Account</p>
+    </div>
+  </div>
+  <!-- ********************************* -->
+  <!-- Account Info -->
+  <!-- ********************************* -->
+  <div class="user-account">
+      <h2>Account Information
+        <button class="edit-button" id="edit-user-button-acc" type="button" (click)="goToEditUserPage()">
+          Edit
+        </button>
+      </h2>
+      <div class="user-info">
+        <p>Name: {{user.firstName + user.lastName}}</p>
+        <p>Email: {{user.email}}</p>
+        <p>Address: {{user.address}}</p>
+      </div>
+<!-- ********************************* -->
+<!-- Active Card -->
+<!-- ********************************* -->
+<div class="active-card">
+  <h2>Active Credit Card
+    <button class="edit-button" id="edit-user-button-credit" type="button" (click)="goToEditUserPage()">
+      Edit
+    </button>
+  </h2>
+  <div class="card-info">
+    <p>Cardholder Name: {{creditCard.cardholderName}}</p>
+    <p>Card Number: {{creditCard.cardNumber}}</p>
+    <p>Expiration Date: {{creditCard.expirationMonth + '/' + creditCard.expirationYear}}</p>
+  </div>
+</div>
+
+
+  <!-- ********************************* -->
+  <!-- Order History -->
+  <!-- ********************************* -->
+      <h2>Order History</h2>
+      <table class="order-history">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Items</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders$ | async">
+            <td>{{order.id}}</td>
+            <td>{{order.date | date: 'dd/MM/yyyy'}}</td>
+            <td>
+              <ul>
+                <li *ngFor="let item of order.items">{{item.name}}</li>
+              </ul>
+            </td>
+            <td>{{order.total}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- <h1>User Account Information</h1>
 
 <div>
   <p>User ID: {{ user.cuID }}</p>
@@ -7,15 +89,5 @@
   <p>Phone: {{ user.phone }}</p>
   <p>First Name: {{ user.firstName }}</p>
   <p>Last Name: {{ user.lastName }}</p>
-  
-</div>
 
-<div class="auth">
-  <button class="change-account" id="change-button" type="button" (click)="goToEditUserPage()">
-    Change Account
-  </button>
-
-  <button class="btn-login" id="login-button" type="button" (click)="goToUserHistory()" >
-    View Orders
-  </button>
-</div>
+</div> -->
