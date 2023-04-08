@@ -1,97 +1,91 @@
 <div class="main-nav">
   <app-main-navigation></app-main-navigation>
 </div>
-<h1>Customer Register</h1>
 
-<mat-card>
+<mat-card class="bg">
   <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
-    <div class="register-container">
-      <mat-form-field>
-        <input
-          matInput
-          name="user"
-          ngModel
-          type="text"
-          placeholder="Username"
-          #userInput="ngModel"
-          required
-        />
-        <mat-error *ngIf="userInput.invalid"
-          >Please enter a valid username.</mat-error
-        >
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          name="email"
-          ngModel
-          type="email"
-          placeholder="Email"
-          #emailInput="ngModel"
-          required
-        />
-        <mat-error *ngIf="emailInput.invalid"
-          >Please enter a valid email.</mat-error
-        >
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          name="pwd"
-          ngModel
-          type="password"
-          placeholder="Password"
-          #pwdInput="ngModel"
-          required
-        />
-        <mat-error *ngIf="pwdInput.invalid"
-          >Please enter a valid passowrd.</mat-error
-        >
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          type="text"
-          name="phone"
-          mask="(000) 000-0000"
-          ngModel
-          matInput
-          placeholder="Phone Number"
-          #numberInput="ngModel"
-          required
-        />
-        <mat-error *ngIf="numberInput.invalid"
-          >Please enter a valid phone number.</mat-error
-        >
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          type="text"
-          name="first"
-          ngModel
-          matInput
-          placeholder="First Name"
-          #firstNameInput="ngModel"
-          required
-        />
-        <mat-error *ngIf="firstNameInput.invalid"
-          >Please enter a valid first name.</mat-error
-        >
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          type="text"
-          name="last"
-          ngModel
-          matInput
-          placeholder="Last Name"
-          #lastNameInput="ngModel"
-          required
-        />
-        <mat-error *ngIf="lastNameInput.invalid"
-          >Please enter a valid last name.</mat-error
-        >
-      </mat-form-field>
-      <button mat-raised-button color="accent" type="submit">Signup</button>
+    <div id="column" class="register-container">
+      <div id="row">
+        <mat-form-field class="tl-form-container" appearance="outline">
+          <input
+            type="text"
+            name="first"
+            ngModel
+            matInput
+            placeholder="First Name"
+            #firstNameInput="ngModel"
+            required
+          />
+          <mat-error *ngIf="firstNameInput.invalid">Please enter a valid first name.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="tr-form-container" appearance="outline">
+          <input
+            type="text"
+            name="last"
+            ngModel
+            matInput
+            placeholder="Last Name"
+            #lastNameInput="ngModel"
+            required
+          />
+          <mat-error *ngIf="lastNameInput.invalid">Please enter a valid last name.</mat-error>
+        </mat-form-field>
+      </div>
+      <div id="row">
+        <mat-form-field class="m-form-container" appearance="outline">
+          <input
+           matInput
+            name="user"
+            ngModel
+            type="text"
+            placeholder="Username"
+            #userInput="ngModel"
+            required
+          />
+          <mat-error *ngIf="userInput.invalid">Please enter a valid username.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="m-form-container" appearance="outline">
+          <input
+            matInput
+            name="email"
+            ngModel
+            type="email"
+            placeholder="Email"
+            #emailInput="ngModel"
+            required
+          />
+          <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+        </mat-form-field>
+      </div>
+      <div id="row">
+        <mat-form-field class="bl-form-container" appearance="outline">
+          <input
+            matInput
+            name="pwd"
+            ngModel
+            type="password"
+            placeholder="Password"
+            #pwdInput="ngModel"
+            required
+          />
+          <mat-error *ngIf="pwdInput.invalid">Please enter a valid passowrd.</mat-error>
+        </mat-form-field>
+        <mat-form-field class="br-form-container" appearance="outline">
+          <input
+            type="text"
+            name="phone"
+            mask="(000) 000-0000"
+            ngModel
+            matInput
+            placeholder="Phone Number"
+            #numberInput="ngModel"
+            required
+          />
+          <mat-error *ngIf="numberInput.invalid">Please enter a valid phone number.</mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+      <button class="btn-signup" id="signup-button" type="submit">Signup</button>
     </div>
   </form>
 </mat-card>
