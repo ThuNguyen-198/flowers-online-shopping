@@ -14,6 +14,7 @@ import { AuthGuard } from './auth.guard';
 import { ProductCustomComponent } from './products-display-page/product-custom/product-custom.component';
 import { ProductIndividualsComponent } from './products-display-page/product-individuals/product-individuals.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
+import { ReportPageComponent } from './report-page/report-page.component';
 const routes: Routes = [
   //es
   { path: 'account/edit-account', component: EditUserPageComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   //{ path: 'account/history', component: OrderHistoryPageComponent, canActivate: [AuthGuard] },
 
   { path: 'account', component: UserAccountPageComponent },
+  { path: 'report', component: ReportPageComponent },
   { path: 'signup', component: RegisterPageComponent },
   {
     path: 'checkout',
