@@ -16,7 +16,9 @@ import { ProductCustomComponent } from './products-display-page/product-custom/p
 import { ProductIndividualsComponent } from './products-display-page/product-individuals/product-individuals.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
 import { ReportPageComponent } from './report-page/report-page.component';
+
 import { ProductSympathyComponent } from './products-display-page/product-sympathy/product-sympathy.component';
+
 const routes: Routes = [
   //es
   {
@@ -31,6 +33,7 @@ const routes: Routes = [
   },
 
   { path: 'account', component: UserAccountPageComponent },
+  { path: 'report', component: ReportPageComponent },
   { path: 'signup', component: RegisterPageComponent },
   {
     path: 'checkout',

@@ -48,4 +48,54 @@ export class TestimonialsComponent implements OnInit {
       name: 'Sam',
     },
   ];
+  flowers = [
+    {
+      img: '../../../assets/testimonials/flowers-1.jpeg',
+      alt: 'flower image 1',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-2.jpeg',
+      alt: 'flower image 2',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-3.jpeg',
+      alt: 'flower image 3',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-4.jpeg',
+      alt: 'flower image 4',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-5.jpeg',
+      alt: 'flower image 5',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-6.jpeg',
+      alt: 'flower image 6',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-7.jpeg',
+      alt: 'flower image 7',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-8.jpeg',
+      alt: 'flower image 8',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-9.jpeg',
+      alt: 'flower image 9',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-10.jpeg',
+      alt: 'flower image 10',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-11.jpeg',
+      alt: 'flower image 11',
+    },
+    {
+      img: '../../../assets/testimonials/flowers-12.jpeg',
+      alt: 'flower image 12',
+    },
+  ];
 }
