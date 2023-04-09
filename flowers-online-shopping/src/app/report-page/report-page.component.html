@@ -1,3 +1,46 @@
 <div class="main-nav">
-  <app-main-navigation></app-main-navigation>
-</div>
+  <div class="bg-flipped">
+    <!--Header container-->
+    <div class="container-hero">
+
+      <div class="auth"> 
+        <button class="btn-account"
+                id="account-button"
+                type="button"
+                onClick="location.href='/account'">
+          Account Page
+        </button>
+      </div>
+      <p class="app-name">Earnings Report</p>
+
+    </div>
+
+    <!--Main Body-->
+    <div class="report-info">
+      <div class="earnings-report">
+        <h1>Total Gross Earnings: </h1>
+        <p>Your total gross earnings for this period before any taxes.</p>
+        <!--Value for the gross earnings for the selected time period.-->
+        <h2>gross earnings value</h2>
+        <hr />
+      </div>
+
+      <div class="fee-report">
+        <h1 style="text-align:center">Total Fees:</h1>
+        <p>Your total fees and taxes this period: </p>
+        <!--Value for the total fees for the selected time period.-->
+        <h2>total fees value</h2>
+        <hr />
+      </div>
+
+      <div class="aprox-total">
+        <h1>Approximate Total:</h1>
+        <p>Your total gross earnings minus fees and taxes for this period: </p>
+        <!--Value for the approximate total for the selected time period (earnings - fees).-->
+        <h2>aproximate total value</h2>
+
+      </div>
+
+    </div>
+
+  </div>
