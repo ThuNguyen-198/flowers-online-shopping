@@ -1,14 +1,14 @@
 <div class="main-nav">
   <app-main-navigation></app-main-navigation>
 </div>
-<div class="sympathy-container">
+<div class="container">
   <app-filter-side-bar></app-filter-side-bar>
   <div class="product-list">
     <!--<h1>Product Display</h1>-->
-    <div *ngFor="let flower of flowers">
+    <div class = "product-img"*ngFor="let flower of flowers">
       <img src="{{ flower.image_small }}" alt="" />
       <h3 class="product-name">{{ flower.name }}</h3>
-      <p class="product-price">$$$</p>
+      <p class="product-price">${{ flower.price }}</p>
       <p class><button>Add to Cart</button></p>
     </div>
   </div>

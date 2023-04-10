@@ -46,6 +46,7 @@ import { ProductIndividualsComponent } from './products-display-page/product-ind
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ProductSympathyComponent } from './products-display-page/product-sympathy/product-sympathy.component';
 import { FilterSideBarComponent } from './products-display-page/filter-side-bar/filter-side-bar.component';
+import { ProductWeddingComponent } from './products-display-page/product-wedding/product-wedding.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,7 @@ import { FilterSideBarComponent } from './products-display-page/filter-side-bar/
     ProductIndividualsComponent,
     FilterSideBarComponent,
     ProductSympathyComponent,
+    ProductWeddingComponent,
   ],
   imports: [
     BrowserModule,

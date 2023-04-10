@@ -18,6 +18,7 @@ import { UserAccountPageComponent } from './user-account-page/user-account-page.
 import { ReportPageComponent } from './report-page/report-page.component';
 
 import { ProductSympathyComponent } from './products-display-page/product-sympathy/product-sympathy.component';
+import { ProductWeddingComponent } from './products-display-page/product-wedding/product-wedding.component';
 
 const routes: Routes = [
   //es
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'custom', component: ProductCustomComponent },
   { path: 'individuals', component: ProductIndividualsComponent },
   { path: 'sympathy', component: ProductSympathyComponent },
+  { path: 'wedding', component: ProductWeddingComponent },
 ];
 
 @NgModule({

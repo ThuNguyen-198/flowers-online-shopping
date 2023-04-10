@@ -7,16 +7,70 @@
     rgba(121, 110, 168, 0.3)
   );
 }
-.birthday-container {
-  font-size: 4rem;
-  color: #333;
+.container {
+  width: 100%;
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: flex-start;
+}
+/*PRODUCT CARDS*/
+.product-list {
+  overflow: auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  height: 100vh;
+
+  float: none;
+  vertical-align: top;
+  margin-left: 2.5%;
+  margin-top: 2%;
+  margin-right:2%;
+  margin-bottom: 2%;
+  position: relative;
   text-align: center;
+  box-shadow: 0 4px 8px 0 #534d6e;
+  font-size: 4rem;
   font-family: julee, sans-serif;
   text-transform: uppercase;
   transform: scaleZ(1);
+  color: #534d6e;
   letter-spacing: 0.1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: 100%;
+}
+.product-img {
+  margin-bottom: 1%;
+}
+.product-img:hover {
+  outline: .1rem solid #534d6e;
+}
+.product-name {
+  color: #534d6e;
+  text-align: center;
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+}
+.product-price {
+  color: #534d6e;
+  font-size: 22px;
+  text-align: center;
+}
+.product-list button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #534d6e;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  cursor: pointer;
+  width: 75%;
+  font-size: 20px;
+}
+.product-list button:hover {
+  opacity: 0.7;
+}
+.footer-block {
+  width: 100%;
+  margin: 0 auto;
 }
