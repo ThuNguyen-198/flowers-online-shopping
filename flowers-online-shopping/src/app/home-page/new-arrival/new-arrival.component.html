@@ -1,7 +1,16 @@
 <div class="new-arrival-container">
-  <ion-icon class="icon-back" name="chevron-back-outline"></ion-icon>
-  <div class="carousel-container">
-    <div class="carousel-item" *ngFor="let newFlower of newArrivalFlowers">
+  <ion-icon
+    class="icon-back"
+    name="chevron-back-outline"
+    (click)="onClickBackButton()"
+  ></ion-icon>
+
+  <div #carouselContainer id="carousel-container">
+    <div
+      class="carousel-item"
+      *ngFor="let newFlower of newArrivalFlowers; let i = index"
+      #item
+    >
       <img src="{{ newFlower.image_small }}" />
       <p class="flower-name">{{ newFlower.name }}</p>
       <div class="action">
@@ -22,5 +31,9 @@
       </div>
     </div>
   </div>
-  <ion-icon class="icon-next" name="chevron-forward-outline"></ion-icon>
+  <ion-icon
+    name="chevron-forward-outline"
+    class="icon-next"
+    (click)="onClickNextButton()"
+  ></ion-icon>
 </div>
