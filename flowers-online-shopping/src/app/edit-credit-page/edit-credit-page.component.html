@@ -1,0 +1,24 @@
+<h2>Edit Credit Card</h2>
+<form #creditCardForm="ngForm" (ngSubmit)="onSubmit(creditCardForm)">
+  <div class="form-group">
+    <label for="cardNumber">Card Number:</label>
+    <input type="text" class="form-control" id="cardNumber" name="cardNumber" [(ngModel)]="creditCard.cardNumber" required>
+  </div>
+  <div class="form-group">
+    <label for="cardholderName">Cardholder Name:</label>
+    <input type="text" class="form-control" id="cardholderName" name="cardholderName" [(ngModel)]="creditCard.cardholderName" required>
+  </div>
+  <div class="form-group">
+    <label for="expirationMonth">Expiration Month:</label>
+    <input type="number" class="form-control" id="expirationMonth" name="expirationMonth" [(ngModel)]="creditCard.expirationMonth" required>
+  </div>
+  <div class="form-group">
+    <label for="expirationYear">Expiration Year:</label>
+    <input type="number" class="form-control" id="expirationYear" name="expirationYear" [(ngModel)]="creditCard.expirationYear" required>
+  </div>
+  <div class="form-group">
+    <label for="cvv">CVV:</label>
+    <input type="text" class="form-control" id="cvv" name="cvv" [(ngModel)]="creditCard.cvv" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

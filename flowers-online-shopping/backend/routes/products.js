@@ -27,6 +27,23 @@ router.get("/:category", async (request, response, next) => {
   response.send(products);
 });
 
+router.get("/detail/:code", async (request, response, next) => {
+  const singleProductURL = `${GETPRODUCT_URL}?code=${request.params.code}`;
+  const products = await axios
+    .get(singleProductURL, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Basic " + API_BASE64,
+      },
+    })
+    .then((products) => {
+      response.status(200).json(products.data.PRODUCTS[0]);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 router.post("/cart/add", async (request, response, next) => {
   let email = request.body.email;
   let newProduct = request.body.product;

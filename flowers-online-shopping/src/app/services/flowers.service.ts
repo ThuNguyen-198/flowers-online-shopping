@@ -42,6 +42,12 @@ export class FlowersService {
     return this.flowersUpdated.asObservable();
   }
 
+  getSingleBouquet(code: string) {
+    return this.http.get<Flower>(
+      'http://localhost:3000/api/products/detail/' + code
+    );
+  }
+
   addToCart(flower: Flower, userEmail: any) {
     this.http
       .post('http://localhost:3000/api/products/cart/add', {

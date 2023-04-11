@@ -24,14 +24,4 @@ export class ProductsDisplayPageComponent implements OnInit {
         this.flowers = flowerData;
       });
   }
-
-  onAddToCart(product: Flower) {
-    let userEmail: any;
-    if (localStorage.getItem('userEmail') != null) {
-      userEmail = localStorage.getItem('userEmail')?.toString();
-    } else {
-      userEmail = 'guest@gmail.com';
-    }
-    this.flowerService.addToCart(product, userEmail);
-  }
 }

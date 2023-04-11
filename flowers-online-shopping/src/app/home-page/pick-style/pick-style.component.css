@@ -9,6 +9,7 @@
   font-family: julee, sans-serif;
 }
 .container-styles {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,4 +44,24 @@
   text-align: center;
   font-size: 1.6rem;
   margin-top: 1rem;
+  color: #534d6e;
+  font-weight: 500;
+}
+.benefits {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1.6rem;
+  margin-top: 2.4rem;
+  font-size: 1.2rem;
+  gap: 1rem;
+}
+.benefits div {
+  display: flex;
+  gap: 0.8rem;
+}
+.benefits ion-icon {
+  color: #534d6e;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
