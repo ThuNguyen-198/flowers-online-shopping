@@ -4,3 +4,9 @@ export interface EmployeeData {
     pwd: string,
     perms: number
 }
+
+export interface EarningsInfo {
+  earnings: number,
+  fees: number,
+  total: number
+}
