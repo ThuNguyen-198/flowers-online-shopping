@@ -41,4 +41,29 @@ export class FlowersService {
   getFlowerUpdateListener() {
     return this.flowersUpdated.asObservable();
   }
+
+  getSingleBouquet(code: any) {
+    return this.http.get<any>(
+      'http://localhost:3000/api/products/detail/' + code
+    );
+  }
+
+  addToCart(flower: Flower, userEmail: any) {
+    this.http
+      .post('http://localhost:3000/api/products/cart/add', {
+        email: userEmail,
+        product: {
+          productCode: flower.code,
+          productName: flower.name,
+          imageSmall: flower.image_small,
+          productDescription: flower.description,
+          productPrice: flower.price,
+          quantity: 1,
+        },
+      })
+      .subscribe((response) => {
+        alert('Added to cart!');
+        console.log('it went here');
+      });
+  }
 }

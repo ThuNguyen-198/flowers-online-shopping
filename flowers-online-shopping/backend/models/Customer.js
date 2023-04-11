@@ -13,6 +13,7 @@ const customerSchema = mongoose.Schema({
   phone: { type: String, required: true, unique: true }, // do we REALLY want this unique???
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
+  isAdmin: { type: Boolean },
 });
 
 //Export this as an object so we can use it somewhere else.

@@ -24,7 +24,7 @@ import { ProductWeddingComponent } from './products-display-page/product-wedding
 import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
 
 const routes: Routes = [
-    //uncomment canAcivate[AuthGard];
+  //uncomment canAcivate[AuthGard];
   {
     path: 'account/edit-account',
     component: EditUserPageComponent,
@@ -57,8 +57,7 @@ const routes: Routes = [
   { path: 'individuals', component: ProductIndividualsComponent },
   { path: 'sympathy', component: ProductSympathyComponent },
   { path: 'wedding', component: ProductWeddingComponent },
-  { path: 'details', component: ProductDetailsComponent },
-
+  { path: 'details/:code', component: ProductDetailsComponent },
 ];
 
 @NgModule({

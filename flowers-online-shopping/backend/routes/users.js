@@ -46,6 +46,7 @@ router.post("/signup/customer", (req, res, next) => {
       phone: req.body.phone,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
+      isAdmin: false,
     });
 
     customer
@@ -69,7 +70,7 @@ router.post("/signup/customer", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   let fetchedUser;
-  //console.log(Customer.find({ email: req.body.email }));
+
   Customer.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
@@ -96,6 +97,7 @@ router.post("/login", (req, res, next) => {
       res.status(200).json({
         token: token,
         expiresIn: 3600,
+        isAdmin: fetchedUser.isAdmin,
       });
     })
     .catch((err) => {

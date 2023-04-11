@@ -21,6 +21,7 @@ export class UserAccountPageComponent implements OnInit {
     firstName: 'ed',
     lastName: 'spr',
     address: '1234 address ln \n Lubbock TX, 79409',
+    isAdmin: false,
   };
 
   //change to one of these either work

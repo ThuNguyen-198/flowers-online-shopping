@@ -13,6 +13,8 @@ export class AuthService {
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated: boolean = false;
   private tokenTimer: any;
+  private isAdmin: boolean = false;
+  private adminStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -56,6 +58,7 @@ export class AuthService {
       firstName: regFirstName,
       lastName: regLastName,
       address: regAddress,
+      isAdmin: false,
     };
     this.http
       .post('http://localhost:3000/api/user/signup/customer', customerAuthData)
@@ -67,9 +70,16 @@ export class AuthService {
   getToken() {
     return this.token;
   }
+  getIsAdminListener() {
+    return this.adminStatusListener.asObservable();
+  }
 
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
+  }
+
+  getIsAdmin() {
+    return this.isAdmin;
   }
 
   getIsAuth() {
@@ -77,15 +87,19 @@ export class AuthService {
   }
 
   login(loginEmail: string, loginPassword: string) {
-    const authData: AuthData = { email: loginEmail, pwd: loginPassword };
+    const authData: AuthData = {
+      email: loginEmail,
+      pwd: loginPassword,
+    };
     this.http
-      .post<{ token: string; expiresIn: number }>(
+      .post<{ token: string; expiresIn: number; isAdmin: boolean }>(
         'http://localhost:3000/api/user/login',
         authData
       )
       .subscribe((response) => {
         const token = response.token;
         this.token = token;
+        this.isAdmin = response.isAdmin;
 
         if (token) {
           const expiresInDuration = response.expiresIn;
@@ -97,9 +111,15 @@ export class AuthService {
           const expirationDate = new Date(
             now.getTime() + expiresInDuration * 1000
           );
-          this.saveAuthData(this.token, expirationDate);
+          this.saveAuthData(
+            this.token,
+            expirationDate,
+            this.isAdmin,
+            loginEmail
+          );
 
           this.isAuthenticated = true;
+
           this.authStatusListener.next(true);
           //Direct users to homepage if login successful
           this.router.navigate(['/']);
@@ -141,9 +161,16 @@ export class AuthService {
     }, duration * 1000);
   }
 
-  private saveAuthData(token: string, expirationDate: Date) {
+  private saveAuthData(
+    token: string,
+    expirationDate: Date,
+    isAdmin: boolean,
+    email: string
+  ) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
+    localStorage.setItem('isAdmin', isAdmin.toString());
+    localStorage.setItem('userEmail', email);
   }
 
   private getAuthData() {
@@ -163,6 +190,8 @@ export class AuthService {
   private clearAuthData() {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
+    localStorage.removeItem('isAdmin');
+    localStorage.removeItem('userEmail');
   }
 
   autoAuthUser() {

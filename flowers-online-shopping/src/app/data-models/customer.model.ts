@@ -7,6 +7,7 @@ export interface CustomerData {
   firstName: string;
   lastName: string;
   address: string;
+  isAdmin: false;
 }
 
 export interface Order {
