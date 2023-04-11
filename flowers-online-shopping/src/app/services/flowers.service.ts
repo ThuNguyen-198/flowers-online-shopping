@@ -42,8 +42,8 @@ export class FlowersService {
     return this.flowersUpdated.asObservable();
   }
 
-  getSingleBouquet(code: string) {
-    return this.http.get<Flower>(
+  getSingleBouquet(code: any) {
+    return this.http.get<any>(
       'http://localhost:3000/api/products/detail/' + code
     );
   }

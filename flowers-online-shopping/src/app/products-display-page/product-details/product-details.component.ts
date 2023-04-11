@@ -10,7 +10,13 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-  flowers: Flower[] = [];
+  detailFlower: Flower = {
+    code: '',
+    name: '',
+    image_small: '',
+    description: '',
+    price: '',
+  };
   currentPage = 1;
 
   private flowerSub: Subscription = new Subscription();
@@ -21,7 +27,15 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      console.log(paramMap.get('code'));
+      this.flowerService
+        .getSingleBouquet(paramMap.get('code'))
+        .subscribe((bouquet) => {
+          this.detailFlower.code = bouquet.CODE;
+          this.detailFlower.name = bouquet.NAME;
+          this.detailFlower.description = bouquet.DESCRIPTION;
+          this.detailFlower.image_small = bouquet.LARGE;
+          this.detailFlower.price = bouquet.PRICE;
+        });
     });
   }
 
