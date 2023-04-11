@@ -111,7 +111,12 @@ export class AuthService {
           const expirationDate = new Date(
             now.getTime() + expiresInDuration * 1000
           );
-          this.saveAuthData(this.token, expirationDate, this.isAdmin);
+          this.saveAuthData(
+            this.token,
+            expirationDate,
+            this.isAdmin,
+            loginEmail
+          );
 
           this.isAuthenticated = true;
 
@@ -156,10 +161,16 @@ export class AuthService {
     }, duration * 1000);
   }
 
-  private saveAuthData(token: string, expirationDate: Date, isAdmin: boolean) {
+  private saveAuthData(
+    token: string,
+    expirationDate: Date,
+    isAdmin: boolean,
+    email: string
+  ) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('isAdmin', isAdmin.toString());
+    localStorage.setItem('userEmail', email);
   }
 
   private getAuthData() {
@@ -180,6 +191,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
     localStorage.removeItem('isAdmin');
+    localStorage.removeItem('userEmail');
   }
 
   autoAuthUser() {

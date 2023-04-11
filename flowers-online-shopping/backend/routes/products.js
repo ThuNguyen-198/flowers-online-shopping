@@ -28,28 +28,26 @@ router.get("/:category", async (request, response, next) => {
 });
 
 router.post("/cart/add", async (request, response, next) => {
-  const cartProduct = new Cart({
-    productCode: request.body.code,
-    productName: request.body.name,
-    imageSmall: request.body.image_small,
-    productDescription: request.body.description,
-    productPrice: request.body.price,
-    quantity: 1,
-  });
+  let email = request.body.email;
+  let newProduct = request.body.product;
 
-  cartProduct
-    .save()
-    .then((result) => {
-      response.status(201).json({
-        message: "Added product successfully",
-        products: result,
-      });
+  Cart.findOneAndUpdate(
+    { email: email },
+    {
+      $push: { product: newProduct },
+    },
+    { new: true, upsert: true }
+  )
+    .then((fetchedCart) => {
+      console.log(fetchedCart);
     })
-    .catch((err) => {
-      return response.status(500).json({
-        message: err,
-      });
+    .catch((error) => {
+      console.log(error);
     });
+
+  response.status(200).json({
+    message: "Cart added successfully",
+  });
 });
 
 module.exports = router;

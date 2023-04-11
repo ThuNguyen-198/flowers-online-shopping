@@ -47,8 +47,8 @@ const routes: Routes = [
 
   { path: 'custom', component: ProductCustomComponent },
   { path: 'individuals', component: ProductIndividualsComponent },
-  { path: 'sympathy', component: ProductSympathyComponent },
-  { path: 'wedding', component: ProductWeddingComponent },
+  { path: 'sy', component: ProductSympathyComponent },
+  { path: 'an', component: ProductWeddingComponent },
 ];
 
 @NgModule({

@@ -42,10 +42,21 @@ export class FlowersService {
     return this.flowersUpdated.asObservable();
   }
 
-  addToCart(product: Flower) {
+  addToCart(flower: Flower, userEmail: any) {
     this.http
-      .post('http://localhost:3000/api/products/cart/add', product)
+      .post('http://localhost:3000/api/products/cart/add', {
+        email: userEmail,
+        product: {
+          productCode: flower.code,
+          productName: flower.name,
+          imageSmall: flower.image_small,
+          productDescription: flower.description,
+          productPrice: flower.price,
+          quantity: 1,
+        },
+      })
       .subscribe((response) => {
+        alert('Added to cart!');
         console.log('it went here');
       });
   }
