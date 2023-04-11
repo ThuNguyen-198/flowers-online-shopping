@@ -41,4 +41,12 @@ export class FlowersService {
   getFlowerUpdateListener() {
     return this.flowersUpdated.asObservable();
   }
+
+  addToCart(product: Flower) {
+    this.http
+      .post('http://localhost:3000/api/products/cart/add', product)
+      .subscribe((response) => {
+        console.log('it went here');
+      });
+  }
 }

@@ -24,4 +24,8 @@ export class ProductsDisplayPageComponent implements OnInit {
         this.flowers = flowerData;
       });
   }
+
+  onAddToCart(product: Flower) {
+    this.flowerService.addToCart(product);
+  }
 }
