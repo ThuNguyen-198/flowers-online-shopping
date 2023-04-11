@@ -40,11 +40,11 @@ export class UserAccountPageComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.authService.getCurrentUser().subscribe((user) => {
-      this.user = user;
-      console.log(this.user);
-    });
+    ngOnInit(): void {
+      this.authService.getCurrentUser().subscribe((user) => {
+        this.user = user;
+        console.log(this.user);
+      });
     // Comment out the dummy orders and the dummy observable when adding the API
     // ---------------------Dummy orders -------------------------
     const orders: Order[] = [
@@ -116,10 +116,20 @@ export class UserAccountPageComponent implements OnInit {
   }
 
   goToEditUserPage() {
-    this.router.navigate(['account', 'edit-account']);
+    this.router.navigate(['account/edit-account', { customerData: JSON.stringify(this.user) }]);
   }
 
+  goToCreditCard() {
+    // this.router.navigate(['account/edit-credit-card'], {creditCard: JSON.stringify(this.user)});
+    this.router.navigate(['account/edit-credit-card'], { queryParams: { creditCard: JSON.stringify(this.creditCard) } });
+  }
+
+  goToLoginPage(){
+    this.router.navigate(['login']);
+  }
+    
   goToUserHistory() {
     this.router.navigate(['account', 'history']);
   }
 }
+

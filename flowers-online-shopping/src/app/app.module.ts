@@ -18,10 +18,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { EditUserPageComponent } from './edit-user-page/edit-user-page.component';
-import { OrderHistoryPageComponent } from './order-history-page/order-history-page.component';
+import { EditCreditPageComponent } from './edit-credit-page/edit-credit-page.component';
+
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
@@ -49,10 +51,11 @@ import { FilterSideBarComponent } from './products-display-page/filter-side-bar/
 @NgModule({
   declarations: [
     AppComponent,
-
+    EditUserPageComponent,
     LoginPageComponent,
     RegisterPageComponent,
     UserAccountPageComponent,
+    EditCreditPageComponent,
     ReportPageComponent,
     CheckoutPageComponent,
     ProductsDisplayPageComponent,
@@ -70,7 +73,8 @@ import { FilterSideBarComponent } from './products-display-page/filter-side-bar/
     FilterSideBarComponent,
     ProductSympathyComponent,
   ],
-  imports: [
+    imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
