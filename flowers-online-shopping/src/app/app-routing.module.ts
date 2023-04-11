@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { EditUserPageComponent } from './edit-user-page/edit-user-page.component';
+import { EditCreditPageComponent } from './edit-credit-page/edit-credit-page.component';
 import { OrderHistoryPageComponent } from './order-history-page/order-history-page.component';
 
 import { RegisterPageComponent } from './register-page/register-page.component';
@@ -22,16 +24,21 @@ import { ProductWeddingComponent } from './products-display-page/product-wedding
 import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
 
 const routes: Routes = [
-  //es
+    //uncomment canAcivate[AuthGard];
   {
     path: 'account/edit-account',
     component: EditUserPageComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
+  },
+  {
+    path: 'account/edit-credit-card',
+    component: EditCreditPageComponent,
+    //canActivate: [AuthGuard],
   },
   {
     path: 'account/history',
     component: OrderHistoryPageComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
   },
 
   { path: 'account', component: UserAccountPageComponent },

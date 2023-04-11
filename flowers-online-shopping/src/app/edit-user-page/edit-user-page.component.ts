@@ -1,21 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
 import { CustomerData } from '../data-models/customer.model';
-import { Router } from '@angular/router';
-
+import { NgForm } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'edit-user-page',
+  selector: 'app-edit-user',
   templateUrl: './edit-user-page.component.html',
-  styleUrls: ['./edit-user-page.component.css'],
+  styleUrls: ['./edit-user-page.component.css']
 })
 export class EditUserPageComponent implements OnInit {
-  constructor(public authService: AuthService, private router: Router) {}
+  
+  customer: CustomerData = { user: 'Jum', email: '', pwd: '',
+    phone: '', firstName: '', lastName: '', address: '' };
+    
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Get customer data 
+    const storedCustomer = localStorage.getItem('customer');
+    if (storedCustomer) {
+      this.customer = JSON.parse(storedCustomer);
+    }
+  }
 
   onSubmit(form: NgForm) {
+    console.log(this.customer);
+    localStorage.setItem('customer', JSON.stringify(this.customer));
     this.router.navigate(['account']);
   }
 }
