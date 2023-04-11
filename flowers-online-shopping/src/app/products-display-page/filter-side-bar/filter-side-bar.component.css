@@ -1,6 +1,6 @@
 /*FILTER*/
 .filter-body {
-  width: 60%;
+  width: 100%;
   margin-top: 2%;
   font-size: 1rem;
   color: #534d6e;
@@ -10,8 +10,8 @@
   transform: scaleZ(1);
   letter-spacing: 0.1rem;
 
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
-  outline: .1rem solid #ccc;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  outline: 0.1rem solid #ccc;
   padding: 5px;
   overflow: hidden;
   float: left;

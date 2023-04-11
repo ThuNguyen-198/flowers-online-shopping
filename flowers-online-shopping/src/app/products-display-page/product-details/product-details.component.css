@@ -9,52 +9,49 @@
 }
 .container {
   max-width: 1200px;
-  margin: auto;
+  margin: 4rem auto;
   padding: 40px;
-  display:flex;
-  margin-bottom: 25%;
+  display: flex;
+  gap: 4rem;
 }
 .left-column {
-  width:60%;
-  position:relative;
-  bottom:0;
+  width: 40%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .right-column {
-  width:40%;
-  margin-top:60px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
-.left-column img {
+/* .left-column img {
   width: 100%;
   position: absolute;
   left: 0;
   top: 0;
-}
+} */
 .product-description {
-  border-bottom: 1px solid #534d6e;
   margin-bottom: 20px;
   font-size: 2rem;
-  font-family: julee, sans-serif;
-  text-transform: uppercase;
-  transform: scaleZ(1);
   letter-spacing: 0.1rem;
 }
 .product-description span {
   margin-top: 5%;
-  font-weight:200;
+  font-weight: 200;
   font-size: 30px;
-  font-family: julee, sans-serif;
-  text-transform: uppercase;
   transform: scaleZ(1);
   color: #534d6e;
   letter-spacing: 0.1rem;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
+  font-weight: 500;
 }
 .product-description h1 {
   margin-top: 5%;
-  font-weight:300;
-  font-size: 20px;
-  font-family: julee, sans-serif;
-  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 1rem;
   transform: scaleZ(1);
   color: #534d6e;
   letter-spacing: 0.1rem;
@@ -63,30 +60,29 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 24px;
-  font-family: julee, sans-serif;
-  text-transform: uppercase;
   transform: scaleZ(1);
   color: #534d6e;
   letter-spacing: 0.1rem;
+  margin-bottom: 30px;
 }
 .product-price {
   display: flex;
-  align-items:center;
+  align-items: center;
+  gap: 2rem;
+  width: 60%;
 }
-.product-price span {
-  font-size:26px;
-  font-weight: 300;
+.product-price div {
+  font-size: 20px;
+  font-weight: 500;
   color: #534d6e;
-  margin-right: 20px;
 }
 .cart-btn {
-  display: inline-block;
   background-color: #534d6e;
   border-radius: 6px;
-  font-size: 16px;
-  color:#fff;
+  font-size: 12px;
+  color: #fff;
   text-decoration: none;
-  padding: 12px 30px;
+  padding: 10px 18px;
 }
 .cart-btn:hover {
   cursor: pointer;
