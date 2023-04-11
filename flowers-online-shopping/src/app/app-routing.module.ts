@@ -19,6 +19,7 @@ import { ReportPageComponent } from './report-page/report-page.component';
 
 import { ProductSympathyComponent } from './products-display-page/product-sympathy/product-sympathy.component';
 import { ProductWeddingComponent } from './products-display-page/product-wedding/product-wedding.component';
+import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
 
 const routes: Routes = [
   //es
@@ -49,6 +50,8 @@ const routes: Routes = [
   { path: 'individuals', component: ProductIndividualsComponent },
   { path: 'sympathy', component: ProductSympathyComponent },
   { path: 'wedding', component: ProductWeddingComponent },
+  { path: 'details', component: ProductDetailsComponent },
+
 ];
 
 @NgModule({
