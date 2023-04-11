@@ -24,10 +24,10 @@ export class TestimonialsComponent implements OnInit {
   }
   customers = [
     {
-      img: '../../../assets/testimonials/customer-1.webp',
+      img: '../../../assets/testimonials/customer-4.jpeg',
       review:
-        'This floral arrangement far exceeded my expectations, and made my friend smile with excitement during her time of grief. Great job!!! Thank you so much!',
-      name: 'Dyson',
+        'Great online flower shop - easy to use website, beautiful bouquets, and timely delivery. Highly recommended.',
+      name: 'Sam',
     },
     {
       img: '../../../assets/testimonials/customer-2.webp',
@@ -38,16 +38,17 @@ export class TestimonialsComponent implements OnInit {
     {
       img: '../../../assets/testimonials/customer-3.jpeg',
       review:
-        'This floral arrangement far exceeded my expectations, and made my friend smile with excitement during her time of grief. Great job!!! Thank you so much!',
+        'I had an excellent experience with this flower shop. Their website was easy to navigate, and they had a wide variety of bouquets to choose from. The flowers arrived on time and were even more beautiful in person.',
       name: 'Rebecca',
     },
     {
-      img: '../../../assets/testimonials/customer-4.jpeg',
+      img: '../../../assets/testimonials/customer-1.webp',
       review:
-        'This floral arrangement far exceeded my expectations, and made my friend smile with excitement during her time of grief. Great job!!! Thank you so much!',
-      name: 'Sam',
+        'This online flower shop is fantastic! The website is easy to navigate, the selection of flowers is impressive, and the delivery was prompt and efficient. Overall, I highly recommend this online flower shop for all of your floral needs.',
+      name: 'Dyson',
     },
   ];
+
   flowers = [
     {
       img: '../../../assets/testimonials/flowers-1.jpeg',
