@@ -18,15 +18,6 @@
     </button>
 
     <button
-      class="btn-logout"
-      id="signup-button"
-      type="button"
-      (click)="onLogout()"
-      *ngIf="userIsAuthenticated"
-    >
-      Logout
-    </button>
-    <button
       class="btn-signup"
       id="signup-button"
       type="button"
@@ -36,18 +27,30 @@
       Signup
     </button>
     <button
+      *ngIf="userIsAuthenticated"
       class="btn-account"
       id="account-button"
       type="button"
       (click)="onDisplayDropDown()"
-      *ngIf="!userIsAuthenticated"
     >
       {{ initial }}
     </button>
   </div>
   <div *ngIf="displayDropDown" class="drop-down-menu">
     <div class="drop-down-item" onClick="location.href='/account'">Account</div>
-    <div class="drop-down-item" onClick="location.href='/report'">Report</div>
-    <div class="drop-down-item" (click)="onLogout()">Logout</div>
+    <div
+      class="drop-down-item"
+      onClick="location.href='/report'"
+      *ngIf="onAdmin"
+    >
+      Report
+    </div>
+    <div
+      class="drop-down-item"
+      (click)="onLogout()"
+      *ngIf="userIsAuthenticated"
+    >
+      Logout
+    </div>
   </div>
 </div>
