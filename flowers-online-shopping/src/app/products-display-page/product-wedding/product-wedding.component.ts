@@ -4,11 +4,11 @@ import { Flower } from 'src/app/data-models/flower.model';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css'],
+  selector: 'app-product-wedding',
+  templateUrl: './product-wedding.component.html',
+  styleUrls: ['./product-wedding.component.css'],
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductWeddingComponent implements OnInit {
   flowers: Flower[] = [];
   currentPage = 1;
 

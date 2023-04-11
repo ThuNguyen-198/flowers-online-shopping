@@ -1,17 +1,6 @@
 <div class="auth-container">
   <div class="app-logo" onClick="location.href='/'">Flower Power</div>
   <div class="auth">
-
-    <button
-      class="btn-account"
-      id="account-button"
-      type="button"
-      onClick="location.href='/account'"
-      *ngIf="!userIsAuthenticated" 
-    >
-      Account
-    </button>
-
     <ion-icon
       name="cart-outline"
       class="btn-cart"
@@ -46,5 +35,19 @@
     >
       Signup
     </button>
+    <button
+      class="btn-account"
+      id="account-button"
+      type="button"
+      (click)="onDisplayDropDown()"
+      *ngIf="!userIsAuthenticated"
+    >
+      {{ initial }}
+    </button>
+  </div>
+  <div *ngIf="displayDropDown" class="drop-down-menu">
+    <div class="drop-down-item" onClick="location.href='/account'">Account</div>
+    <div class="drop-down-item" onClick="location.href='/report'">Report</div>
+    <div class="drop-down-item" (click)="onLogout()">Logout</div>
   </div>
 </div>

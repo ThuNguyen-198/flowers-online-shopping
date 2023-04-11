@@ -7,3 +7,62 @@
     rgba(121, 110, 168, 0.3)
   );
 }
+
+.bg {
+  background-image: url("bg-home.jpg");
+  background-color: #A6A9C8;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.top-form-container {
+  border-radius: 15px 15px 1px 1px;
+  background: #D3D9E9;
+  padding-left: 80px;
+  padding-right: 50px;
+  padding: 10px;
+  font-size: 30px;
+}
+
+.middle-form-container {
+  border-radius: 15px 15px 1px 1px;
+  background: #D3D9E9;
+  padding: 10px;
+}
+
+.bottom-form-container {
+  border-radius: 1px 1px 15px 15px;
+  background: #D3D9E9;
+  padding: 10px;
+}
+
+#column {
+  flex-direction: column;
+}
+
+.btn-login {
+  font-size: 1rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 11px;
+  border: 1px solid #534d6e;
+  width: 5rem;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.btn-login {
+  background-color: #534d6e;
+  color: #fff;
+}
+.btn-login:hover {
+  background-color: #3d3754;
+  border: 1px solid #3d3754;
+  color: #fff;
+}
+.btn-login:active {
+  transform: scale(0.95);
+}

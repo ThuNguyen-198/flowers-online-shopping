@@ -18,7 +18,11 @@ import { ProductCustomComponent } from './products-display-page/product-custom/p
 import { ProductIndividualsComponent } from './products-display-page/product-individuals/product-individuals.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
 import { ReportPageComponent } from './report-page/report-page.component';
+
 import { ProductSympathyComponent } from './products-display-page/product-sympathy/product-sympathy.component';
+import { ProductWeddingComponent } from './products-display-page/product-wedding/product-wedding.component';
+import { ProductDetailsComponent } from './products-display-page/product-details/product-details.component';
+
 const routes: Routes = [
     //uncomment canAcivate[AuthGard];
   {
@@ -38,6 +42,7 @@ const routes: Routes = [
   },
 
   { path: 'account', component: UserAccountPageComponent },
+  { path: 'report', component: ReportPageComponent },
   { path: 'signup', component: RegisterPageComponent },
   {
     path: 'checkout',
@@ -51,6 +56,9 @@ const routes: Routes = [
   { path: 'custom', component: ProductCustomComponent },
   { path: 'individuals', component: ProductIndividualsComponent },
   { path: 'sympathy', component: ProductSympathyComponent },
+  { path: 'wedding', component: ProductWeddingComponent },
+  { path: 'details', component: ProductDetailsComponent },
+
 ];
 
 @NgModule({
