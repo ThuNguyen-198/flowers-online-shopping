@@ -10,20 +10,22 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EditUserPageComponent implements OnInit {
   
-  customer: CustomerData = { user: '', email: '', pwd: '',
+  customer: CustomerData = { user: 'Jum', email: '', pwd: '',
     phone: '', firstName: '', lastName: '', address: '' };
     
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // Get customer data from route parameters
-    this.route.params.subscribe(params => {
-      this.customer = JSON.parse(params['customerData']);
-    });
+    // Get customer data 
+    const storedCustomer = localStorage.getItem('customer');
+    if (storedCustomer) {
+      this.customer = JSON.parse(storedCustomer);
+    }
   }
 
   onSubmit(form: NgForm) {
     console.log(this.customer);
+    localStorage.setItem('customer', JSON.stringify(this.customer));
     this.router.navigate(['account']);
   }
 }

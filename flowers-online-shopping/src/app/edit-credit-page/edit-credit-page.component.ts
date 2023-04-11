@@ -21,14 +21,17 @@ export class EditCreditPageComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // Get customer data from route parameters
-    this.route.queryParams.subscribe(params => {
-      this.creditCard = JSON.parse(params['creditCard']);
-    });
+    // Get customer data
+    const storedCreditCard = localStorage.getItem('creditCard');
+    if (storedCreditCard) {
+      this.creditCard = JSON.parse(storedCreditCard);
+    }
   }
 
   onSubmit(form: NgForm) {
     console.log(this.creditCard);
+    // Store credit card data in local storage
+    localStorage.setItem('creditCard', JSON.stringify(this.creditCard));
     this.router.navigate(['account']);
   }
 }

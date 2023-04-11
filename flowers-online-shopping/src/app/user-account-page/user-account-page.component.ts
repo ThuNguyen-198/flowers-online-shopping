@@ -116,12 +116,13 @@ export class UserAccountPageComponent implements OnInit {
   }
 
   goToEditUserPage() {
-    this.router.navigate(['account/edit-account', { customerData: JSON.stringify(this.user) }]);
+    localStorage.setItem('customer', JSON.stringify(this.user));
+    this.router.navigate(['account/edit-account']);
   }
 
   goToCreditCard() {
-    // this.router.navigate(['account/edit-credit-card'], {creditCard: JSON.stringify(this.user)});
-    this.router.navigate(['account/edit-credit-card'], { queryParams: { creditCard: JSON.stringify(this.creditCard) } });
+    localStorage.setItem('creditCard', JSON.stringify(this.creditCard));
+    this.router.navigate(['account/edit-credit-card']);
   }
 
   goToLoginPage(){
