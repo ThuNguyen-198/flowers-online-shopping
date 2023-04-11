@@ -5,7 +5,8 @@
 <mat-card class="bg">
   <form (submit)="onLogin(loginForm)" #loginForm="ngForm" >
     <div id="column" class="login-container">
-        <mat-form-field class="top-form-container" appearance="outline">
+      <div class="top-form-container">Login</div>
+        <mat-form-field class="middle-form-container" appearance="outline">
           <input
             matInput
             name="email"
@@ -30,6 +31,7 @@
           />
           <mat-error *ngIf="pwdInput.invalid">Please enter a valid passowrd.</mat-error>
         </mat-form-field>
+      <div>Don't have an account? <a href="/signup">Create one</a></div>
       <br>
       <button class="btn-login" id="login-button" type="submit">Login</button>
     </div>

@@ -8,13 +8,23 @@
   );
 }
 
-.bg {background-color: #A6A9C8;}
+.bg {
+  background-image: url("bg-home.jpg");
+  background-color: #A6A9C8;
+}
 
 .register-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+}
+
+.top-form-container {
+  border-radius: 15px 15px 1px 1px;
+  background: #D3D9E9;
+  padding: 10px;
+  font-size: 30px;
 }
 
 .tl-form-container {

@@ -5,6 +5,7 @@
 <mat-card class="bg">
   <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
     <div id="column" class="register-container">
+      <div class="top-form-container">Signup</div>
       <div id="row">
         <mat-form-field class="tl-form-container" appearance="outline">
           <input
@@ -22,7 +23,7 @@
           <input
             type="text"
             name="last"
-            ngModel
+            ngModel 
             matInput
             placeholder="Last Name"
             #lastNameInput="ngModel"
@@ -84,6 +85,7 @@
           <mat-error *ngIf="numberInput.invalid">Please enter a valid phone number.</mat-error>
         </mat-form-field>
       </div>
+      <div >Already have an account? <a href="/login">Login here</a></div>
       <br>
       <button class="btn-signup" id="signup-button" type="submit">Signup</button>
     </div>
