@@ -13,7 +13,7 @@ export class AuthService {
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated: boolean = false;
   private tokenTimer: any;
-  private isAdmin: boolean = false;
+  public isAdmin = new Subject<boolean>();
   private adminStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -60,7 +60,7 @@ export class AuthService {
       address: regAddress,
       isAdmin: false,
     };
-    console.log(customerAuthData);
+
     this.http
       .post('http://localhost:3000/api/user/signup/customer', customerAuthData)
       .subscribe((response) => {
@@ -80,7 +80,8 @@ export class AuthService {
   }
 
   getIsAdmin() {
-    return this.isAdmin;
+    console.log('from service: ' + this.isAdmin);
+    return this.isAdmin.asObservable();
   }
 
   getIsAuth() {
@@ -93,14 +94,13 @@ export class AuthService {
       pwd: loginPassword,
     };
     this.http
-      .post<{ token: string; expiresIn: number; isAdmin: boolean }>(
+      .post<{ token: string; expiresIn: number; isAdmin: any }>(
         'http://localhost:3000/api/user/login',
         authData
       )
       .subscribe((response) => {
         const token = response.token;
         this.token = token;
-        this.isAdmin = response.isAdmin;
 
         if (token) {
           const expiresInDuration = response.expiresIn;
@@ -112,6 +112,13 @@ export class AuthService {
           const expirationDate = new Date(
             now.getTime() + expiresInDuration * 1000
           );
+
+          if (response.isAdmin == 'true') {
+            this.isAdmin.next(true);
+          } else {
+            this.isAdmin.next(false);
+          }
+
           this.saveAuthData(
             this.token,
             expirationDate,
@@ -120,7 +127,6 @@ export class AuthService {
           );
 
           this.isAuthenticated = true;
-
           this.authStatusListener.next(true);
           //Direct users to homepage if login successful
           this.router.navigate(['/']);
@@ -165,7 +171,7 @@ export class AuthService {
   private saveAuthData(
     token: string,
     expirationDate: Date,
-    isAdmin: boolean,
+    isAdmin: any,
     email: string
   ) {
     localStorage.setItem('token', token);

@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-main-navigation',
@@ -11,7 +12,7 @@ export class MainNavigationComponent implements OnInit {
   public userIsAuthenticated: boolean = false;
   private authListenerSub: Subscription = new Subscription();
   private adminListenerSub: Subscription = new Subscription();
-  public userIsAdmin: any;
+  public userIsAdmin = false;
 
   constructor(public authService: AuthService) {}
   searchKey = '';
@@ -26,12 +27,9 @@ export class MainNavigationComponent implements OnInit {
     // initial = words.join();
     // console.log(initial);
 
-    this.userIsAdmin = this.authService.getIsAdmin();
-    this.adminListenerSub = this.authService
-      .getIsAdminListener()
-      .subscribe((isAdmin) => {
-        this.userIsAdmin = isAdmin;
-      });
+    this.authService.getIsAdmin().subscribe((isAdmin) => {
+      this.userIsAdmin = isAdmin;
+    });
 
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSub = this.authService
@@ -48,12 +46,6 @@ export class MainNavigationComponent implements OnInit {
   }
   onDisplayDropDown() {
     this.displayDropDown = !this.displayDropDown;
-  }
-
-  onAdmin() {
-    this.userIsAdmin = localStorage.getItem('isAdmin');
-    console.log(this.userIsAdmin);
-    return this.userIsAdmin;
   }
 
   // Change displayDropDown status when clicking on the screen or account-button
