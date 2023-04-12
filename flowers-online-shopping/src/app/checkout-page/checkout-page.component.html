@@ -9,30 +9,34 @@
     <mat-grid-list cols="3">
       <mat-grid-tile [colspan]="2">
         <ng-template matStepLabel>Confirm Purchase</ng-template>
-        <table mat-table [dataSource]="products" class="table mat-elevation-z1">
+        <table
+          mat-table
+          [dataSource]="cartItems"
+          class="table mat-elevation-z1"
+        >
           <!--Image Column-->
           <ng-container matColumnDef="imageLocation">
             <th mat-header-cell *matHeaderCellDef>Product</th>
-            <td mat-cell *matCellDef="let product">
-              <img [src]="product.imageLocation" />
+            <td mat-cell *matCellDef="let item of cartItems">
+              <img [src]="item.imageSmall" />
             </td>
           </ng-container>
 
           <!--Product Name Column-->
           <ng-container matColumnDef="productName">
             <th mat-header-cell *matHeaderCellDef>Name</th>
-            <td mat-cell *matCellDef="let product">
-              {{ product.productName }}
+            <td mat-cell *matCellDef="let item of cartItems">
+              {{ item.productName }}
             </td>
           </ng-container>
 
           <!--Product Quantity Column-->
           <ng-container matColumnDef="quantity">
             <th mat-header-cell *matHeaderCellDef>Quantity</th>
-            <td mat-cell *matCellDef="let product">
+            <td mat-cell *matCellDef="let item of cartItems">
               <div class="quantityDiv">
                 <ion-icon name="remove-circle-outline"></ion-icon>
-                {{ product.quantity }}
+                {{ item.quantity }}
                 <ion-icon name="add-circle-outline"></ion-icon>
               </div>
             </td>
@@ -41,8 +45,8 @@
           <!--Product Quantity Column-->
           <ng-container matColumnDef="totalPrice">
             <th mat-header-cell *matHeaderCellDef>Total</th>
-            <td mat-cell *matCellDef="let product">
-              {{ product.totalPrice | currency }}
+            <td mat-cell *matCellDef="let item of cartItems">
+              {{ item.productPrice | currency }}
             </td>
           </ng-container>
 

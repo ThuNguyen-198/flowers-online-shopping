@@ -27,6 +27,7 @@ router.get("/:category", async (request, response, next) => {
   response.send(products);
 });
 
+//GET DETAIL BOUQUET
 router.get("/detail/:code", async (request, response, next) => {
   const singleProductURL = `${GETPRODUCT_URL}?code=${request.params.code}`;
   const products = await axios
@@ -44,6 +45,7 @@ router.get("/detail/:code", async (request, response, next) => {
     });
 });
 
+//ADD TO CART
 router.post("/cart/add", async (request, response, next) => {
   let email = request.body.email;
   let newProduct = request.body.product;
@@ -64,6 +66,21 @@ router.post("/cart/add", async (request, response, next) => {
 
   response.status(200).json({
     message: "Cart added successfully",
+  });
+});
+
+//GET ALL CART ITEMS
+router.get("/cart", async (request, response, next) => {
+  let email = request.body.email;
+
+  Cart.findOne({ email: email }).then((cartItems) => {
+    if (cartItems) {
+      response.status(200).json({
+        items: cartItems.product,
+      });
+    } else {
+      response.status(404).json({ message: "Not found!" });
+    }
   });
 });
 
