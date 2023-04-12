@@ -72,14 +72,28 @@ export class FlowersService {
 
   getCartItems(userEmail: any) {
     this.http
-      .get<CartData[]>('http://localhost:3000/api/products/cart', userEmail)
+      .post<CartData[]>('http://localhost:3000/api/products/cart/items', {
+        userEmail: userEmail,
+      })
       .pipe(
-        map((productData) => {
-          return { items: productData };
+        map((productData: any) => {
+          return {
+            items: productData.map((item: any) => {
+              return {
+                productCode: item.productCode,
+                productName: item.productName,
+                imageSmall: item.imageSmall,
+                productDescription: item.productDescription,
+                productPrice: item.productPrice,
+                quantity: item.quantity,
+              };
+            }),
+          };
         })
       )
-      .subscribe((response) => {
-        console.log(response);
+      .subscribe((transformedProductData) => {
+        this.arrayOfCartItems = transformedProductData.items;
+        this.cartItemsUpdated.next([...this.arrayOfCartItems]);
       });
   }
 

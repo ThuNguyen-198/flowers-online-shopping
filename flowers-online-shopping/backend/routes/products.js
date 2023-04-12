@@ -12,6 +12,19 @@ const GETPRODUCT_URL =
   "https://www.floristone.com/api/rest/flowershop/getproducts";
 const CART_URL = "https://www.floristone.com/api/rest/shoppingcart";
 
+//GET ALL CART ITEMS
+router.post("/cart/items", async (request, response, next) => {
+  let email = request.body.userEmail;
+
+  Cart.findOne({ email: email }).then((cartItems) => {
+    if (cartItems) {
+      response.status(200).json(cartItems.product);
+    } else {
+      response.status(404).json({ message: "Not found!" });
+    }
+  });
+});
+
 router.get("/:category", async (request, response, next) => {
   const categoryURL =
     GETPRODUCT_URL + `?category=${request.params.category}&count=12`;
@@ -66,21 +79,6 @@ router.post("/cart/add", async (request, response, next) => {
 
   response.status(200).json({
     message: "Cart added successfully",
-  });
-});
-
-//GET ALL CART ITEMS
-router.get("/cart", async (request, response, next) => {
-  let email = request.body.email;
-
-  Cart.findOne({ email: email }).then((cartItems) => {
-    if (cartItems) {
-      response.status(200).json({
-        items: cartItems.product,
-      });
-    } else {
-      response.status(404).json({ message: "Not found!" });
-    }
   });
 });
 
