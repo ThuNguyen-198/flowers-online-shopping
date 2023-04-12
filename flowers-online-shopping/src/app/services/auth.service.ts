@@ -60,6 +60,7 @@ export class AuthService {
       address: regAddress,
       isAdmin: false,
     };
+    console.log(customerAuthData);
     this.http
       .post('http://localhost:3000/api/user/signup/customer', customerAuthData)
       .subscribe((response) => {

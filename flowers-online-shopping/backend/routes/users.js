@@ -46,7 +46,7 @@ router.post("/signup/customer", (req, res, next) => {
       phone: req.body.phone,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      isAdmin: false,
+      isAdmin: req.body.isAdmin,
     });
 
     customer
@@ -94,6 +94,7 @@ router.post("/login", (req, res, next) => {
         "secret_token_needed_to_be_authorized",
         { expiresIn: "1h" }
       );
+
       res.status(200).json({
         token: token,
         expiresIn: 3600,
