@@ -55,6 +55,7 @@ export class CheckoutPageComponent implements OnInit {
       .getCartItemsUpdateListener()
       .subscribe((cartData: CartData[]) => {
         this.cartItems = cartData;
+        console.log(cartData);
       });
   }
 }

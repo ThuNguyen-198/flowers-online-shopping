@@ -16,24 +16,26 @@
         [routerLink]="['/details', newFlower.code]"
       >
         <img src="{{ newFlower.image_small }}" />
+
         <p class="flower-name">{{ newFlower.name }}</p>
-        <div class="action">
-          <div class="flower-price">${{ newFlower.price }}</div>
-          <div class="action-btn-block">
-            <ion-icon name="heart-outline"></ion-icon>
-            <ion-icon name="cart-outline" onClick=""></ion-icon>
-          </div>
-        </div>
-        <div class="description">
-          <div class="rating"></div>
-          <div class="interaction">
-            <ion-icon name="heart-outline"></ion-icon>
-            <div class="liked">320</div>
-            <ion-icon name="eye-outline"></ion-icon>
-            <div class="seen">89,728</div>
-          </div>
-        </div>
       </a>
+      <div class="action">
+        <div class="flower-price">${{ newFlower.price }}</div>
+        <div class="action-btn-block">
+          <ion-icon name="heart-outline"></ion-icon>
+
+          <ion-icon name="cart-outline"></ion-icon>
+        </div>
+      </div>
+      <div class="description">
+        <div class="rating"></div>
+        <div class="interaction">
+          <ion-icon name="heart-outline"></ion-icon>
+          <div class="liked">320</div>
+          <ion-icon name="eye-outline"></ion-icon>
+          <div class="seen">89,728</div>
+        </div>
+      </div>
     </div>
   </div>
   <ion-icon
