@@ -8,7 +8,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { ProductsDisplayPageComponent } from './products-display-page/products-display-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProductBirthdayComponent } from './products-display-page/product-birthday/product-birthday.component';
-import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
+
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
