@@ -28,11 +28,11 @@
         </div>
       </div>
       <div class="products">
-        <div class="flower" *ngFor="let flower of testimFlower">
-          <img src="{{ flower.image_small }}" />
+        <div class="flower" *ngFor="let flower of individuals">
+          <img src="{{ flower.img }}" />
           <p class="flower-name">{{ flower.name }}</p>
           <div class="action">
-            <div class="flower-price">${{ flower.price }}</div>
+            <div class="flower-price">$5.99</div>
             <div class="action-btn-block">
               <ion-icon name="heart-outline"></ion-icon>
               <ion-icon name="cart-outline" onClick=""></ion-icon>
