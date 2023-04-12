@@ -33,6 +33,17 @@ export class NewArrivalComponent implements OnInit, AfterViewInit {
       });
     // console.log(items);
   }
+
+  onAddToCart(product: Flower) {
+    let userEmail: any;
+    if (localStorage.getItem('userEmail') != null) {
+      userEmail = localStorage.getItem('userEmail')?.toString();
+    } else {
+      userEmail = 'guest@gmail.com';
+    }
+    this.flowerService.addToCart(product, userEmail);
+  }
+
   onClickNextButton() {
     if (this.index == 0) this.index = 4;
     this.index = this.index + Math.min(5, this.items.length - this.index - 1);
@@ -53,14 +64,4 @@ export class NewArrivalComponent implements OnInit, AfterViewInit {
 
   // onClickBackButton() {}
   //-----------------------------------------------
-
-  onAddToCart(product: Flower) {
-    let userEmail: any;
-    if (localStorage.getItem('userEmail') != null) {
-      userEmail = localStorage.getItem('userEmail')?.toString();
-    } else {
-      userEmail = 'guest@gmail.com';
-    }
-    this.flowerService.addToCart(product, userEmail);
-  }
 }
