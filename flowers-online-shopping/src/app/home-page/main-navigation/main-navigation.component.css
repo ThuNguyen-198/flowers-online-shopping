@@ -8,12 +8,11 @@
   align-items: center;
   justify-content: space-between;
   font-size: 2rem;
-  /* background-color: rgba(255, 255, 255, 0); */
 }
 .auth {
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  gap: 1rem;
 }
 .btn-login,
 .btn-signup,
@@ -52,13 +51,45 @@
   cursor: pointer;
   transition: all 0.5s;
 }
-.app-logo a {
+.app-logo {
   font-size: 1.8rem;
   color: #333;
   font-family: julee, sans-serif;
   cursor: pointer;
   text-decoration: none;
 }
-.app-logo a:active {
+.app-logo:active {
+  transform: scale(0.95);
+}
+.btn-account {
+  font-size: 0.8rem;
+  padding: 0.6rem;
+  border-radius: 50%;
+  background-color: #534d6e;
+  color: #fff;
+  transition: all 0.3s;
+}
+.drop-down-menu {
+  position: fixed;
+  right: 1rem;
+  top: 3.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem 1rem;
+  background-color: #c9c5dc;
+  border-radius: 9px;
+}
+.drop-down-item {
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.drop-down-item:hover,
+.drop-down-item:active {
+  font-weight: 500;
+}
+.drop-down-item:active {
+  font-weight: 500;
   transform: scale(0.95);
 }

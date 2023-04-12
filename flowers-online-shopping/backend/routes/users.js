@@ -1,4 +1,5 @@
 //For encrypting password
+// HEY!!! We agreed Argon2id! If that's not available for JS, so be it, but there needs to be discussion.
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const checkAuth = require("../../src/app/check-auth");
@@ -13,7 +14,7 @@ router.post("/signup/employee", (req, res, next) => {
   const employee = new Employee();
   bcrypt.hash(req.body.pwd, 10).then((hash) => {
     employee = {
-      eID: req.body.eID,
+      //eID: req.body.eID,
       login_ID: req.body.login_ID,
       pwd: req.body.pwd,
       perms: req.body.perms,
@@ -45,15 +46,17 @@ router.post("/signup/customer", (req, res, next) => {
       phone: req.body.phone,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
+      isAdmin: false,
     });
+
     customer
       .save()
       .then((result) => {
         res.status(201).json({
-          message: "Employee account created!",
+          message: "Customer account created!",
           customer: {
             ...result,
-            cuID: result._id,
+            //cuID: result._id,
           },
         });
       })
@@ -67,7 +70,7 @@ router.post("/signup/customer", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   let fetchedUser;
-  //console.log(Customer.find({ email: req.body.email }));
+
   Customer.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
@@ -94,6 +97,7 @@ router.post("/login", (req, res, next) => {
       res.status(200).json({
         token: token,
         expiresIn: 3600,
+        isAdmin: fetchedUser.isAdmin,
       });
     })
     .catch((err) => {

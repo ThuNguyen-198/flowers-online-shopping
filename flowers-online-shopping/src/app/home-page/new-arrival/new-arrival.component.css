@@ -3,12 +3,13 @@
   gap: 2rem;
   align-items: center;
 }
-.carousel-container {
+#carousel-container {
   display: flex;
+  gap: 2rem;
   overflow-x: scroll;
-  scroll-snap-type: x mandatory;
+  /* scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  -ms-overflow-style: none;
+  -ms-overflow-style: none; */
 }
 .icon-back,
 .icon-next {
@@ -17,27 +18,35 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-.icon-back:active,
-.icon-next:active {
+.icon-back:hover,
+.icon-next:hover {
+  color: #796ea8;
+}
+.icon-back:active .icon-next:active {
   transform: scale(0.95);
-  color: #f2f1f6;
+  color: #796ea8;
 }
 .carousel-item {
+  /* display: flex;
+  flex-direction: column; */
   flex: 0 0 auto;
-  width: 13rem;
-  margin-right: 2rem;
+  width: 12rem;
+  /* margin-right: 2rem; */
   scroll-snap-align: start;
   background-color: #f0f0f0;
-  padding: 0.6rem;
+  padding: 0.8rem;
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
   opacity: 0;
   animation: slide-in 0.5s ease-in-out forwards;
   cursor: pointer;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #c9c5dc;
-  transition: all 0.3s;
+  transition: transform 0.3s;
+}
+.carousel-item img {
+  border-radius: 8px 8px 0 0;
 }
 .carousel-item:hover {
   background-color: #bcb7d4;
@@ -52,9 +61,60 @@
     opacity: 1;
   }
 }
-.item-img {
-  margin-bottom: 0.4rem;
+
+/* Flower Card */
+.flower-name {
+  font-size: 1rem;
+  font-weight: 500;
 }
-.item-title {
+.action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.flower-price {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.action-btn-block {
   font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.action-btn-block ion-icon {
+  cursor: pointer;
+  font-weight: 400;
+  transition: all 0.3s;
+  border-radius: 50%;
+  padding: 0.3rem;
+}
+.action-btn-block ion-icon:hover {
+  border-radius: 50%;
+  background-color: #796ea8;
+  padding: 0.3rem;
+  font-size: 1.2rem;
+}
+.action-btn-block ion-icon:active {
+  transform: scale(0.95);
+}
+.description {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+  /* font-size: 0.8rem; */
+}
+.interaction {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.interaction ion-icon {
+  font-size: 0.8rem;
+}
+.liked {
+  margin-right: 0.6rem;
 }

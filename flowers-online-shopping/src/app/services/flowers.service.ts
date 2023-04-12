@@ -4,11 +4,14 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartData } from '../data-models/cart.model';
 
 @Injectable({ providedIn: 'root' })
 export class FlowersService {
   private arrayOfFlowers: Flower[] = [];
+  private arrayOfCartItems: CartData[] = [];
   private flowersUpdated = new Subject<Flower[]>();
+  private cartItemsUpdated = new Subject<CartData[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -40,5 +43,61 @@ export class FlowersService {
   //Actively listen to changes from servers
   getFlowerUpdateListener() {
     return this.flowersUpdated.asObservable();
+  }
+
+  getSingleBouquet(code: any) {
+    return this.http.get<any>(
+      'http://localhost:3000/api/products/detail/' + code
+    );
+  }
+
+  addToCart(flower: Flower, userEmail: any) {
+    this.http
+      .post('http://localhost:3000/api/products/cart/add', {
+        email: userEmail,
+        product: {
+          productCode: flower.code,
+          productName: flower.name,
+          imageSmall: flower.image_small,
+          productDescription: flower.description,
+          productPrice: flower.price,
+          quantity: 1,
+        },
+      })
+      .subscribe((response) => {
+        alert('Added to cart!');
+        console.log('it went here');
+      });
+  }
+
+  getCartItems(userEmail: any) {
+    this.http
+      .post<CartData[]>('http://localhost:3000/api/products/cart/items', {
+        userEmail: userEmail,
+      })
+      .pipe(
+        map((productData: any) => {
+          return {
+            items: productData.map((item: any) => {
+              return {
+                productCode: item.productCode,
+                productName: item.productName,
+                imageSmall: item.imageSmall,
+                productDescription: item.productDescription,
+                productPrice: item.productPrice,
+                quantity: item.quantity,
+              };
+            }),
+          };
+        })
+      )
+      .subscribe((transformedProductData) => {
+        this.arrayOfCartItems = transformedProductData.items;
+        this.cartItemsUpdated.next([...this.arrayOfCartItems]);
+      });
+  }
+
+  getCartItemsUpdateListener() {
+    return this.cartItemsUpdated.asObservable();
   }
 }

@@ -24,7 +24,8 @@ export class RegisterPageComponent implements OnInit {
       form.value.pwd,
       form.value.phone,
       form.value.first,
-      form.value.last
+      form.value.last,
+      form.value.address
     );
   }
 }

@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChildren,
+  ElementRef,
+  AfterViewInit,
+  QueryList,
+} from '@angular/core';
 import { FlowersService } from 'src/app/services/flowers.service';
-import { Subscription } from 'rxjs';
+import { min, Subscription } from 'rxjs';
 import { Flower } from 'src/app/data-models/flower.model';
 
 @Component({
@@ -8,8 +15,11 @@ import { Flower } from 'src/app/data-models/flower.model';
   templateUrl: './new-arrival.component.html',
   styleUrls: ['./new-arrival.component.css'],
 })
-export class NewArrivalComponent implements OnInit {
+export class NewArrivalComponent implements OnInit, AfterViewInit {
+  @ViewChildren('item') items!: QueryList<ElementRef>;
+  index: number = 4;
   newArrivalFlowers: Flower[] = [];
+
   private flowerSub: Subscription = new Subscription();
 
   constructor(public flowerService: FlowersService) {}
@@ -21,5 +31,37 @@ export class NewArrivalComponent implements OnInit {
       .subscribe((flowerData: Flower[]) => {
         this.newArrivalFlowers = flowerData;
       });
+    // console.log(items);
   }
+
+  onAddToCart(product: Flower) {
+    let userEmail: any;
+    if (localStorage.getItem('userEmail') != null) {
+      userEmail = localStorage.getItem('userEmail')?.toString();
+    } else {
+      userEmail = 'guest@gmail.com';
+    }
+    this.flowerService.addToCart(product, userEmail);
+  }
+
+  onClickNextButton() {
+    if (this.index == 0) this.index = 4;
+    this.index = this.index + Math.min(5, this.items.length - this.index - 1);
+    this.items
+      .toArray()
+      [this.index].nativeElement.scrollIntoView({ behavior: 'smooth' });
+    console.log(this.index);
+  }
+  onClickBackButton() {
+    if (this.index == this.items.length - 1) this.index = this.index - 9;
+    else this.index = this.index - Math.min(5, this.index);
+    this.items
+      .toArray()
+      [this.index].nativeElement.scrollIntoView({ behavior: 'smooth' });
+    console.log(this.index);
+  }
+  ngAfterViewInit() {}
+
+  // onClickBackButton() {}
+  //-----------------------------------------------
 }

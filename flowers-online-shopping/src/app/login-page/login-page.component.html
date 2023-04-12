@@ -1,41 +1,39 @@
 <div class="main-nav">
   <app-main-navigation></app-main-navigation>
 </div>
-<h1>Login</h1>
 
-<mat-card>
-  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
-    <div class="login-container">
-      <mat-form-field>
-        <input
-          matInput
-          name="email"
-          ngModel
-          type="email"
-          placeholder="Email"
-          #emailInput="ngModel"
-          required
-        />
-        <mat-error *ngIf="emailInput.invalid"
-          >Please enter a valid email.</mat-error
-        >
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          name="pwd"
-          ngModel
-          type="password"
-          placeholder="Password"
-          #pwdInput="ngModel"
-          required
-        />
-        <mat-error *ngIf="pwdInput.invalid"
-          >Please enter a valid passowrd.</mat-error
-        >
-      </mat-form-field>
+<mat-card class="bg">
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" >
+    <div id="column" class="login-container">
+      <div class="top-form-container">Login</div>
+        <mat-form-field class="middle-form-container" appearance="outline">
+          <input
+            matInput
+            name="email"
+            ngModel
+            type="email"
+            placeholder="E-mail"
+            #emailInput="ngModel"
+            required
+          />
+          <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+        </mat-form-field>
 
-      <button mat-raised-button color="accent" type="submit">Login</button>
+        <mat-form-field class="bottom-form-container" appearance="outline">
+          <input
+            matInput
+            name="pwd"
+            ngModel
+            type="password"
+            placeholder="Password"
+            #pwdInput="ngModel"
+            required
+          />
+          <mat-error *ngIf="pwdInput.invalid">Please enter a valid passowrd.</mat-error>
+        </mat-form-field>
+      <div>Don't have an account? <a href="/signup">Create one</a></div>
+      <br>
+      <button class="btn-login" id="login-button" type="submit">Login</button>
     </div>
   </form>
 </mat-card>

@@ -5,8 +5,7 @@ const uniqueValidator = require("mongoose-unique-validator");
 // JJK: specifically, argon2id
 
 const customerSchema = mongoose.Schema({
-  // primary keys should be unique
-  cuID: { type: mongoose.Types.ObjectId, unique: true, immutable: true },
+  //cuID: { type: String },
   // these two should be merged and immutable!!! (Unless we want username independent of email, but still: user, at least, immutable)
   user: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
@@ -14,6 +13,7 @@ const customerSchema = mongoose.Schema({
   phone: { type: String, required: true, unique: true }, // do we REALLY want this unique???
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
+  isAdmin: { type: Boolean },
 });
 
 //Export this as an object so we can use it somewhere else.

@@ -1,1 +1,27 @@
-<p>product-details works!</p>
+<div class="main-nav">
+  <app-main-navigation></app-main-navigation>
+</div>
+
+<div class="container">
+  <div class="left-column">
+    <img src="{{ detailFlower.image_small }}" />
+  </div>
+  <div class="right-column">
+    <div class="product-description">
+      <span>{{ detailFlower.name }}</span>
+      <h1>
+        {{ detailFlower.description }}
+      </h1>
+      <p>Delivered in a clear glass vase.</p>
+      <div class="product-price">
+        <div>${{ detailFlower.price }}</div>
+        <button class="cart-btn" (click)="onAddToCart(detailFlower)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-block">
+  <app-footer></app-footer>
+</div>

@@ -2,123 +2,32 @@
   <app-main-navigation></app-main-navigation>
 </div>
 
-<div class="filter-body">
-  <h1>Filter Results</h1>
-  <hr />
-  <h1>Price Ranges</h1>
-  <label class="filter"
-    >$100 - $150
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >$80 - $100
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >$50 - $80
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >$20 - $50
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Under $20
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <h1>Style</h1>
-  <label class="filter"
-    >Classics for Her
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Elegant
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Classic for Him
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Fun
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Exotic
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <h1>Flower</h1>
-  <label class="filter"
-    >Roses
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Daisies
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Lilies
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Chrysanthemums
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Carnations
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <h1>Colors</h1>
-  <label class="filter"
-    >Red
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Purple
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Green
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >White
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <label class="filter"
-    >Pink
-    <input type="checkbox" />
-    <span class="checkmark"></span>
-  </label>
-  <p class><button>Confirm</button></p>
-</div>
+<div class="container">
+  <app-filter-side-bar></app-filter-side-bar>
 
-<div class="product-list">
-  <!--<h1>Product Display</h1>-->
-  <div *ngFor="let flower of flowers">
-    <img src="{{ flower.image_small }}" alt="" />
-    <h3 class="product-name">{{ flower.name }}</h3>
-    <p class="product-price">$$$</p>
-    <p class><button>Add to Cart</button></p>
+  <div class="product-list">
+    <div class="product" *ngFor="let flower of flowers">
+      <a style="text-decoration: none" [routerLink]="['/details', flower.code]">
+        <img class="product-img" src="{{ flower.image_small }}" />
+        <p class="product-name">{{ flower.name }}</p>
+        <div class="action">
+          <div class="product-price">${{ flower.price }}</div>
+          <div class="action-btn-block">
+            <ion-icon name="heart-outline"></ion-icon>
+            <ion-icon name="cart-outline"></ion-icon>
+          </div>
+        </div>
+        <div class="description">
+          <div class="rating"></div>
+          <div class="interaction">
+            <ion-icon name="heart-outline"></ion-icon>
+            <div class="liked">320</div>
+            <ion-icon name="eye-outline"></ion-icon>
+            <div class="seen">89,728</div>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 

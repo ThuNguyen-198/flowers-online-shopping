@@ -1,10 +1,49 @@
 <div class="new-arrival-container">
-  <ion-icon class="icon-back" name="chevron-back-outline"></ion-icon>
-  <div class="carousel-container">
-    <div class="carousel-item" *ngFor="let newFlower of newArrivalFlowers">
-      <img src="{{ newFlower.image_small }}" class="item-img" />
-      <h3 class="item-title">{{ newFlower.name }}</h3>
+  <ion-icon
+    class="icon-back"
+    name="chevron-back-outline"
+    (click)="onClickBackButton()"
+  ></ion-icon>
+
+  <div #carouselContainer id="carousel-container">
+    <div
+      class="carousel-item"
+      *ngFor="let newFlower of newArrivalFlowers; let i = index"
+      #item
+    >
+      <a
+        style="text-decoration: none"
+        [routerLink]="['/details', newFlower.code]"
+      >
+        <img src="{{ newFlower.image_small }}" />
+
+        <p class="flower-name">{{ newFlower.name }}</p>
+      </a>
+      <div class="action">
+        <div class="flower-price">${{ newFlower.price }}</div>
+        <div class="action-btn-block">
+          <ion-icon name="heart-outline"></ion-icon>
+
+          <ion-icon
+            name="cart-outline"
+            (click)="onAddToCart(newFlower)"
+          ></ion-icon>
+        </div>
+      </div>
+      <div class="description">
+        <div class="rating"></div>
+        <div class="interaction">
+          <ion-icon name="heart-outline"></ion-icon>
+          <div class="liked">320</div>
+          <ion-icon name="eye-outline"></ion-icon>
+          <div class="seen">89,728</div>
+        </div>
+      </div>
     </div>
   </div>
-  <ion-icon class="icon-next" name="chevron-forward-outline"></ion-icon>
+  <ion-icon
+    name="chevron-forward-outline"
+    class="icon-next"
+    (click)="onClickNextButton()"
+  ></ion-icon>
 </div>

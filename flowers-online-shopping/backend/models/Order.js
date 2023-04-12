@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
     // primary keys should be unique
-    oID: { type: mongoose.Types.ObjectId, required: true, unique: true, immutable: true },
+    //oID: { type: mongoose.Types.ObjectId, required: true, unique: true, immutable: true },
     status: { type: String, required: true, enum: ["PLACED", "CANCLED", "CANCELED_BY_STORE", "READY", "SENT", "RECEIVED"] }, 
     // this should be a foreign key!
     cust_ID: { type: mongoose.Types.ObjectId, required: true, immutable: true },

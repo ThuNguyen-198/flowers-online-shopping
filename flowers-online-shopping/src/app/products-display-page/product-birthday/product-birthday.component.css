@@ -7,16 +7,102 @@
     rgba(121, 110, 168, 0.3)
   );
 }
-.birthday-container {
-  font-size: 4rem;
+
+.container {
   color: #333;
+  margin: 0 3rem;
+  width: 100%;
+  margin-top: 3rem;
+  margin-left: 1rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 5fr 0.1fr;
+  gap: 2rem;
+  align-items: flex-start;
+  color: #333;
+}
+/*PRODUCT CARDS*/
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  float: none;
+  vertical-align: top;
+  position: relative;
   text-align: center;
-  font-family: julee, sans-serif;
-  text-transform: uppercase;
-  transform: scaleZ(1);
+  font-size: 1.5rem;
+  color: #333;
   letter-spacing: 0.1rem;
+}
+.product {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
   justify-content: center;
-  height: 100%;
+  padding: 2rem 2rem;
+  background: #fff;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  outline: 0.1rem solid #ccc;
+  cursor: pointer;
+  outline-offset: -1.5rem;
+}
+.product:hover {
+  outline: 0.2rem solid #534d6e;
+  outline-offset: 0;
+}
+.product-name {
+  margin-top: 1.6rem;
+  margin-bottom: 1rem;
+}
+/* .container .product-list .product img {
+  height: 15rem;
+} */
+/*im not sure if I like this or not*/
+/*keep or delete???*/
+.product img {
+}
+.product:hover img {
+  transform: scale(1.1);
+}
+.product h3 {
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+}
+
+.action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+.product-price {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.description {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.interaction {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.interaction ion-icon {
+  font-size: 01rem;
+}
+.seen,
+.liked {
+  font-size: 1.2rem;
+}
+
+.footer-block {
+  width: 100%;
+  margin: 0 auto;
+}
+a {
+  color: #333;
 }

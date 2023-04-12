@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,7 +18,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+
+import { EditUserPageComponent } from './edit-user-page/edit-user-page.component';
+import { EditCreditPageComponent } from './edit-credit-page/edit-credit-page.component';
+
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
@@ -38,14 +43,20 @@ import { ProductBirthdayComponent } from './products-display-page/product-birthd
 import { AuthInterceptor } from './auth-interceptor';
 import { AuthGuard } from './auth.guard';
 import { MainNavigationComponent } from './home-page/main-navigation/main-navigation.component';
-
+import { ProductCustomComponent } from './products-display-page/product-custom/product-custom.component';
+import { ProductIndividualsComponent } from './products-display-page/product-individuals/product-individuals.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ProductSympathyComponent } from './products-display-page/product-sympathy/product-sympathy.component';
+import { FilterSideBarComponent } from './products-display-page/filter-side-bar/filter-side-bar.component';
+import { ProductWeddingComponent } from './products-display-page/product-wedding/product-wedding.component';
 @NgModule({
   declarations: [
     AppComponent,
-
+    EditUserPageComponent,
     LoginPageComponent,
     RegisterPageComponent,
     UserAccountPageComponent,
+    EditCreditPageComponent,
     ReportPageComponent,
     CheckoutPageComponent,
     ProductsDisplayPageComponent,
@@ -58,8 +69,14 @@ import { MainNavigationComponent } from './home-page/main-navigation/main-naviga
     FooterComponent,
     ProductBirthdayComponent,
     MainNavigationComponent,
+    ProductCustomComponent,
+    ProductIndividualsComponent,
+    FilterSideBarComponent,
+    ProductSympathyComponent,
+    ProductWeddingComponent,
   ],
-  imports: [
+    imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -78,6 +95,8 @@ import { MainNavigationComponent } from './home-page/main-navigation/main-naviga
     MatDividerModule,
     MatListModule,
     MatGridListModule,
+    ReactiveFormsModule,
+    ImageCropperModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
