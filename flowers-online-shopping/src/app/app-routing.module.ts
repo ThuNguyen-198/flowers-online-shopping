@@ -6,6 +6,7 @@ import { EditUserPageComponent } from './edit-user-page/edit-user-page.component
 import { EditCreditPageComponent } from './edit-credit-page/edit-credit-page.component';
 import { OrderHistoryPageComponent } from './order-history-page/order-history-page.component';
 
+import { ProductsSearchPageComponent } from './products-search-page/products-search-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { CheckoutPageComponent } from './checkout-page/checkout-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -40,7 +41,7 @@ const routes: Routes = [
     component: OrderHistoryPageComponent,
     //canActivate: [AuthGuard],
   },
-
+  { path: 'search', component: ProductsSearchPageComponent},
   { path: 'account', component: UserAccountPageComponent },
   { path: 'report', component: ReportPageComponent },
   { path: 'signup', component: RegisterPageComponent },
