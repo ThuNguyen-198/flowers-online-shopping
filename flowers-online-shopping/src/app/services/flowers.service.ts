@@ -4,11 +4,14 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartData } from '../data-models/cart.model';
 
 @Injectable({ providedIn: 'root' })
 export class FlowersService {
   private arrayOfFlowers: Flower[] = [];
+  private arrayOfCartItems: CartData[] = [];
   private flowersUpdated = new Subject<Flower[]>();
+  private cartItemsUpdated = new Subject<CartData[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -65,5 +68,22 @@ export class FlowersService {
         alert('Added to cart!');
         console.log('it went here');
       });
+  }
+
+  getCartItems(userEmail: any) {
+    this.http
+      .get<CartData[]>('http://localhost:3000/api/products/cart', userEmail)
+      .pipe(
+        map((productData) => {
+          return { items: productData };
+        })
+      )
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
+
+  getCartItemsUpdateListener() {
+    return this.cartItemsUpdated.asObservable();
   }
 }

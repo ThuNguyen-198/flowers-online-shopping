@@ -6,6 +6,26 @@
   <app-filter-side-bar></app-filter-side-bar>
   <div class="product-list">
     <div class="product" *ngFor="let flower of flowers">
+
+      <a style="text-decoration: none" [routerLink]="['/details', flower.code]">
+        <img class="product-img" src="{{ flower.image_small }}" />
+        <p class="product-name">{{ flower.name }}</p>
+        <div class="action">
+          <div class="product-price">${{ flower.price }}</div>
+          <div class="action-btn-block">
+            <ion-icon name="heart-outline"></ion-icon>
+            <ion-icon name="cart-outline" onClick=""></ion-icon>
+          </div>
+        </div>
+        <div class="description">
+          <div class="rating"></div>
+          <div class="interaction">
+            <ion-icon name="heart-outline"></ion-icon>
+            <div class="liked">320</div>
+            <ion-icon name="eye-outline"></ion-icon>
+            <div class="seen">89,728</div>
+          </div>
+
       <img class="product-img" src="{{ flower.image_small }}" />
       <p class="product-name">{{ flower.name }}</p>
       <div class="action">
@@ -22,8 +42,9 @@
           <div class="liked">320</div>
           <ion-icon name="eye-outline"></ion-icon>
           <div class="seen">89,728</div>
+
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>

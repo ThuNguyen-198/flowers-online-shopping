@@ -11,24 +11,29 @@
       *ngFor="let newFlower of newArrivalFlowers; let i = index"
       #item
     >
-      <img src="{{ newFlower.image_small }}" />
-      <p class="flower-name">{{ newFlower.name }}</p>
-      <div class="action">
-        <div class="flower-price">${{ newFlower.price }}</div>
-        <div class="action-btn-block">
-          <ion-icon name="heart-outline"></ion-icon>
-          <ion-icon name="cart-outline" onClick=""></ion-icon>
+      <a
+        style="text-decoration: none"
+        [routerLink]="['/details', newFlower.code]"
+      >
+        <img src="{{ newFlower.image_small }}" />
+        <p class="flower-name">{{ newFlower.name }}</p>
+        <div class="action">
+          <div class="flower-price">${{ newFlower.price }}</div>
+          <div class="action-btn-block">
+            <ion-icon name="heart-outline"></ion-icon>
+            <ion-icon name="cart-outline" onClick=""></ion-icon>
+          </div>
         </div>
-      </div>
-      <div class="description">
-        <div class="rating"></div>
-        <div class="interaction">
-          <ion-icon name="heart-outline"></ion-icon>
-          <div class="liked">320</div>
-          <ion-icon name="eye-outline"></ion-icon>
-          <div class="seen">89,728</div>
+        <div class="description">
+          <div class="rating"></div>
+          <div class="interaction">
+            <ion-icon name="heart-outline"></ion-icon>
+            <div class="liked">320</div>
+            <ion-icon name="eye-outline"></ion-icon>
+            <div class="seen">89,728</div>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
   <ion-icon

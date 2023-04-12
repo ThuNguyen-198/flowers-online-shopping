@@ -16,7 +16,7 @@ export class ProductWeddingComponent implements OnInit {
 
   constructor(public flowerService: FlowersService) {}
   ngOnInit(): void {
-    this.flowerService.getFlowersByCategory('all');
+    this.flowerService.getFlowersByCategory('lr');
     this.flowerSub = this.flowerService
       .getFlowerUpdateListener()
       .subscribe((flowerData: Flower[]) => {
