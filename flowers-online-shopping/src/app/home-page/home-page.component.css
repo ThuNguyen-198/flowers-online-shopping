@@ -59,12 +59,16 @@
 .nav-item a {
   text-decoration: none;
   font-size: 1.4rem;
-  color: #555;
+  color: #999;
 }
 .nav-item a:hover,
 .nav-item a:active {
+  cursor: pointer;
   color: #534d6e;
   text-decoration: none;
+}
+.nav-item a:active {
+  transform: scale(0.96);
 }
 
 .container-search {
