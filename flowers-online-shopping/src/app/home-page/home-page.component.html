@@ -36,11 +36,14 @@
           <a href="#">Sale</a>
         </li>
       </ul>
-      <div class="container-search">
-        <input class="search-bar" rows="1" [(ngModel)]="searchKey" />
-        <!-- To use ionicons, run this cmd: ng add @ionic/angular -->
-        <ion-icon class="icon-search" name="search-outline"></ion-icon>
-      </div>
+      <form (ngSubmit)="getSearchKey()" [action]="'/search-page'">
+        <div class="container-search">
+          <input class="search-bar" rows="1" [(ngModel)]="searchKey" name="q" />
+          <button type="submit">
+            <ion-icon class="icon-search" name="search-outline"></ion-icon>
+          </button>
+        </div>
+      </form>
     </nav>
     <!-- ********************************* -->
     <!-- Section New Arrival -->

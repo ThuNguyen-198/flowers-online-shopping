@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
 import { EditUserPageComponent } from './edit-user-page/edit-user-page.component';
 import { EditCreditPageComponent } from './edit-credit-page/edit-credit-page.component';
 
-
+import { ProductsSearchPageComponent } from './products-search-page/products-search-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
@@ -52,6 +52,7 @@ import { ProductWeddingComponent } from './products-display-page/product-wedding
 @NgModule({
   declarations: [
     AppComponent,
+    ProductsSearchPageComponent,  
     EditUserPageComponent,
     LoginPageComponent,
     RegisterPageComponent,

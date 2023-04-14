@@ -3,6 +3,7 @@ import { FlowersService } from '../services/flowers.service';
 import { Subscription } from 'rxjs';
 import { Flower } from '../data-models/flower.model';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -13,7 +14,7 @@ export class HomePageComponent implements OnInit {
   public userIsAuthenticated: boolean = false;
   private authListenerSub: Subscription = new Subscription();
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
   searchKey = '';
 
   ngOnInit(): void {
@@ -25,7 +26,13 @@ export class HomePageComponent implements OnInit {
       });
   }
 
-  getSearchKey() {}
+  getSearchKey() {
+    if (this.searchKey.trim() !== '') {
+      this.router.navigate(['/search'], {
+        queryParams: { q: this.searchKey },
+      });
+    }
+  }
 
   onLogout() {
     this.authService.logout();

@@ -1,0 +1,13 @@
+body {
+  color:  black;
+}
+.product-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.product-description {
+  font-size: 14px;
+  margin-top: 5px;
+}
