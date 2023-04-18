@@ -15,7 +15,6 @@ const h_opts = {
   memoryCost: 1 << 20,
   type: argon2.argon2id,
 };
-const testVar = argon2.hash("HelloThere!", h_opts);
 
 const express = require("express");
 const router = express.Router();
@@ -23,7 +22,7 @@ const router = express.Router();
 const Customer = require("../../backend/models/Customer");
 const Employee = require("../../backend/models/Employee");
 
-const { deserialize, serialize } = require("@phc/format");
+const { deserialize } = require("@phc/format");
 
 router.post("/signup/employee", (req, res, next) => {
   const employee = new Employee();
@@ -38,7 +37,6 @@ router.post("/signup/employee", (req, res, next) => {
   argon2.hash(req.body.pwd, h_opts).then((hash) => {
     employee = {
       login_ID: req.body.login_ID,
-      //pwd: req.body.pwd,
       pwd: hash,
       perms: req.body.perms,
     }
