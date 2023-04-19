@@ -1,9 +1,57 @@
-.register-container {
+.edit-credit-container {
+  margin: 3rem auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
+}
+.title {
+  font-size: 2rem;
+}
+form {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.2rem;
+}
+.form-group {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.4rem;
+}
+label,
+input,
+textarea {
+  width: 100%;
+}
+label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+input,
+textarea {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #888;
+  border-radius: 9px;
+  font-size: 1rem;
+}
+button {
+  margin-top: 2rem;
+  align-self: center;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.2rem;
+  border-radius: 11px;
+  background-color: #534d6e;
+  color: #fff;
+}
+button:active {
+  transform: scale(0.96);
 }
 .main-nav {
   width: 100%;
