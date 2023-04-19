@@ -99,3 +99,18 @@ form {
   justify-content: center;
   gap: 5px;
 }
+
+.productsTable {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+}
