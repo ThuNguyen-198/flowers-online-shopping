@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FlowersService } from '../services/flowers.service';
 import { Flower } from '../data-models/flower.model';
 import Fuse from 'fuse.js';
@@ -15,7 +15,8 @@ export class ProductsSearchPageComponent implements OnInit {
     products: Flower[] = [];
     searchResults: any[] = [];
     flowers: Flower[] = [];
-
+    originalSearchKey: string = '';
+    
     fuseOptions: Fuse.IFuseOptions<any> = {
         keys: [
             {
@@ -36,7 +37,8 @@ export class ProductsSearchPageComponent implements OnInit {
     
     constructor(
         private route: ActivatedRoute,
-        private flowerService: FlowersService
+        private flowerService: FlowersService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -56,13 +58,12 @@ export class ProductsSearchPageComponent implements OnInit {
                     console.log('Flower data:', allFlowers);
                     this.route.queryParams.subscribe((params) => {
                         this.searchKey = params['q'];
-                        console.log('key:', this.searchKey);
+                        this.originalSearchKey = this.searchKey; 
                         this.searchProducts(this.flowers);
                     });
                 }
             });
     }
-
    
     searchProducts(products: Flower[]): void {
         const fuse = new Fuse(products, this.fuseOptions);
@@ -71,11 +72,19 @@ export class ProductsSearchPageComponent implements OnInit {
             return {
                 name: result.item.name,
                 description: result.item.description,
+                image_small: result.item.image_small,
+                price: result.item.price,
                 code: result.item.code
             };
         });
-        console.log('searchResults:', this.searchResults);
     }
-
-
+    
+    getSearchKey() {
+        this.originalSearchKey = this.searchKey; 
+        if (this.searchKey.trim() !== '') {
+            this.router.navigate(['/search'], {
+                queryParams: { q: this.searchKey },
+            });
+        }
+    }
 }

@@ -11,3 +11,16 @@ body {
   font-size: 14px;
   margin-top: 5px;
 }
+
+.search-container {
+  margin: 20px; /* adjust the value to increase or decrease the margin */
+}
+
+.search-bar {
+  margin: 10px; /* adjust the value to increase or decrease the margin */
+}
+
+.search-results {
+  margin-top: 20px; /* adjust the value to increase or decrease the margin */
+}
+
