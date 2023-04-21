@@ -2,7 +2,8 @@
   <app-main-navigation></app-main-navigation>
 </div>
 
-<div class="search-container">
+<div *ngIf="searchResults.length > 0" class="search-results">
+  <div class="search-container">
   <div class="results-container">
     <p>Showing {{ searchResults.length }} results for "{{ originalSearchKey }}"</p>
   </div>
@@ -17,8 +18,6 @@
     </form>
   </div>
 </div>
-
-<div *ngIf="searchResults.length > 0" class="search-results">
   <div *ngFor="let result of searchResults" class="product">
     <a [routerLink]="['/details', result.code]">
       <img class="product-img" [src]="result.image_small" />
@@ -30,5 +29,19 @@
 </div>
 
 <div *ngIf="searchResults.length === 0" class="no-results">
-  <p>No results found for "{{ searchKey }}"</p>
+  <div class="search-container">
+  <div class="results-container">
+    <p>No results found for "{{ originalSearchKey }}"</p>
+  </div>
+  <div class="search-form-container">
+    <form (ngSubmit)="getSearchKey()" [action]="'/search-page'">
+      <div class="container-search">
+        <input class="search-bar" rows="1" [(ngModel)]="searchKey" name="q" />
+        <button type="submit">
+          <ion-icon class="icon-search" name="search-outline"></ion-icon>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
+
