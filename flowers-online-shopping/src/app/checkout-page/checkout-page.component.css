@@ -8,7 +8,8 @@ body {
 }
 
 ::ng-deep .mat-grid-list {
-  padding-bottom: calc(100% - 220px) !important;
+  padding-bottom: 100% !important;
+  margin-bottom: 10px;
 }
 
 .mat-grid-tile {
@@ -126,7 +127,6 @@ form {
   bottom: 0;
   position: absolute;
   display: grid;
-  height: fit-content;
   padding-right: 20px;
 }
 
