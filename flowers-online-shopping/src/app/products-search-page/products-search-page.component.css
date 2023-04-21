@@ -13,14 +13,18 @@ body {
 }
 
 .search-container {
-  margin: 20px; /* adjust the value to increase or decrease the margin */
+  margin: 20px;
 }
 
 .search-bar {
-  margin: 10px; /* adjust the value to increase or decrease the margin */
+  margin: 10px;
 }
 
 .search-results {
-  margin-top: 20px; /* adjust the value to increase or decrease the margin */
+  margin-top: 20px; 
 }
 
+.product {
+    margin: 50px 0 50px 50px; 
+
+}
