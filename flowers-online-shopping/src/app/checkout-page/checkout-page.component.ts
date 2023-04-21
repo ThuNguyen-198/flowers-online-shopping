@@ -42,7 +42,9 @@ export class CheckoutPageComponent implements OnInit {
   private cartItemsSub: Subscription = new Subscription();
   prices = productsTotalTestData;
   columnsToDisplay = ['imageLocation', 'productName', 'quantity', 'totalPrice'];
+
   constructor(public flowerService: FlowersService) {}
+
   ngOnInit(): void {
     let userEmail: any;
     if (localStorage.getItem('userEmail') != null) {
@@ -50,12 +52,22 @@ export class CheckoutPageComponent implements OnInit {
     } else {
       userEmail = 'guest@gmail.com';
     }
+
     this.flowerService.getCartItems(userEmail);
     this.cartItemsSub = this.flowerService
       .getCartItemsUpdateListener()
       .subscribe((cartData: CartData[]) => {
         this.cartItems = cartData;
+        cartData.forEach((item) => {
+          this.prices.total += item.quantity * item.productPrice;
+        });
+        this.prices.tax = this.prices.total * 0.0825;
+        this.prices.subtotal = this.prices.tax + this.prices.total;
         console.log(cartData);
       });
   }
+
+  onAddItem() {}
+
+  onSubtractItem() {}
 }
