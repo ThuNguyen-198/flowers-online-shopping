@@ -9,7 +9,7 @@ const cartSchema = mongoose.Schema({
       productName: { type: String },
       imageSmall: { type: String },
       productDescription: { type: String },
-      productPrice: { type: String },
+      productPrice: { type: Number },
       quantity: { type: Number },
     },
   ],

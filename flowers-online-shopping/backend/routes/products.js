@@ -25,6 +25,7 @@ router.post("/cart/items", async (request, response, next) => {
   });
 });
 
+// -------------------------------BOUQUET--------------------------------- //
 router.get("/:category", async (request, response, next) => {
   const categoryURL =
     GETPRODUCT_URL + `?category=${request.params.category}&count=12`;
@@ -58,6 +59,7 @@ router.get("/detail/:code", async (request, response, next) => {
     });
 });
 
+// -------------------------------CART--------------------------------- //
 //ADD TO CART
 router.post("/cart/add", async (request, response, next) => {
   let email = request.body.email;

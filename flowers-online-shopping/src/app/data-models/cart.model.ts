@@ -3,6 +3,6 @@ export interface CartData {
   productName: string;
   imageSmall: string;
   productDescription: string;
-  productPrice: string;
+  productPrice: number;
   quantity: number;
 }
