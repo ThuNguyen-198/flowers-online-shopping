@@ -13,6 +13,8 @@ const customerSchema = mongoose.Schema({
   phone: { type: String, required: true, unique: true }, // do we REALLY want this unique???
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
+  // I saw that someone added "isAdmin" to this for the main branch.
+  // No. It doesn't make sense for a CUSTOMER to be an ADMIN.
 });
 
 //Export this as an object so we can use it somewhere else.
