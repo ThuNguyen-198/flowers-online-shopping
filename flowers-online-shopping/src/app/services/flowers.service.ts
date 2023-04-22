@@ -83,6 +83,12 @@ export class FlowersService {
     });
   }
 
+  deleteCartItem(productCode: string, userEmail: any): Observable<any> {
+    return this.http.delete(
+      `http://localhost:3000/api/products/cart/delete/${userEmail}/${productCode}`
+    );
+  }
+
   getCartItems(userEmail: any) {
     this.http
       .post<CartData[]>('http://localhost:3000/api/products/cart/items', {
