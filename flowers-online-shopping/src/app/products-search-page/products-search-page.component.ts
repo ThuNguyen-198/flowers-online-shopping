@@ -16,7 +16,8 @@ export class ProductsSearchPageComponent implements OnInit {
     searchResults: any[] = [];
     flowers: Flower[] = [];
     originalSearchKey: string = '';
-    
+    sortOption: string = 'relevance';
+
     fuseOptions: Fuse.IFuseOptions<any> = {
         keys: [
             {
@@ -34,7 +35,7 @@ export class ProductsSearchPageComponent implements OnInit {
 
 
     private flowerSub: Subscription = new Subscription();
-    
+
     constructor(
         private route: ActivatedRoute,
         private flowerService: FlowersService,
@@ -58,13 +59,13 @@ export class ProductsSearchPageComponent implements OnInit {
                     console.log('Flower data:', allFlowers);
                     this.route.queryParams.subscribe((params) => {
                         this.searchKey = params['q'];
-                        this.originalSearchKey = this.searchKey; 
+                        this.originalSearchKey = this.searchKey;
                         this.searchProducts(this.flowers);
                     });
                 }
             });
     }
-   
+
     searchProducts(products: Flower[]): void {
         const fuse = new Fuse(products, this.fuseOptions);
         const searchResults = fuse.search(this.searchKey);
@@ -78,13 +79,26 @@ export class ProductsSearchPageComponent implements OnInit {
             };
         });
     }
-    
+
     getSearchKey() {
-        this.originalSearchKey = this.searchKey; 
+        this.originalSearchKey = this.searchKey;
         if (this.searchKey.trim() !== '') {
             this.router.navigate(['/search'], {
                 queryParams: { q: this.searchKey },
             });
         }
     }
+
+    sortedSearchResults() {
+        let results = [...this.searchResults]; // make a copy of the original array
+        if (this.sortOption === 'price_asc') {
+            return results.sort((a, b) => a.price - b.price);
+        } else if (this.sortOption === 'price_desc') {
+            return results.sort((a, b) => b.price - a.price);
+        } else {
+            return results;
+        }
+    }
+
+
 }

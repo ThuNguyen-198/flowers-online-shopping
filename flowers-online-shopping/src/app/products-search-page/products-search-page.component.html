@@ -4,21 +4,31 @@
 
 <div *ngIf="searchResults.length > 0" class="search-results">
   <div class="search-container">
-  <div class="results-container">
-    <p>Showing {{ searchResults.length }} results for "{{ originalSearchKey }}"</p>
-  </div>
-  <div class="search-form-container">
-    <form (ngSubmit)="getSearchKey()" [action]="'/search-page'">
-      <div class="container-search">
-        <input class="search-bar" rows="1" [(ngModel)]="searchKey" name="q" />
-        <button type="submit">
-          <ion-icon class="icon-search" name="search-outline"></ion-icon>
-        </button>
+    <div class="results-container">
+      <p>Showing {{ searchResults.length }} results for "{{ originalSearchKey }}"</p>
+    </div>
+    <div class="search-form-container">
+      <form (ngSubmit)="getSearchKey()" [action]="'/search-page'">
+        <div class="container-search">
+          <input class="search-bar" rows="1" [(ngModel)]="searchKey" name="q" />
+          <button type="submit">
+            <ion-icon class="icon-search" name="search-outline"></ion-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="filter-sort-container">
+      <div class="sort-container">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select" [(ngModel)]="sortOption" (ngModelChange)="sortedSearchResults()">
+          <option value="relevance">Most Relevant</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+        </select>
       </div>
-    </form>
+    </div>
   </div>
-</div>
-  <div *ngFor="let result of searchResults" class="product">
+  <div *ngFor="let result of sortedSearchResults()" class="product">
     <a [routerLink]="['/details', result.code]">
       <img class="product-img" [src]="result.image_small" />
       <p class="product-name">{{ result.name }}</p>
@@ -29,19 +39,25 @@
 </div>
 
 <div *ngIf="searchResults.length === 0" class="no-results">
-  <div class="search-container">
-  <div class="results-container">
-    <p>No results found for "{{ originalSearchKey }}"</p>
-  </div>
-  <div class="search-form-container">
-    <form (ngSubmit)="getSearchKey()" [action]="'/search-page'">
-      <div class="container-search">
-        <input class="search-bar" rows="1" [(ngModel)]="searchKey" name="q" />
-        <button type="submit">
-          <ion-icon class="icon-search" name="search-outline"></ion-icon>
-        </button>
+  <div class="search-container-wrong">
+    <div class="results-container">
+      <p>No results found for <a class = wrong-search>{{ originalSearchKey }}</a></p>
+    </div>
+    <div class="search-form-container">
+      <form (ngSubmit)="getSearchKey()" [action]="'/search-page'">
+        <div class="container-search-wrong">
+          <input class="search-bar" rows="1" [(ngModel)]="searchKey" name="q" />
+          <button type="submit">
+            <ion-icon class="icon-search" name="search-outline"></ion-icon>
+          </button>
+        </div>
+      </form>
+      <div class="sorry-container">
+        <p> Please check your search again for any typos or spelling errors </p>
+        <p> While typing in the search bar you will be give some choices, maybe try one of those </p>
+        <p> It is recommended to keep you search as short as needed (See "red roses" or "bouquet")</p>
+        <p> If you still can't find what you are looking for consider calling <u class="phone-number">469-235-9827</u> to speak with a professional florist.</p>
       </div>
-    </form>
+    </div>
   </div>
 </div>
-
