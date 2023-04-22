@@ -28,7 +28,7 @@ mongoose.set("strictQuery", true);
 //Connect with MongoDB using username and password of users added on MongoDB Console.
 mongoose
   .connect(
-    "mongodb+srv://group11:VRPivVXSEZ29MgY@cluster0.z4y7jpi.mongodb.net/?retryWrites=true&w=majority"
+    `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.z4y7jpi.mongodb.net/?retryWrites=true&w=majority`
   )
   .then(() => {
     console.log("Connected to database!");
