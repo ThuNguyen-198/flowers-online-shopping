@@ -1,6 +1,6 @@
 import { Flower } from '../data-models/flower.model';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -68,6 +68,19 @@ export class FlowersService {
         alert('Added to cart!');
         console.log('it went here');
       });
+  }
+
+  adjustQuantity(
+    newQuantity: number,
+    productCode: string,
+    userEmail: any
+  ): Observable<any> {
+    console.log('from service:' + userEmail);
+    return this.http.post('http://localhost:3000/api/products/cart/quantity', {
+      email: userEmail,
+      productCode: productCode,
+      quantity: newQuantity,
+    });
   }
 
   getCartItems(userEmail: any) {

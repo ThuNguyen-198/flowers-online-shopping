@@ -84,4 +84,27 @@ router.post("/cart/add", async (request, response, next) => {
   });
 });
 
+//UPDATE QUANTITY
+router.post("/cart/quantity", async (request, response, next) => {
+  let email = request.body.email;
+  let productCode = request.body.productCode;
+  let newQuantity = +request.body.quantity;
+
+  const filter = {
+    email: email,
+    product: { $elemMatch: { productCode: productCode } },
+  };
+  const update = { $set: { "product.$.quantity": newQuantity } };
+
+  Cart.updateOne(filter, update)
+    .then((fetchedCart) => {})
+    .catch((error) => {
+      console.log(error);
+    });
+
+  response.status(200).json({
+    message: "Cart added successfully",
+  });
+});
+
 module.exports = router;

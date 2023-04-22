@@ -36,9 +36,15 @@
               <th mat-header-cell *matHeaderCellDef>Quantity</th>
               <td mat-cell *matCellDef="let item">
                 <div class="quantityDiv">
-                  <ion-icon name="remove-circle-outline"></ion-icon>
+                  <ion-icon
+                    name="remove-circle-outline"
+                    (click)="onSubtractItem(item.productCode, item.quantity)"
+                  ></ion-icon>
                   {{ item.quantity }}
-                  <ion-icon name="add-circle-outline"></ion-icon>
+                  <ion-icon
+                    name="add-circle-outline"
+                    (click)="onAddItem(item.productCode, item.quantity)"
+                  ></ion-icon>
                 </div>
               </td>
             </ng-container>
