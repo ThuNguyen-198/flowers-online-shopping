@@ -66,7 +66,7 @@ export class FlowersService {
       })
       .subscribe((response) => {
         alert('Added to cart!');
-        console.log('it went here');
+        console.log(response);
       });
   }
 
