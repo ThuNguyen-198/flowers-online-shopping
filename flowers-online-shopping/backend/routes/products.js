@@ -65,15 +65,38 @@ router.post("/cart/add", async (request, response, next) => {
   let email = request.body.email;
   let newProduct = request.body.product;
 
-  Cart.findOneAndUpdate(
-    { email: email },
-    {
-      $push: { product: newProduct },
-    },
-    { new: true, upsert: true }
-  )
+  Cart.findOne({ email: email })
     .then((fetchedCart) => {
-      console.log(fetchedCart);
+      if (!fetchedCart) {
+        Cart.updateOne(
+          { email: email },
+          {
+            $push: { product: newProduct },
+          },
+          { new: true, upsert: true }
+        ).then((result) => {
+          console.log("added new cart");
+          return;
+        });
+      } else {
+        Cart.findOne({
+          product: { $elemMatch: { productCode: newProduct.productCode } },
+        }).then((cartExisted) => {
+          if (cartExisted) {
+            console.log("item duplicated");
+            return;
+          }
+          Cart.findOneAndUpdate(
+            { email: email },
+            {
+              $push: { product: newProduct },
+            },
+            { new: true, upsert: true }
+          ).then((result) => {
+            console.log(result);
+          });
+        });
+      }
     })
     .catch((error) => {
       console.log(error);
