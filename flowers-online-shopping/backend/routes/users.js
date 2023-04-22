@@ -126,6 +126,14 @@ router.post("/login", (req, res, next) => {
     .then((user) => {
       if (!user) {
         return res.status(401).json({ message: "Auth failed!" });
+        /*
+        Should we force it to take the same amount of time whether or not a user was found?
+        The reason for this is security: if we just instantly send the response, that would 
+        let an attacker know "okay, there's no account associated, move on".
+        On the other hand, they could still get that information by trying to create an account.
+        So, for now, I'm going to leave it how it was
+        */
+        //return argon2.hash(req.body.pwd, h_opts);
       }
       fetchedUser = user;
       const pwd_id = deserialize(fetchedUser.pwd).id;
@@ -140,6 +148,9 @@ router.post("/login", (req, res, next) => {
 
       if (fetchedUser === undefined) {
         //console.log("fetchedUser undefined, presuming this to mean we already sent the status");
+        
+        // if !user returns argon2.hash instead of res.status, this needs to be uncommented
+        //res.status(401).json({message: "Auth failed!"});
         return;
       }
       else if (!result) {
