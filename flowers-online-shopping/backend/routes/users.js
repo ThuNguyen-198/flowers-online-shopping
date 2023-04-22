@@ -1,5 +1,5 @@
 //For encrypting password
-// HEY!!! We agreed Argon2id! If that's not available for JS, so be it, but there needs to be discussion.
+// HEY!!! We agreed Argon2id!
 const bcrypt = require("bcrypt");
 
 const argon2 = require("argon2");
@@ -121,7 +121,6 @@ Something needs to process the email so it is in standard form (lowercase, if no
 */
 router.post("/login", (req, res, next) => {
   let fetchedUser, need_rehash;
-  //console.log(Customer.find({ email: req.body.email }));
   Customer.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
@@ -137,7 +136,6 @@ router.post("/login", (req, res, next) => {
       }
       fetchedUser = user;
       const pwd_id = deserialize(fetchedUser.pwd).id;
-      //console.log("user:"); console.log(user);
       if (pwd_id === "2b") {
         need_rehash = true;
         return bcrypt.compare(req.body.pwd, fetchedUser.pwd);
@@ -148,7 +146,7 @@ router.post("/login", (req, res, next) => {
 
       if (fetchedUser === undefined) {
         //console.log("fetchedUser undefined, presuming this to mean we already sent the status");
-        
+
         // if !user returns argon2.hash instead of res.status, this needs to be uncommented
         //res.status(401).json({message: "Auth failed!"});
         return;
