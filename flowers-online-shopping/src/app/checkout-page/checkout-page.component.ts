@@ -25,10 +25,10 @@ const productsTestData : ProductDataI[] = [
 ];*/
 
 const productsTotalTestData: ProductTotalDataI = {
-  total: 43.98,
+  total: 0,
   shipping: 8.95,
-  tax: 4.37,
-  subtotal: 52.3,
+  tax: 0,
+  subtotal: 0,
 };
 
 @Component({
@@ -38,22 +38,23 @@ const productsTotalTestData: ProductTotalDataI = {
 })
 export class CheckoutPageComponent implements OnInit {
   //products = productsTestData;
+
   cartItems: CartData[] = [];
   private cartItemsSub: Subscription = new Subscription();
   prices = productsTotalTestData;
   columnsToDisplay = ['imageLocation', 'productName', 'quantity', 'totalPrice'];
+  userEmail: any;
 
   constructor(public flowerService: FlowersService) {}
 
   ngOnInit(): void {
-    let userEmail: any;
     if (localStorage.getItem('userEmail') != null) {
-      userEmail = localStorage.getItem('userEmail')?.toString();
+      this.userEmail = localStorage.getItem('userEmail')?.toString();
     } else {
-      userEmail = 'guest@gmail.com';
+      this.userEmail = 'guest@gmail.com';
     }
 
-    this.flowerService.getCartItems(userEmail);
+    this.flowerService.getCartItems(this.userEmail);
     this.cartItemsSub = this.flowerService
       .getCartItemsUpdateListener()
       .subscribe((cartData: CartData[]) => {
@@ -63,11 +64,49 @@ export class CheckoutPageComponent implements OnInit {
         });
         this.prices.tax = this.prices.total * 0.0825;
         this.prices.subtotal = this.prices.tax + this.prices.total;
-        console.log(cartData);
       });
   }
 
-  onAddItem() {}
+  onAddItem(productCode: string, currentQuantity: number) {
+    let newQuantity = currentQuantity + 1;
 
-  onSubtractItem() {}
+    this.flowerService
+      .adjustQuantity(newQuantity, productCode, this.userEmail)
+      .subscribe(() => {
+        this.flowerService.getCartItems(this.userEmail);
+        this.cartItemsSub = this.flowerService
+          .getCartItemsUpdateListener()
+          .subscribe((cartData: CartData[]) => {
+            this.prices.total = 0;
+            this.cartItems = cartData;
+            cartData.forEach((item) => {
+              this.prices.total += item.quantity * item.productPrice;
+            });
+            this.prices.tax = this.prices.total * 0.0825;
+            this.prices.subtotal = this.prices.tax + this.prices.total;
+          });
+      });
+  }
+
+  onSubtractItem(productCode: string, currentQuantity: number) {
+    if (currentQuantity != 1) {
+      let newQuantity = currentQuantity - 1;
+      this.flowerService
+        .adjustQuantity(newQuantity, productCode, this.userEmail)
+        .subscribe(() => {
+          this.flowerService.getCartItems(this.userEmail);
+          this.cartItemsSub = this.flowerService
+            .getCartItemsUpdateListener()
+            .subscribe((cartData: CartData[]) => {
+              this.prices.total = 0;
+              this.cartItems = cartData;
+              cartData.forEach((item) => {
+                this.prices.total += item.quantity * item.productPrice;
+              });
+              this.prices.tax = this.prices.total * 0.0825;
+              this.prices.subtotal = this.prices.tax + this.prices.total;
+            });
+        });
+    }
+  }
 }

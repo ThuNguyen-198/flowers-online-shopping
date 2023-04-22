@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -12,5 +12,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.autoAuthUser();
+  }
+
+  @HostListener('window:onbeforeunload', ['$event'])
+  clearLocalStorage(event: any) {
+    localStorage.clear();
   }
 }
