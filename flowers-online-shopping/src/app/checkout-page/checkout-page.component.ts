@@ -47,6 +47,14 @@ export class CheckoutPageComponent implements OnInit {
 
   constructor(public flowerService: FlowersService) {}
 
+  getPrice(cartData: CartData[]) {
+    cartData.forEach((item) => {
+      this.prices.total += item.quantity * item.productPrice;
+    });
+    this.prices.tax = this.prices.total * 0.0825;
+    this.prices.subtotal = this.prices.tax + this.prices.total;
+  }
+
   ngOnInit(): void {
     if (localStorage.getItem('userEmail') != null) {
       this.userEmail = localStorage.getItem('userEmail')?.toString();
@@ -59,11 +67,7 @@ export class CheckoutPageComponent implements OnInit {
       .getCartItemsUpdateListener()
       .subscribe((cartData: CartData[]) => {
         this.cartItems = cartData;
-        cartData.forEach((item) => {
-          this.prices.total += item.quantity * item.productPrice;
-        });
-        this.prices.tax = this.prices.total * 0.0825;
-        this.prices.subtotal = this.prices.tax + this.prices.total;
+        this.getPrice(cartData);
       });
   }
 
@@ -79,11 +83,7 @@ export class CheckoutPageComponent implements OnInit {
           .subscribe((cartData: CartData[]) => {
             this.prices.total = 0;
             this.cartItems = cartData;
-            cartData.forEach((item) => {
-              this.prices.total += item.quantity * item.productPrice;
-            });
-            this.prices.tax = this.prices.total * 0.0825;
-            this.prices.subtotal = this.prices.tax + this.prices.total;
+            this.getPrice(cartData);
           });
       });
   }
@@ -100,11 +100,21 @@ export class CheckoutPageComponent implements OnInit {
             .subscribe((cartData: CartData[]) => {
               this.prices.total = 0;
               this.cartItems = cartData;
-              cartData.forEach((item) => {
-                this.prices.total += item.quantity * item.productPrice;
-              });
-              this.prices.tax = this.prices.total * 0.0825;
-              this.prices.subtotal = this.prices.tax + this.prices.total;
+              this.getPrice(cartData);
+            });
+        });
+    } else if (currentQuantity == 1) {
+      this.flowerService
+        .deleteCartItem(productCode, this.userEmail)
+        .subscribe(() => {
+          console.log('updated cart list');
+          this.flowerService.getCartItems(this.userEmail);
+          this.cartItemsSub = this.flowerService
+            .getCartItemsUpdateListener()
+            .subscribe((cartData: CartData[]) => {
+              this.prices.total = 0;
+              this.cartItems = cartData;
+              this.getPrice(cartData);
             });
         });
     }

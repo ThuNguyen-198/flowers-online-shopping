@@ -20,7 +20,7 @@ router.post("/cart/items", async (request, response, next) => {
     if (cartItems) {
       response.status(200).json(cartItems.product);
     } else {
-      response.status(404).json({ message: "Not found!" });
+      return;
     }
   });
 });
@@ -92,9 +92,7 @@ router.post("/cart/add", async (request, response, next) => {
               $push: { product: newProduct },
             },
             { new: true, upsert: true }
-          ).then((result) => {
-            console.log(result);
-          });
+          ).then((result) => {});
         });
       }
     })
@@ -130,4 +128,23 @@ router.post("/cart/quantity", async (request, response, next) => {
   });
 });
 
+//DELETE CART ITEM
+router.delete(
+  "/cart/delete/:email/:productCode",
+  async (request, response, next) => {
+    const filter = {
+      email: request.params.email,
+      product: { $elemMatch: { productCode: request.params.productCode } },
+    };
+    Cart.updateOne(filter, {
+      $pull: { product: { productCode: request.params.productCode } },
+    }).then((result) => {
+      console.log("item deleted");
+    });
+
+    response.status(200).json({
+      message: "item deleted successfully",
+    });
+  }
+);
 module.exports = router;
