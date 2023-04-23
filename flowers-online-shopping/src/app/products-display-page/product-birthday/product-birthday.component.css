@@ -9,64 +9,38 @@
 }
 
 .container {
-  color: #333;
-  margin: 0 3rem;
   width: 100%;
-  margin-top: 3rem;
-  margin-left: 1rem;
-  margin-bottom: 3rem;
+  margin: 3rem;
   display: grid;
-  grid-template-columns: 1fr 5fr 0.1fr;
-  gap: 2rem;
-  align-items: flex-start;
-  color: #333;
+  grid-template-columns: 1fr 5fr 0.2fr;
+  gap: 3rem;
 }
 /*PRODUCT CARDS*/
 .product-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  float: none;
-  vertical-align: top;
-  position: relative;
-  text-align: center;
-  font-size: 1.5rem;
-  color: #333;
-  letter-spacing: 0.1rem;
+  font-size: 1.2rem;
 }
 .product {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
+  outline-offset: -1.5rem;
   padding: 2rem 2rem;
   background: #fff;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   outline: 0.1rem solid #ccc;
   cursor: pointer;
-  outline-offset: -1.5rem;
 }
 .product:hover {
   outline: 0.2rem solid #534d6e;
   outline-offset: 0;
 }
-.product-name {
-  margin-top: 1.6rem;
-  margin-bottom: 1rem;
-}
-/* .container .product-list .product img {
-  height: 15rem;
-} */
-/*im not sure if I like this or not*/
-/*keep or delete???*/
-.product img {
-}
 .product:hover img {
+  width: 100%;
   transform: scale(1.1);
 }
 .product h3 {
   padding: 0.5rem 0;
-  font-size: 0.8rem;
+  font-size: 1.5rem;
 }
 
 .action {
@@ -85,6 +59,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* font-size: 0.8rem; */
 }
 .interaction {
   display: flex;
@@ -92,11 +67,10 @@
   gap: 0.2rem;
 }
 .interaction ion-icon {
-  font-size: 01rem;
+  font-size: 0.8rem;
 }
-.seen,
 .liked {
-  font-size: 1.2rem;
+  margin-right: 0.6rem;
 }
 
 .footer-block {
