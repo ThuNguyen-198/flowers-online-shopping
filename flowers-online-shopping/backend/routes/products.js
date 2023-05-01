@@ -147,4 +147,14 @@ router.delete(
     });
   }
 );
+
+router.delete("/cart/deleteAll/:email", async (request, response, next) => {
+  const filter = {
+    email: request.params.email,
+  };
+  Cart.deleteOne(filter).then((result) => {
+    console.log(result);
+    res.status(200).json({ message: "Post deleted!" });
+  });
+});
 module.exports = router;

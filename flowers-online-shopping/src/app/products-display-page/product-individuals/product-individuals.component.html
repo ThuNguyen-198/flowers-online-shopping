@@ -28,7 +28,11 @@
         </div>
       </div>
       <div class="products">
-        <div class="flower" *ngFor="let flower of individuals">
+        <div
+          class="flower"
+          *ngFor="let flower of individuals"
+          (click)="onAddIndividuals(flower)"
+        >
           <img src="{{ flower.img }}" />
           <p class="flower-name">{{ flower.name }}</p>
           <div class="action">
@@ -53,16 +57,22 @@
     <div class="products-selected-container">
       <div
         class="selected-flower-container"
-        *ngFor="let flower of testimFlower"
+        *ngFor="let flower of individualArray; let i = index"
       >
-        <img class="selected-flower" src="{{ flower.image_small }}" />
+        <img class="selected-flower" src="{{ flower.img }}" />
         <div class="amount-container">
           <div class="quantity-container">
             <div>Quantity</div>
             <div class="adjust-quantity">
-              <ion-icon name="remove-circle-outline"></ion-icon>
-              <div class="quantity">10</div>
-              <ion-icon name="add-circle-outline"></ion-icon>
+              <ion-icon
+                name="remove-circle-outline"
+                (click)="onSubtractQuantity(i)"
+              ></ion-icon>
+              <div class="quantity">{{ flower.quantity }}</div>
+              <ion-icon
+                name="add-circle-outline"
+                (click)="onAddQuantity(i)"
+              ></ion-icon>
             </div>
           </div>
           <div class="discount-container">
@@ -71,6 +81,7 @@
           </div>
         </div>
       </div>
+      <div><button class="cart-btn">Add to Cart</button></div>
     </div>
   </div>
 </div>

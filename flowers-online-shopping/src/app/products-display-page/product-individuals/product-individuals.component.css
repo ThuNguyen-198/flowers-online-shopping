@@ -190,3 +190,16 @@ ion-icon {
   display: flex;
   gap: 1rem;
 }
+
+.cart-btn {
+  background-color: #534d6e;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 18px;
+}
+.cart-btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}

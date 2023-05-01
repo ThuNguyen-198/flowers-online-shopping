@@ -1,5 +1,7 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { FlowersService } from './services/flowers.service';
+import { Flower } from './data-models/flower.model';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,13 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'flowers-online-shopping';
-  constructor(private authService: AuthService) {}
+  userEmail = localStorage.getItem('userEmail');
+  constructor(
+    private authService: AuthService,
+    public flowerService: FlowersService
+  ) {
+    //window.addEventListener('beforeunload', this.onDeleteGuestCart);
+  }
 
   ngOnInit(): void {
     this.authService.autoAuthUser();
@@ -17,5 +25,14 @@ export class AppComponent implements OnInit {
   @HostListener('window:onbeforeunload', ['$event'])
   clearLocalStorage(event: any) {
     localStorage.clear();
+  }
+
+  @HostListener('window:onbeforeunload', ['$event'])
+  onDeleteGuestCart(event: BeforeUnloadEvent) {
+    if (this.userEmail === 'guest@gmail.com') {
+      this.flowerService.deleteCart(this.userEmail).subscribe(() => {
+        console.log('Deleted cart');
+      });
+    }
   }
 }
