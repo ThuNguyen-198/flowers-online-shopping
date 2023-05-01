@@ -3,6 +3,12 @@ import { Subscription } from 'rxjs';
 import { Flower } from 'src/app/data-models/flower.model';
 import { FlowersService } from 'src/app/services/flowers.service';
 
+interface Individual {
+  img: string;
+  name: string;
+  quantity: 1;
+}
+
 @Component({
   selector: 'app-product-individuals',
   templateUrl: './product-individuals.component.html',
@@ -10,7 +16,7 @@ import { FlowersService } from 'src/app/services/flowers.service';
 })
 export class ProductIndividualsComponent implements OnInit {
   searchKey = '';
-  testimFlower: Flower[] = [];
+  individualArray: Individual[] = [];
   categories = ['All', 'Rose', 'Daisy', 'Sun Flower', 'Tulip', 'Lily', 'Leaf'];
   selectedCategory = 'All';
   showSearchBox = false;
@@ -143,4 +149,23 @@ export class ProductIndividualsComponent implements OnInit {
   constructor(public flowerService: FlowersService) {}
 
   ngOnInit(): void {}
+
+  onAddIndividuals(newIndividual: any) {
+    let individual: Individual = {
+      img: newIndividual.img,
+      name: newIndividual.name,
+      quantity: 1,
+    };
+    this.individualArray.push(individual);
+    console.log(this.individualArray);
+  }
+
+  onAddQuantity(index: number) {
+    this.individualArray[index].quantity += 1;
+  }
+
+  onSubtractQuantity(index: number) {
+    if (this.individualArray[index].quantity > 1)
+      this.individualArray[index].quantity -= 1;
+  }
 }
