@@ -12,17 +12,24 @@ export class ReportPageComponent implements OnInit {
   report: EarningsInfo = {
     earnings: 11400,
     fees: 1400,
-    total: 10000
-  }
+    total: 10000,
+    bouquets: 200,
+    flowers: 53,
+    others: 67,
+  };
+  
+  time = 'Year'
+
   
 
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
-    //need to get the value of the time period dropdown from html and then calculate earnings information appropriately. e.g if earnings is set to month then divide everything by 12, etc. 
-
-
+    //need to get the value of the time period dropdown from html and then calculate earnings information appropriately. e.g if earnings is set to month then divide everything by 12, etc.
+  
   }
+
+  
 
 }

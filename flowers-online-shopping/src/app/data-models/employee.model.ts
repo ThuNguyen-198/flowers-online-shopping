@@ -8,5 +8,9 @@ export interface EmployeeData {
 export interface EarningsInfo {
   earnings: number,
   fees: number,
-  total: number
+  total: number,
+  bouquets: number,
+  flowers: number,
+  others: number
 }
+
