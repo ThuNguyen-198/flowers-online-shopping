@@ -8,6 +8,7 @@
   );
 }
 .container {
+  margin-top: 3rem;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -17,7 +18,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  padding: 2rem;
+  padding-left: 2rem;
   gap: 5rem;
 }
 .products-display-container {
@@ -189,4 +190,17 @@ ion-icon {
 .discount-container {
   display: flex;
   gap: 1rem;
+}
+
+.cart-btn {
+  background-color: #534d6e;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 18px;
+}
+.cart-btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }

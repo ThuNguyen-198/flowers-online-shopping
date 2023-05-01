@@ -38,13 +38,7 @@
   </div>
   <div *ngIf="displayDropDown" class="drop-down-menu">
     <div class="drop-down-item" onClick="location.href='/account'">Account</div>
-    <div
-      class="drop-down-item"
-      onClick="location.href='/report'"
-      *ngIf="userIsAdmin"
-    >
-      Report
-    </div>
+    <div class="drop-down-item" onClick="location.href='/report'">Report</div>
     <div
       class="drop-down-item"
       (click)="onLogout()"

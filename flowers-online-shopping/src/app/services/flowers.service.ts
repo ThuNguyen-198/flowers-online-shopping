@@ -119,4 +119,10 @@ export class FlowersService {
   getCartItemsUpdateListener() {
     return this.cartItemsUpdated.asObservable();
   }
+
+  deleteCart(userEmail: any): Observable<any> {
+    return this.http.delete(
+      'http://localhost:3000/api/products/cart/deleteAll/' + userEmail
+    );
+  }
 }
