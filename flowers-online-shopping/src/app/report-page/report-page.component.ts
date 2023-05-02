@@ -13,6 +13,7 @@ export class ReportPageComponent implements OnInit {
     earnings: 0,
     fees: 1400,
     bouquets: 200,
+    flowers: 20,
     total: 0,
   };
   time = 'Year';
