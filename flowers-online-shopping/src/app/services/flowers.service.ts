@@ -121,6 +121,7 @@ export class FlowersService {
     return this.cartItemsUpdated.asObservable();
   }
 
+
   checkOutCart(
     customerInfo: any,
     cartItems: CartData[],
@@ -138,6 +139,7 @@ export class FlowersService {
   getReport(): Observable<any> {
     return this.http.get('http://localhost:3000/api/products/cart/all-history');
   }
+
 
   deleteCart(userEmail: any): Observable<any> {
     return this.http.delete(
