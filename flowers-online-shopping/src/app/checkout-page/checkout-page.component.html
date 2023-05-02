@@ -91,35 +91,83 @@
 
   <mat-step>
     <ng-template matStepLabel>Shipping Information</ng-template>
-    <form>
+    <form id="customer-info-form" #infoForm="ngForm">
       <mat-form-field appearance="fill">
         <mat-label>First Name</mat-label>
-        <input matInput placeholder="John" />
+        <input
+          matInput
+          name="firstname"
+          ngModel
+          type="text"
+          #firstNameInput="ngModel"
+          [(ngModel)]="customerInfoForm.firstname"
+          placeholder="John"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Doe" />
+        <input
+          name="lastname"
+          ngModel
+          type="text"
+          #lastNameInput="ngModel"
+          [(ngModel)]="customerInfoForm.lastname"
+          matInput
+          placeholder="Doe"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Address</mat-label>
-        <input matInput placeholder="1234 Bobcat Lane" />
+        <input
+          name="address"
+          ngModel
+          type="text"
+          #addressInput="ngModel"
+          matInput
+          [(ngModel)]="customerInfoForm.address"
+          placeholder="1234 Bobcat Lane"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>City</mat-label>
-        <input matInput placeholder="Las Vegas" />
+        <input
+          name="city"
+          ngModel
+          type="text"
+          #cityInput="ngModel"
+          matInput
+          [(ngModel)]="customerInfoForm.city"
+          placeholder="Las Vegas"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>State</mat-label>
-        <input matInput placeholder="Nevada" />
+        <input
+          name="state"
+          ngModel
+          type="text"
+          #stateInput="ngModel"
+          matInput
+          [(ngModel)]="customerInfoForm.state"
+          placeholder="Nevada"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Zip Code</mat-label>
-        <input matInput placeholder="12345" />
+        <input
+          name="zip"
+          ngModel
+          type="text"
+          #zipInput="ngModel"
+          matInput
+          [(ngModel)]="customerInfoForm.zip"
+          placeholder="12345"
+        />
       </mat-form-field>
     </form>
 
@@ -141,27 +189,64 @@
     <form>
       <mat-form-field appearance="fill">
         <mat-label>First Name</mat-label>
-        <input matInput placeholder="John" />
+        <input
+          name="firstname"
+          ngModel
+          type="text"
+          #firstNameInput="ngModel"
+          matInput
+          [(ngModel)]="creditCardForm.firstname"
+          placeholder="John"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Doe" />
+        <input
+          name="lastname"
+          ngModel
+          type="text"
+          #lastNameInput="ngModel"
+          matInput
+          [(ngModel)]="creditCardForm.lastname"
+          placeholder="Doe"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Card Number</mat-label>
-        <input matInput />
+        <input
+          name="cardnumber"
+          ngModel
+          type="text"
+          #cardNumberInput="ngModel"
+          matInput
+          [(ngModel)]="creditCardForm.cardNumber"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Expiration Date</mat-label>
-        <input matInput />
+        <input
+          name="expiration"
+          ngModel
+          type="text"
+          #expirationInput="ngModel"
+          matInput
+          [(ngModel)]="creditCardForm.expirationDate"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Security Code</mat-label>
-        <input matInput />
+        <input
+          name="cvv"
+          ngModel
+          type="text"
+          #cvvInput="ngModel"
+          matInput
+          [(ngModel)]="creditCardForm.cvv"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -178,6 +263,8 @@
       [style.color]="'#58537b'"
       matStepperNext
       class="rightButton"
+      type="submit"
+      (click)="onSubmitCheckOut()"
     >
       Confrim Purchase
     </button>
