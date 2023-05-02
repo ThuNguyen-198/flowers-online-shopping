@@ -191,7 +191,7 @@ router.post("/cart/checkout", async (request, response, next) => {
 });
 
 router.get("/cart/all-history", async (request, response, next) => {
-  CustomerOrder.find({}, "total date").then((result) => {
+  CustomerOrder.find({}, "total date products").then((result) => {
     response.status(200).json(result);
   });
 });

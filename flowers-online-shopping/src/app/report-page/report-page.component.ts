@@ -12,8 +12,8 @@ export class ReportPageComponent implements OnInit {
   earnings: EarningsInfo = {
     earnings: 0,
     fees: 1400,
-    bouquets: 200,
-    flowers: 20,
+    bouquets: 0,
+    flowers: 0,
     total: 0,
   };
   time = 'Year';
@@ -26,6 +26,7 @@ export class ReportPageComponent implements OnInit {
     this.flowerService.getReport().subscribe((report: any) => {
       report.map((earning: any) => {
         this.earnings.earnings += earning.total;
+        this.earnings.bouquets += earning.products.length;
       });
 
       this.earnings.total = this.earnings.earnings - this.earnings.fees;
