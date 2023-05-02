@@ -18,8 +18,20 @@
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  padding-left: 2rem;
+  padding: 0 2rem;
   gap: 5rem;
+}
+.products-selected-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.products-selected-box button {
+  align-self: center;
+}
+.products-selected-box button :focus {
+  transform: scale(0.96);
 }
 .products-display-container {
   width: 100%;
