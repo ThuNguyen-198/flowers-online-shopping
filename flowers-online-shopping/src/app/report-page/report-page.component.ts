@@ -13,10 +13,9 @@ export class ReportPageComponent implements OnInit {
     earnings: 0,
     fees: 1400,
     bouquets: 200,
-    
     total: 0,
   };
-  time = 'Year'
+  time = 'Year';
 
   report: any = [];
 
