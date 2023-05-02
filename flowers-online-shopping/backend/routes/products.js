@@ -6,6 +6,10 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const Cart = require("../../backend/models/Cart");
+const CreditCard = require("../../backend/models/CustomerOrder");
+const CustomerInfo = require("../../backend/models/CustomerOrder");
+const CustomerOrder = require("../../backend/models/CustomerOrder");
+const OrderInfo = require("../../backend/models/CustomerOrder");
 
 const API_BASE64 = "NTA0NDYyOjF1RmJmRQ==";
 const GETPRODUCT_URL =
@@ -157,4 +161,39 @@ router.delete("/cart/deleteAll/:email", async (request, response, next) => {
     res.status(200).json({ message: "Post deleted!" });
   });
 });
+
+// CHECKOUT
+router.post("/cart/checkout", async (request, response, next) => {
+  const customer = new CustomerInfo({
+    firstname: request.body.customerInfo.firstname,
+    lastname: request.body.customerInfo.lastname,
+    address: request.body.customerInfo.address,
+    city: request.body.customerInfo.city,
+    state: request.body.customerInfo.state,
+    zip: request.body.customerInfo.zip,
+  });
+
+  const order = new CustomerOrder({
+    products: request.body.cartItems,
+    customerInfo: customer,
+    total: +request.body.totalPrice.toFixed(2),
+    email: request.body.userEmail,
+    date: new Date(),
+  });
+
+  CustomerOrder.insertMany(order).then((result) => {
+    console.log("Checked out confirmed.");
+    Cart.deleteOne({ email: request.body.userEmail }).then((result) => {
+      console.log(result);
+      response.status(200).json({ message: "Cart deleted!" });
+    });
+  });
+});
+
+router.get("/cart/all-history", async (request, response, next) => {
+  CustomerOrder.find({}, "total date").then((result) => {
+    response.status(200).json(result);
+  });
+});
+
 module.exports = router;

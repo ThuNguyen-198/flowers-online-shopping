@@ -9,6 +9,7 @@ import { CartData } from '../data-models/cart.model';
 @Injectable({ providedIn: 'root' })
 export class FlowersService {
   private arrayOfFlowers: Flower[] = [];
+  private report: any = [{}];
   private arrayOfCartItems: CartData[] = [];
   private flowersUpdated = new Subject<Flower[]>();
   private cartItemsUpdated = new Subject<CartData[]>();
@@ -118,6 +119,24 @@ export class FlowersService {
 
   getCartItemsUpdateListener() {
     return this.cartItemsUpdated.asObservable();
+  }
+
+  checkOutCart(
+    customerInfo: any,
+    cartItems: CartData[],
+    totalPrice: number,
+    userEmail: any
+  ): Observable<any> {
+    return this.http.post('http://localhost:3000/api/products/cart/checkout', {
+      customerInfo: customerInfo,
+      cartItems: cartItems,
+      totalPrice: totalPrice,
+      userEmail: userEmail,
+    });
+  }
+
+  getReport(): Observable<any> {
+    return this.http.get('http://localhost:3000/api/products/cart/all-history');
   }
 
   deleteCart(userEmail: any): Observable<any> {

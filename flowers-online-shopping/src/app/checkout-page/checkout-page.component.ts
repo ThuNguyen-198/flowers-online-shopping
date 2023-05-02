@@ -1,8 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FlowersService } from '../services/flowers.service';
 import { Flower } from '../data-models/flower.model';
 import { Subscription } from 'rxjs';
+import { NgForm, FormControl } from '@angular/forms';
 import { CartData } from '../data-models/cart.model';
+import { CreditCard } from '../data-models/customer.model';
 
 interface ProductDataI {
   imageLocation: string;
@@ -37,13 +39,13 @@ const productsTotalTestData: ProductTotalDataI = {
   styleUrls: ['./checkout-page.component.css'],
 })
 export class CheckoutPageComponent implements OnInit {
-  //products = productsTestData;
-
   cartItems: CartData[] = [];
   private cartItemsSub: Subscription = new Subscription();
   prices = productsTotalTestData;
   columnsToDisplay = ['imageLocation', 'productName', 'quantity', 'totalPrice'];
   userEmail: any;
+  customerInfoForm: any = {};
+  creditCardForm: any = {};
 
   constructor(public flowerService: FlowersService) {}
 
@@ -118,5 +120,18 @@ export class CheckoutPageComponent implements OnInit {
             });
         });
     }
+  }
+
+  onSubmitCheckOut() {
+    this.flowerService
+      .checkOutCart(
+        this.customerInfoForm,
+        this.cartItems,
+        this.prices.total,
+        this.userEmail
+      )
+      .subscribe(() => {
+        console.log('Checked out sucessfully');
+      });
   }
 }
