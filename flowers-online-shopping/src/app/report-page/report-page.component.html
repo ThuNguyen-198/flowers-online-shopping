@@ -4,7 +4,6 @@
 
 <!--Main Body-->
 <mat-card class="bg">
-
   <div class="report-container">
     <!--Drop down HTML-->
     <div class="drop">
@@ -38,57 +37,25 @@
         <p>Your total gross earnings minus fees and taxes for this /period:</p>
         <!--Value for the approximate total for the selected time period (earnings - fees).-->
         <h2>${{ earnings.total.toFixed(2) }}</h2>
-
-    <div class="report-container">
-      <!--Drop down HTML-->
-      <div class="drop">
-        <label for="time">Select a time period </label>
-        <select [(ngModel)]="time">
-          <option selected>Year</option>
-          <option>Quarter</option>
-          <option>Month</option>
-        </select>
       </div>
 
-      <div class="report-info">
-        <div class="earnings-report">
-          <h1>Total Gross Earnings:</h1>
-          <p>Your total gross earnings for this {{time.toLowerCase()}} before any taxes:</p>
-          <!--Value for the gross earnings for the selected time period.-->
-          <h2>${{report.earnings}}</h2>
-          <hr />
-        </div>
+      <div class="summary-info">
+        <div class="summary">
+          <p>
+            Your earnings this /period are up/down x% compared to last /period
+          </p>
 
-        <div class="fee-report">
-          <h1 style="text-align: center">Total Fees:</h1>
-          <p>Your total fees and taxes this {{time.toLowerCase()}}:</p>
-          <!--Value for the total fees for the selected time period.-->
-          <h2>${{report.fees}}</h2>
-          <hr />
+          <h1>Summary for this {{ time.toLowerCase() }}</h1>
+          <p>
+            Your earnings this {{ time.toLowerCase() }}: ${{ report.earnings }}
+          </p>
+          <p>
+            You sold a total of {{ report.bouquets }} bouquets,
+            {{ report.flowers }} individual flowers, and
+            {{ report.others }} other types of items.
+          </p>
         </div>
-
-        <div class="aprox-total">
-          <h1>Approximate Total:</h1>
-          <p>Your total gross earnings minus fees and taxes for this {{time.toLowerCase()}}:</p>
-          <!--Value for the approximate total for the selected time period (earnings - fees).-->
-          <h2>${{report.total}}</h2>
-        </div>
-
       </div>
-    </div>
-
-
-    <div class="summary-info">
-      <div class="summary">
-        <p>
-          Your earnings this /period are up/down x% compared to last /period
-        </p>
-
-     
-          <h1>Summary for this {{time.toLowerCase()}}</h1>
-          <p>Your earnings this {{time.toLowerCase()}}: ${{report.earnings}}</p>
-          <p>You sold a total of {{report.bouquets}} bouquets, {{report.flowers}} individual flowers, and {{report.others}} other types of items.</p>
-        
     </div>
   </div>
 </mat-card>
