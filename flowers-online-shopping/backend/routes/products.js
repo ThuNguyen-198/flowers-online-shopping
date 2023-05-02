@@ -152,14 +152,18 @@ router.delete(
   }
 );
 
-router.delete("/cart/deleteAll/:email", async (request, response, next) => {
+router.post("/cart/deleteAll", async (request, response, next) => {
   const filter = {
-    email: request.params.email,
+    email: request.body.email,
   };
-  Cart.deleteOne(filter).then((result) => {
-    console.log(result);
-    res.status(200).json({ message: "Post deleted!" });
-  });
+  Cart.deleteOne(filter)
+    .then((result) => {
+      console.log(result);
+      response.status(200).json({ message: "Cart deleted!" });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 });
 
 // CHECKOUT

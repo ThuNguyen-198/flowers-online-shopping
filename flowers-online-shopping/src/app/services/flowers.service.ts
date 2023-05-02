@@ -76,7 +76,6 @@ export class FlowersService {
     productCode: string,
     userEmail: any
   ): Observable<any> {
-    console.log('from service:' + userEmail);
     return this.http.post('http://localhost:3000/api/products/cart/quantity', {
       email: userEmail,
       productCode: productCode,
@@ -121,7 +120,6 @@ export class FlowersService {
     return this.cartItemsUpdated.asObservable();
   }
 
-
   checkOutCart(
     customerInfo: any,
     cartItems: CartData[],
@@ -140,10 +138,9 @@ export class FlowersService {
     return this.http.get('http://localhost:3000/api/products/cart/all-history');
   }
 
-
-  deleteCart(userEmail: any): Observable<any> {
-    return this.http.delete(
-      'http://localhost:3000/api/products/cart/deleteAll/' + userEmail
-    );
+  deleteCart(userEmail: string): Observable<any> {
+    return this.http.post('http://localhost:3000/api/products/cart/deleteAll', {
+      email: userEmail,
+    });
   }
 }

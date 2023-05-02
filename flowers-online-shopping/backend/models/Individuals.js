@@ -1,20 +1,17 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
-const cartSchema = mongoose.Schema({
+const individualSchema = mongoose.Schema({
   email: { type: String },
   product: [
     {
-      productCode: { type: String },
       productName: { type: String },
       imageSmall: { type: String },
-      productDescription: { type: String },
       productPrice: { type: Number },
       quantity: { type: Number },
     },
   ],
-  individualsID: { type: mongoose.Types.ObjectId },
 });
 
-module.exports = mongoose.model("Cart", cartSchema);
+module.exports = mongoose.model("Individual", individualSchema);
 cartSchema.plugin(uniqueValidator);

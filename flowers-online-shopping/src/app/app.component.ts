@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { FlowersService } from './services/flowers.service';
 import { Flower } from './data-models/flower.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
   userEmail = localStorage.getItem('userEmail');
   constructor(
     private authService: AuthService,
-    public flowerService: FlowersService
+    public flowerService: FlowersService,
+    private http: HttpClient
   ) {
     //window.addEventListener('beforeunload', this.onDeleteGuestCart);
   }
@@ -22,17 +24,25 @@ export class AppComponent implements OnInit {
     this.authService.autoAuthUser();
   }
 
-  @HostListener('window:onbeforeunload', ['$event'])
+  @HostListener('window:unload', ['$event'])
   clearLocalStorage(event: any) {
     localStorage.clear();
   }
 
-  @HostListener('window:onbeforeunload', ['$event'])
-  onDeleteGuestCart(event: BeforeUnloadEvent) {
-    if (this.userEmail === 'guest@gmail.com') {
-      this.flowerService.deleteCart(this.userEmail).subscribe(() => {
-        console.log('Deleted cart');
-      });
+  @HostListener('window:unload', ['$event'])
+  onDeleteGuestCart(event: any) {
+    if (this.userEmail != null) {
+    } else {
+      this.http
+        .post('http://localhost:3000/api/products/cart/deleteAll', {
+          email: 'guest@gmail.com',
+        })
+        .subscribe();
     }
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  onCloseBrowser(event: any) {
+    alert('Do you want to close?');
   }
 }
