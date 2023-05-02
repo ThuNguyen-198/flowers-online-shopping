@@ -9,5 +9,6 @@ export interface EarningsInfo {
   earnings: number;
   fees: number;
   total: number;
+  flowers: number;
   bouquets: number;
 }

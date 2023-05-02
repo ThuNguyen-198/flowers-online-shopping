@@ -47,12 +47,13 @@
 
           <h1>Summary for this {{ time.toLowerCase() }}</h1>
           <p>
-            Your earnings this {{ time.toLowerCase() }}: ${{ report.earnings }}
+            Your earnings this {{ time.toLowerCase() }}: ${{
+              earnings.earnings
+            }}
           </p>
           <p>
-            You sold a total of {{ report.bouquets }} bouquets,
-            {{ report.flowers }} individual flowers, and
-            {{ report.others }} other types of items.
+            You sold a total of {{ earnings.bouquets }} bouquets,
+            {{ earnings.flowers }} and individual flowers.
           </p>
         </div>
       </div>
