@@ -36,8 +36,10 @@ router.post("/cart/all-individuals", async (request, response, next) => {
 
   Cart.findOne({ email: email }).then((cartItems) => {
     if (cartItems) {
+      if (!cartItems.individualID) return;
       Individuals.findById({ _id: cartItems.individualID }).then(
         (individualObject) => {
+          if (!individualObject) return;
           response.status(200).json(individualObject.product);
         }
       );
