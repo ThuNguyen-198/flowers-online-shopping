@@ -116,8 +116,12 @@ export class FlowersService {
   }
 
   deleteIndividualItem(productName: string, userEmail: any): Observable<any> {
-    return this.http.delete(
-      `http://localhost:3000/api/products/cart/delete-individuals/${userEmail}/${productName}`
+    return this.http.post(
+      `http://localhost:3000/api/products/cart/delete-individuals`,
+      {
+        email: userEmail,
+        productName: productName,
+      }
     );
   }
 

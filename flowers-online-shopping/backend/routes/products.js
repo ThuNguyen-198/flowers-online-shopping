@@ -209,25 +209,26 @@ router.post("/cart/individuals-quantity", async (request, response, next) => {
 
 //DELETE CART ITEM
 
-router.delete(
-  "http://localhost:3000/api/products/cart/delete-individuals/:email/:productName",
-  async (request, response, next) => {
-    const filter = {
-      email: request.params.email,
-      product: { $elemMatch: { productName: request.params.productName } },
-    };
+router.post("/cart/delete-individuals", async (request, response, next) => {
+  const filter = {
+    email: request.body.email,
+    product: { $elemMatch: { productName: request.body.productName } },
+  };
 
-    Individuals.updateOne(filter, {
-      $pull: { product: { productName: request.params.productName } },
+  Individuals.updateOne(filter, {
+    $pull: { product: { productName: request.body.productName } },
+  })
+    .then((result) => {
+      console.log("individual deleted");
     })
-      .then((result) => {
-        console.log("individual deleted");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-);
+    .catch((error) => {
+      console.log(error);
+    });
+
+  response.status(200).json({
+    message: "individual item deleted successfully",
+  });
+});
 
 router.delete(
   "/cart/delete/:email/:productCode",

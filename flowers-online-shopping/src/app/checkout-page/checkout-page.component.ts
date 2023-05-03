@@ -125,7 +125,7 @@ export class CheckoutPageComponent implements OnInit {
         .subscribe(() => {
           this.flowerService.getAllIndividuals(this.userEmail);
           this.individualSub = this.flowerService
-            .getCartItemsUpdateListener()
+            .getIndividualsUpdateListener()
             .subscribe((individualData: Individual[]) => {
               //this.prices.total = 0;
               this.individualItems = individualData;
