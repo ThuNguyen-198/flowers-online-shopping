@@ -6,6 +6,7 @@ import { NgForm, FormControl } from '@angular/forms';
 import { CartData } from '../data-models/cart.model';
 import { CreditCard } from '../data-models/customer.model';
 import { Individual } from '../data-models/individual.model';
+import { Router } from '@angular/router';
 
 interface ProductDataI {
   imageLocation: string;
@@ -52,7 +53,7 @@ export class CheckoutPageComponent implements OnInit {
   individualItems: Individual[] = [];
   private individualSub: Subscription = new Subscription();
 
-  constructor(public flowerService: FlowersService) {}
+  constructor(public flowerService: FlowersService, private router: Router) {}
 
   getPrice(cartData: CartData[], individualData: Individual[]) {
     this.prices = {
@@ -236,11 +237,13 @@ export class CheckoutPageComponent implements OnInit {
       .checkOutCart(
         this.customerInfoForm,
         this.cartItems,
-        this.prices.total,
+        this.individualItems,
+        this.prices.subtotal,
         this.userEmail
       )
       .subscribe(() => {
         console.log('Checked out sucessfully');
+        this.router.navigate(['/']);
       });
   }
 }

@@ -276,6 +276,7 @@ router.post("/cart/checkout", async (request, response, next) => {
 
   const order = new CustomerOrder({
     products: request.body.cartItems,
+    individuals: request.body.individualItems,
     customerInfo: customer,
     total: +request.body.totalPrice.toFixed(2),
     email: request.body.userEmail,
@@ -286,13 +287,18 @@ router.post("/cart/checkout", async (request, response, next) => {
     console.log("Checked out confirmed.");
     Cart.deleteOne({ email: request.body.userEmail }).then((result) => {
       console.log(result);
-      response.status(200).json({ message: "Cart deleted!" });
     });
+
+    Individuals.deleteOne({ email: request.body.userEmail }).then((result) => {
+      console.log(result);
+    });
+
+    response.status(200).json({ message: "Cart deleted!" });
   });
 });
 
 router.get("/cart/all-history", async (request, response, next) => {
-  CustomerOrder.find({}, "total date products").then((result) => {
+  CustomerOrder.find({}, "total date products individuals").then((result) => {
     response.status(200).json(result);
   });
 });

@@ -21,6 +21,14 @@ const customerOrderSchema = mongoose.Schema({
       quantity: { type: Number },
     },
   ],
+  individuals: [
+    {
+      productName: { type: String },
+      imageSmall: { type: String },
+      productPrice: { type: Number },
+      quantity: { type: Number },
+    },
+  ],
   customerInfo: { type: CustomerInfo },
   email: { type: String },
   total: { type: Number },

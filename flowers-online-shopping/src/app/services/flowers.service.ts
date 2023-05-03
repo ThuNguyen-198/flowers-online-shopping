@@ -196,12 +196,14 @@ export class FlowersService {
   checkOutCart(
     customerInfo: any,
     cartItems: CartData[],
+    individualItems: Individual[],
     totalPrice: number,
     userEmail: any
   ): Observable<any> {
     return this.http.post('http://localhost:3000/api/products/cart/checkout', {
       customerInfo: customerInfo,
       cartItems: cartItems,
+      individualItems: individualItems,
       totalPrice: totalPrice,
       userEmail: userEmail,
     });
