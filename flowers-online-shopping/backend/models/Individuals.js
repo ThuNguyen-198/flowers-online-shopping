@@ -13,5 +13,4 @@ const individualSchema = mongoose.Schema({
   ],
 });
 
-module.exports = mongoose.model("Individual", individualSchema);
-cartSchema.plugin(uniqueValidator);
+module.exports = mongoose.model("Individuals", individualSchema);

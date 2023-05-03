@@ -10,6 +10,7 @@ const CreditCard = require("../../backend/models/CustomerOrder");
 const CustomerInfo = require("../../backend/models/CustomerOrder");
 const CustomerOrder = require("../../backend/models/CustomerOrder");
 const OrderInfo = require("../../backend/models/CustomerOrder");
+const Individuals = require("../../backend/models/Individuals");
 
 const API_BASE64 = "NTA0NDYyOjF1RmJmRQ==";
 const GETPRODUCT_URL =
@@ -23,6 +24,23 @@ router.post("/cart/items", async (request, response, next) => {
   Cart.findOne({ email: email }).then((cartItems) => {
     if (cartItems) {
       response.status(200).json(cartItems.product);
+    } else {
+      return;
+    }
+  });
+});
+
+// GET ALL INDIVIDUALS
+router.post("/cart/all-individuals", async (request, response, next) => {
+  let email = request.body.userEmail;
+
+  Cart.findOne({ email: email }).then((cartItems) => {
+    if (cartItems) {
+      Individuals.findById({ _id: cartItems.individualID }).then(
+        (individualObject) => {
+          response.status(200).json(individualObject.product);
+        }
+      );
     } else {
       return;
     }
@@ -65,9 +83,44 @@ router.get("/detail/:code", async (request, response, next) => {
 
 // -------------------------------CART--------------------------------- //
 //ADD TO CART
+
+// Individuals
+router.post("/cart/individuals", async (request, response, next) => {
+  let individualPacketID = "";
+  let individualPacket = new Individuals({
+    email: request.body.email,
+    product: request.body.product,
+  });
+
+  Individuals.findOneAndUpdate(
+    { email: individualPacket.email },
+    {
+      $push: { product: individualPacket.product },
+    },
+    { new: true, upsert: true }
+  ).then((result) => {
+    individualPacketID = result._id;
+
+    Cart.findOneAndUpdate(
+      {
+        email: individualPacket.email,
+      },
+      {
+        $set: { individualID: individualPacketID },
+      },
+      { new: true, upsert: true }
+    ).then((result) => {
+      response.status(200).json(result);
+      console.log("Added individual ID");
+    });
+  });
+});
+
+// All other bouquets
 router.post("/cart/add", async (request, response, next) => {
   let email = request.body.email;
   let newProduct = request.body.product;
+  let individualPacket = request.body.individuals;
 
   Cart.findOne({ email: email })
     .then((fetchedCart) => {
@@ -132,7 +185,50 @@ router.post("/cart/quantity", async (request, response, next) => {
   });
 });
 
+router.post("/cart/individuals-quantity", async (request, response, next) => {
+  let email = request.body.email;
+  let productName = request.body.productName;
+  let newQuantity = +request.body.quantity;
+
+  const filter = {
+    email: email,
+    product: { $elemMatch: { productName: productName } },
+  };
+  const update = { $set: { "product.$.quantity": newQuantity } };
+
+  Individuals.updateOne(filter, update)
+    .then((fetchedCart) => {})
+    .catch((error) => {
+      console.log(error);
+    });
+
+  response.status(200).json({
+    message: "Individual quantity updated",
+  });
+});
+
 //DELETE CART ITEM
+
+router.delete(
+  "http://localhost:3000/api/products/cart/delete-individuals/:email/:productName",
+  async (request, response, next) => {
+    const filter = {
+      email: request.params.email,
+      product: { $elemMatch: { productName: request.params.productName } },
+    };
+
+    Individuals.updateOne(filter, {
+      $pull: { product: { productName: request.params.productName } },
+    })
+      .then((result) => {
+        console.log("individual deleted");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+);
+
 router.delete(
   "/cart/delete/:email/:productCode",
   async (request, response, next) => {

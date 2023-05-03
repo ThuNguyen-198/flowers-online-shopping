@@ -13,7 +13,7 @@ const cartSchema = mongoose.Schema({
       quantity: { type: Number },
     },
   ],
-  individualsID: { type: mongoose.Types.ObjectId },
+  individualID: { type: mongoose.Types.ObjectId },
 });
 
 module.exports = mongoose.model("Cart", cartSchema);

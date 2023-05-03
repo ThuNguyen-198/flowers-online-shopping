@@ -5,14 +5,18 @@ import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartData } from '../data-models/cart.model';
+import { Individual } from '../data-models/individual.model';
+import { request } from 'express';
 
 @Injectable({ providedIn: 'root' })
 export class FlowersService {
   private arrayOfFlowers: Flower[] = [];
+  private arrayOfIndividuals: Individual[] = [];
   private report: any = [{}];
   private arrayOfCartItems: CartData[] = [];
   private flowersUpdated = new Subject<Flower[]>();
   private cartItemsUpdated = new Subject<CartData[]>();
+  private individualItemsUpdated = new Subject<Individual[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -49,6 +53,71 @@ export class FlowersService {
   getSingleBouquet(code: any) {
     return this.http.get<any>(
       'http://localhost:3000/api/products/detail/' + code
+    );
+  }
+
+  addIndividuals(individual: Individual[], userEmail: any) {
+    this.http
+      .post('http://localhost:3000/api/products/cart/individuals', {
+        email: userEmail,
+        product: individual,
+      })
+      .subscribe((response) => {
+        alert('Added individuals to cart!');
+        console.log(response);
+      });
+  }
+
+  getAllIndividuals(userEmail: any) {
+    this.http
+      .post<Individual[]>(
+        'http://localhost:3000/api/products/cart/all-individuals',
+        {
+          userEmail: userEmail,
+        }
+      )
+      .pipe(
+        map((individualData: any) => {
+          return {
+            items: individualData.map((item: any) => {
+              return {
+                productName: item.productName,
+                imageSmall: item.imageSmall,
+                productPrice: item.productPrice,
+                quantity: item.quantity,
+              };
+            }),
+          };
+        })
+      )
+      .subscribe((transformedProductData) => {
+        this.arrayOfIndividuals = transformedProductData.items;
+        this.individualItemsUpdated.next([...this.arrayOfIndividuals]);
+      });
+  }
+
+  getIndividualsUpdateListener() {
+    return this.individualItemsUpdated.asObservable();
+  }
+
+  adjustIndividualQuantity(
+    newQuantity: number,
+    productName: string,
+    userEmail: any
+  ): Observable<any> {
+    return this.http.post(
+      'http://localhost:3000/api/products/cart/individuals-quantity',
+      {
+        email: userEmail,
+        productName: productName,
+        quantity: newQuantity,
+      }
+    );
+  }
+
+  deleteIndividualItem(productName: string, userEmail: any): Observable<any> {
+    return this.http.delete(
+      `http://localhost:3000/api/products/cart/delete-individuals/${userEmail}/${productName}`
     );
   }
 

@@ -23,26 +23,4 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.authService.autoAuthUser();
   }
-
-  @HostListener('window:unload', ['$event'])
-  clearLocalStorage(event: any) {
-    localStorage.clear();
-  }
-
-  @HostListener('window:unload', ['$event'])
-  onDeleteGuestCart(event: any) {
-    if (this.userEmail != null) {
-    } else {
-      this.http
-        .post('http://localhost:3000/api/products/cart/deleteAll', {
-          email: 'guest@gmail.com',
-        })
-        .subscribe();
-    }
-  }
-
-  @HostListener('window:beforeunload', ['$event'])
-  onCloseBrowser(event: any) {
-    alert('Do you want to close?');
-  }
 }

@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { NgForm, FormControl } from '@angular/forms';
 import { CartData } from '../data-models/cart.model';
 import { CreditCard } from '../data-models/customer.model';
+import { Individual } from '../data-models/individual.model';
 
 interface ProductDataI {
   imageLocation: string;
@@ -17,6 +18,7 @@ interface ProductTotalDataI {
   total: number;
   shipping: number;
   tax: number;
+  individualTotal: number;
   subtotal: number;
 }
 
@@ -26,10 +28,11 @@ const productsTestData : ProductDataI[] = [
   {imageLocation: "../../assets/flower2.jpg", productName: "Product 2", quantity: 1, totalPrice: 15.99},
 ];*/
 
-const productsTotalTestData: ProductTotalDataI = {
+const productTotalPrice: ProductTotalDataI = {
   total: 0,
   shipping: 8.95,
   tax: 0,
+  individualTotal: 0,
   subtotal: 0,
 };
 
@@ -41,11 +44,13 @@ const productsTotalTestData: ProductTotalDataI = {
 export class CheckoutPageComponent implements OnInit {
   cartItems: CartData[] = [];
   private cartItemsSub: Subscription = new Subscription();
-  prices = productsTotalTestData;
+  prices = productTotalPrice;
   columnsToDisplay = ['imageLocation', 'productName', 'quantity', 'totalPrice'];
   userEmail: any;
   customerInfoForm: any = {};
   creditCardForm: any = {};
+  individualItems: Individual[] = [];
+  private individualSub: Subscription = new Subscription();
 
   constructor(public flowerService: FlowersService) {}
 
@@ -71,6 +76,13 @@ export class CheckoutPageComponent implements OnInit {
         this.cartItems = cartData;
         this.getPrice(cartData);
       });
+
+    this.flowerService.getAllIndividuals(this.userEmail);
+    this.individualSub = this.flowerService
+      .getIndividualsUpdateListener()
+      .subscribe((individualData: Individual[]) => {
+        this.individualItems = individualData;
+      });
   }
 
   onAddItem(productCode: string, currentQuantity: number) {
@@ -90,6 +102,52 @@ export class CheckoutPageComponent implements OnInit {
       });
   }
 
+  onAddIndividualQuantity(productName: string, currentQuantity: number) {
+    let newQuantity = currentQuantity + 1;
+
+    this.flowerService
+      .adjustIndividualQuantity(newQuantity, productName, this.userEmail)
+      .subscribe(() => {
+        this.flowerService.getAllIndividuals(this.userEmail);
+        this.individualSub = this.flowerService
+          .getIndividualsUpdateListener()
+          .subscribe((individualData: Individual[]) => {
+            this.individualItems = individualData;
+          });
+      });
+  }
+
+  onSubtractIndividualQuantity(productName: string, currentQuantity: number) {
+    if (currentQuantity != 1) {
+      let newQuantity = currentQuantity - 1;
+      this.flowerService
+        .adjustIndividualQuantity(newQuantity, productName, this.userEmail)
+        .subscribe(() => {
+          this.flowerService.getAllIndividuals(this.userEmail);
+          this.individualSub = this.flowerService
+            .getCartItemsUpdateListener()
+            .subscribe((individualData: Individual[]) => {
+              //this.prices.total = 0;
+              this.individualItems = individualData;
+              //this.getPrice(cartData);
+            });
+        });
+    } else if (currentQuantity == 1) {
+      this.flowerService
+        .deleteIndividualItem(productName, this.userEmail)
+        .subscribe(() => {
+          console.log('updated cart list');
+          this.flowerService.getAllIndividuals(this.userEmail);
+          this.individualSub = this.flowerService
+            .getIndividualsUpdateListener()
+            .subscribe((individualData: Individual[]) => {
+              //this.prices.total = 0;
+              this.individualItems = individualData;
+              //this.getPrice(cartData);
+            });
+        });
+    }
+  }
   onSubtractItem(productCode: string, currentQuantity: number) {
     if (currentQuantity != 1) {
       let newQuantity = currentQuantity - 1;

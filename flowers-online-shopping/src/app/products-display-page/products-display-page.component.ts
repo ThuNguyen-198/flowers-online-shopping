@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlowersService } from '../services/flowers.service';
 import { Flower } from '../data-models/flower.model';
 import { Subscription } from 'rxjs';
+import { Individual } from '../data-models/individual.model';
 
 @Component({
   selector: 'app-products-display-page',
@@ -24,4 +25,6 @@ export class ProductsDisplayPageComponent implements OnInit {
         this.flowers = flowerData;
       });
   }
+
+  onAddIndividualsToCart(individual: Individual) {}
 }
