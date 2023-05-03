@@ -130,6 +130,10 @@
             >
             <mat-list-item>Tax: {{ prices.tax | currency }}</mat-list-item>
             <mat-list-item
+              >Discount (Individual flowers): -
+              {{ prices.individualTotal * 0.1 | currency }}</mat-list-item
+            >
+            <mat-list-item
               >Subtotal: {{ prices.subtotal | currency }}</mat-list-item
             >
           </mat-list>

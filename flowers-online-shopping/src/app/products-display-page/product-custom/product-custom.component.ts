@@ -3,9 +3,12 @@ import { ImageCropperModule, ImageCroppedEvent } from 'ngx-image-cropper';
 import {
   FormBuilder,
   FormGroup,
+  FormControl,
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+
+import { mimeType } from './mime-type.validator';
 
 @Component({
   selector: 'app-product-custom',
@@ -21,9 +24,29 @@ export class ProductCustomComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
     this.imageForm = this.formBuilder.group({
       name: ['', Validators.required],
-      image: ['', Validators.required],
+      image: [
+        '',
+        [Validators.required, this.imageTypeValidator(['jpeg', 'png', 'gif'])],
+      ],
       description: ['', Validators.required],
     });
+  }
+
+  imageTypeValidator(allowedTypes: string[]) {
+    return (control: FormControl) => {
+      const file = control.value;
+      if (file) {
+        const type = file.type.split('/')[1].toLowerCase();
+        if (!allowedTypes.includes(type)) {
+          return {
+            imageType: {
+              allowedTypes: allowedTypes.join(', '),
+            },
+          };
+        }
+      }
+      return null;
+    };
   }
 
   onImageCropped(event: ImageCroppedEvent) {

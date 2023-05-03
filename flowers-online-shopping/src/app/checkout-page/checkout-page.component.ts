@@ -54,12 +54,25 @@ export class CheckoutPageComponent implements OnInit {
 
   constructor(public flowerService: FlowersService) {}
 
-  getPrice(cartData: CartData[]) {
+  getPrice(cartData: CartData[], individualData: Individual[]) {
+    this.prices = {
+      total: 0,
+      shipping: 8.95,
+      tax: 0,
+      individualTotal: 0,
+      subtotal: 0,
+    };
     cartData.forEach((item) => {
       this.prices.total += item.quantity * item.productPrice;
     });
+
+    individualData.forEach((item) => {
+      this.prices.individualTotal += item.quantity * item.productPrice;
+    });
+
     this.prices.tax = this.prices.total * 0.0825;
-    this.prices.subtotal = this.prices.tax + this.prices.total;
+    this.prices.subtotal =
+      this.prices.tax + this.prices.total + this.prices.individualTotal * 0.9;
   }
 
   ngOnInit(): void {
@@ -74,7 +87,6 @@ export class CheckoutPageComponent implements OnInit {
       .getCartItemsUpdateListener()
       .subscribe((cartData: CartData[]) => {
         this.cartItems = cartData;
-        this.getPrice(cartData);
       });
 
     this.flowerService.getAllIndividuals(this.userEmail);
@@ -82,6 +94,7 @@ export class CheckoutPageComponent implements OnInit {
       .getIndividualsUpdateListener()
       .subscribe((individualData: Individual[]) => {
         this.individualItems = individualData;
+        this.getPrice(this.cartItems, this.individualItems);
       });
   }
 
@@ -95,9 +108,15 @@ export class CheckoutPageComponent implements OnInit {
         this.cartItemsSub = this.flowerService
           .getCartItemsUpdateListener()
           .subscribe((cartData: CartData[]) => {
-            this.prices.total = 0;
+            this.prices = {
+              total: 0,
+              shipping: 8.95,
+              tax: 0,
+              individualTotal: 0,
+              subtotal: 0,
+            };
             this.cartItems = cartData;
-            this.getPrice(cartData);
+            this.getPrice(this.cartItems, this.individualItems);
           });
       });
   }
@@ -112,7 +131,15 @@ export class CheckoutPageComponent implements OnInit {
         this.individualSub = this.flowerService
           .getIndividualsUpdateListener()
           .subscribe((individualData: Individual[]) => {
+            this.prices = {
+              total: 0,
+              shipping: 8.95,
+              tax: 0,
+              individualTotal: 0,
+              subtotal: 0,
+            };
             this.individualItems = individualData;
+            this.getPrice(this.cartItems, this.individualItems);
           });
       });
   }
@@ -127,9 +154,15 @@ export class CheckoutPageComponent implements OnInit {
           this.individualSub = this.flowerService
             .getIndividualsUpdateListener()
             .subscribe((individualData: Individual[]) => {
-              //this.prices.total = 0;
+              this.prices = {
+                total: 0,
+                shipping: 8.95,
+                tax: 0,
+                individualTotal: 0,
+                subtotal: 0,
+              };
               this.individualItems = individualData;
-              //this.getPrice(cartData);
+              this.getPrice(this.cartItems, this.individualItems);
             });
         });
     } else if (currentQuantity == 1) {
@@ -141,9 +174,15 @@ export class CheckoutPageComponent implements OnInit {
           this.individualSub = this.flowerService
             .getIndividualsUpdateListener()
             .subscribe((individualData: Individual[]) => {
-              //this.prices.total = 0;
+              this.prices = {
+                total: 0,
+                shipping: 8.95,
+                tax: 0,
+                individualTotal: 0,
+                subtotal: 0,
+              };
               this.individualItems = individualData;
-              //this.getPrice(cartData);
+              this.getPrice(this.cartItems, this.individualItems);
             });
         });
     }
@@ -158,9 +197,15 @@ export class CheckoutPageComponent implements OnInit {
           this.cartItemsSub = this.flowerService
             .getCartItemsUpdateListener()
             .subscribe((cartData: CartData[]) => {
-              this.prices.total = 0;
+              this.prices = {
+                total: 0,
+                shipping: 8.95,
+                tax: 0,
+                individualTotal: 0,
+                subtotal: 0,
+              };
               this.cartItems = cartData;
-              this.getPrice(cartData);
+              this.getPrice(this.cartItems, this.individualItems);
             });
         });
     } else if (currentQuantity == 1) {
@@ -172,9 +217,15 @@ export class CheckoutPageComponent implements OnInit {
           this.cartItemsSub = this.flowerService
             .getCartItemsUpdateListener()
             .subscribe((cartData: CartData[]) => {
-              this.prices.total = 0;
+              this.prices = {
+                total: 0,
+                shipping: 8.95,
+                tax: 0,
+                individualTotal: 0,
+                subtotal: 0,
+              };
               this.cartItems = cartData;
-              this.getPrice(cartData);
+              this.getPrice(this.cartItems, this.individualItems);
             });
         });
     }
