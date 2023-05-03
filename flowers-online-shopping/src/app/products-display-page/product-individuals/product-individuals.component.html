@@ -54,30 +54,32 @@
         </div>
       </div>
     </div>
-    <div class="products-selected-container">
-      <div
-        class="selected-flower-container"
-        *ngFor="let flower of individualArray; let i = index"
-      >
-        <img class="selected-flower" src="{{ flower.imageSmall }}" />
-        <div class="amount-container">
-          <div class="quantity-container">
-            <div>Quantity</div>
-            <div class="adjust-quantity">
-              <ion-icon
-                name="remove-circle-outline"
-                (click)="onSubtractQuantity(i)"
-              ></ion-icon>
-              <div class="quantity">{{ flower.quantity }}</div>
-              <ion-icon
-                name="add-circle-outline"
-                (click)="onAddQuantity(i)"
-              ></ion-icon>
+    <div class="products-selected-box">
+      <div class="products-selected-container">
+        <div
+          class="selected-flower-container"
+          *ngFor="let flower of individualArray; let i = index"
+        >
+          <img class="selected-flower" src="{{ flower.imageSmall }}" />
+          <div class="amount-container">
+            <div class="quantity-container">
+              <div>Quantity</div>
+              <div class="adjust-quantity">
+                <ion-icon
+                  name="remove-circle-outline"
+                  (click)="onSubtractQuantity(i)"
+                ></ion-icon>
+                <div class="quantity">{{ flower.quantity }}</div>
+                <ion-icon
+                  name="add-circle-outline"
+                  (click)="onAddQuantity(i)"
+                ></ion-icon>
+              </div>
             </div>
-          </div>
-          <div class="discount-container">
-            <p>Discount</p>
-            <p>10%</p>
+            <div class="discount-container">
+              <p>Discount</p>
+              <p>10%</p>
+            </div>
           </div>
         </div>
       </div>
