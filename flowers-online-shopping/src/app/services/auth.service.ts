@@ -101,6 +101,7 @@ export class AuthService {
       .subscribe((response) => {
         const token = response.token;
         this.token = token;
+        console.log(response.isAdmin);
 
         if (token) {
           const expiresInDuration = response.expiresIn;
@@ -113,18 +114,15 @@ export class AuthService {
             now.getTime() + expiresInDuration * 1000
           );
 
-          if (response.isAdmin == 'true') {
+          if (response.isAdmin) {
+            localStorage.setItem('isAdmin', 'true');
             this.isAdmin.next(true);
           } else {
+            localStorage.setItem('isAdmin', 'false');
             this.isAdmin.next(false);
           }
 
-          this.saveAuthData(
-            this.token,
-            expirationDate,
-            this.isAdmin,
-            loginEmail
-          );
+          this.saveAuthData(this.token, expirationDate, loginEmail);
 
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
@@ -168,15 +166,9 @@ export class AuthService {
     }, duration * 1000);
   }
 
-  private saveAuthData(
-    token: string,
-    expirationDate: Date,
-    isAdmin: any,
-    email: string
-  ) {
+  private saveAuthData(token: string, expirationDate: Date, email: string) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
-    localStorage.setItem('isAdmin', isAdmin.toString());
     localStorage.setItem('userEmail', email);
   }
 

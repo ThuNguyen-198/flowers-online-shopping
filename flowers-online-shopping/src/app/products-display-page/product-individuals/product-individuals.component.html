@@ -60,7 +60,7 @@
           class="selected-flower-container"
           *ngFor="let flower of individualArray; let i = index"
         >
-          <img class="selected-flower" src="{{ flower.img }}" />
+          <img class="selected-flower" src="{{ flower.imageSmall }}" />
           <div class="amount-container">
             <div class="quantity-container">
               <div>Quantity</div>
@@ -83,7 +83,9 @@
           </div>
         </div>
       </div>
-      <button class="cart-btn">Add to Cart</button>
+      <div>
+        <button class="cart-btn" (click)="onAddAllToCart()">Add to Cart</button>
+      </div>
     </div>
   </div>
 </div>

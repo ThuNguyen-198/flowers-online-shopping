@@ -37,6 +37,12 @@ export class MainNavigationComponent implements OnInit {
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
       });
+
+    if (localStorage.getItem('isAdmin') === 'true') {
+      this.userIsAdmin = true;
+    } else {
+      this.userIsAdmin = false;
+    }
   }
 
   getSearchKey() {}

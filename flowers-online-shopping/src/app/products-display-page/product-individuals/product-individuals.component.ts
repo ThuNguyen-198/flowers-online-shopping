@@ -2,12 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Flower } from 'src/app/data-models/flower.model';
 import { FlowersService } from 'src/app/services/flowers.service';
-
-interface Individual {
-  img: string;
-  name: string;
-  quantity: 1;
-}
+import { Individual } from 'src/app/data-models/individual.model';
 
 @Component({
   selector: 'app-product-individuals',
@@ -20,6 +15,7 @@ export class ProductIndividualsComponent implements OnInit {
   categories = ['All', 'Rose', 'Daisy', 'Sun Flower', 'Tulip', 'Lily', 'Leaf'];
   selectedCategory = 'All';
   showSearchBox = false;
+  userEmail: any;
 
   individuals = [
     {
@@ -148,12 +144,19 @@ export class ProductIndividualsComponent implements OnInit {
 
   constructor(public flowerService: FlowersService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (localStorage.getItem('userEmail') == null) {
+      this.userEmail = 'guest@gmail.com';
+    } else {
+      this.userEmail = localStorage.getItem('userEmail');
+    }
+  }
 
   onAddIndividuals(newIndividual: any) {
     let individual: Individual = {
-      img: newIndividual.img,
-      name: newIndividual.name,
+      productName: newIndividual.name,
+      imageSmall: newIndividual.img,
+      productPrice: 5.99,
       quantity: 1,
     };
     this.individualArray.push(individual);
@@ -167,5 +170,9 @@ export class ProductIndividualsComponent implements OnInit {
   onSubtractQuantity(index: number) {
     if (this.individualArray[index].quantity > 1)
       this.individualArray[index].quantity -= 1;
+  }
+
+  onAddAllToCart() {
+    this.flowerService.addIndividuals(this.individualArray, this.userEmail);
   }
 }
