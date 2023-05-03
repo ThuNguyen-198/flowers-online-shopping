@@ -4,7 +4,6 @@ import { Flower } from '../data-models/flower.model';
 import { Subscription } from 'rxjs';
 import { NgForm, FormControl } from '@angular/forms';
 import { CartData } from '../data-models/cart.model';
-import { CreditCard } from '../data-models/customer.model';
 import { Individual } from '../data-models/individual.model';
 import { Router } from '@angular/router';
 

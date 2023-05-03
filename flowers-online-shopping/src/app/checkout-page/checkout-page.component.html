@@ -8,9 +8,13 @@
   <mat-step>
     <ng-template matStepLabel>Confirm Purchase</ng-template>
     <mat-grid-list cols="3">
+      <h1 *ngIf="cartItems.length == 0 && individualItems.length == 0">
+        Cart is empty.
+      </h1>
       <mat-grid-tile [colspan]="2" class="productsGridTile">
         <div class="productsTable">
           <table
+            *ngIf="cartItems.length > 0"
             mat-table
             [dataSource]="cartItems"
             class="table mat-elevation-z1"
@@ -63,6 +67,7 @@
 
           <table
             mat-table
+            *ngIf="individualItems.length > 0"
             [dataSource]="individualItems"
             class="table mat-elevation-z1"
           >
