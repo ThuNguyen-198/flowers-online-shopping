@@ -11,7 +11,7 @@ export class ReportPageComponent implements OnInit {
   //placeholder earnings info
   earnings: EarningsInfo = {
     earnings: 0,
-    fees: 1400,
+    fees: 400,
     bouquets: 0,
     flowers: 0,
     total: 0,
@@ -27,6 +27,7 @@ export class ReportPageComponent implements OnInit {
       report.map((earning: any) => {
         this.earnings.earnings += earning.total;
         this.earnings.bouquets += earning.products.length;
+        this.earnings.flowers += earning.individuals.length;
       });
 
       this.earnings.total = this.earnings.earnings - this.earnings.fees;
